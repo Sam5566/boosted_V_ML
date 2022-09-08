@@ -1,5 +1,6 @@
 import keras.backend as K
 from cprint import *
+import os
 
 ################################
 def print_layer_and_params(model, history):
@@ -24,3 +25,8 @@ def print_layer_and_params(model, history):
     print ("****************************************************")
    
     print (moneyline+"\n"+moneyline)
+
+
+def orgainize_result_table(model_directory_name):
+    mdn = model_directory_name
+    os.system(" echo ")
