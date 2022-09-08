@@ -1,0 +1,124 @@
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+New Run
+Current date and time = 2022-09-07 13:43:31.076788
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+The data set contains images
+Epoch 1/500
+352/352 [==============================] - 52s 129ms/step - loss: 6.7189 - accuracy: 0.6287 - val_loss: 2.1392 - val_accuracy: 0.6677
+
+Epoch 00001: val_loss improved from inf to 2.13921, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 2/500
+352/352 [==============================] - 46s 129ms/step - loss: 1.3947 - accuracy: 0.6846 - val_loss: 0.9756 - val_accuracy: 0.6971
+
+Epoch 00002: val_loss improved from 2.13921 to 0.97561, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 3/500
+352/352 [==============================] - 52s 147ms/step - loss: 0.8567 - accuracy: 0.6911 - val_loss: 0.7630 - val_accuracy: 0.7007
+
+Epoch 00003: val_loss improved from 0.97561 to 0.76296, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 4/500
+352/352 [==============================] - 52s 148ms/step - loss: 0.7549 - accuracy: 0.6947 - val_loss: 0.7251 - val_accuracy: 0.7036
+
+Epoch 00004: val_loss improved from 0.76296 to 0.72509, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 5/500
+352/352 [==============================] - 52s 148ms/step - loss: 0.7364 - accuracy: 0.6969 - val_loss: 0.7164 - val_accuracy: 0.7063
+
+Epoch 00005: val_loss improved from 0.72509 to 0.71637, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 6/500
+352/352 [==============================] - 52s 146ms/step - loss: 0.7304 - accuracy: 0.6989 - val_loss: 0.7134 - val_accuracy: 0.7069
+
+Epoch 00006: val_loss improved from 0.71637 to 0.71339, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 7/500
+352/352 [==============================] - 46s 131ms/step - loss: 0.7262 - accuracy: 0.7003 - val_loss: 0.7101 - val_accuracy: 0.7082
+
+Epoch 00007: val_loss improved from 0.71339 to 0.71009, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 8/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7236 - accuracy: 0.7015 - val_loss: 0.7089 - val_accuracy: 0.7090
+
+Epoch 00008: val_loss improved from 0.71009 to 0.70893, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 9/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7211 - accuracy: 0.7025 - val_loss: 0.7071 - val_accuracy: 0.7094
+
+Epoch 00009: val_loss improved from 0.70893 to 0.70712, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 10/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.7184 - accuracy: 0.7040 - val_loss: 0.7069 - val_accuracy: 0.7089
+
+Epoch 00010: val_loss improved from 0.70712 to 0.70693, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 11/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7160 - accuracy: 0.7046 - val_loss: 0.7055 - val_accuracy: 0.7094
+
+Epoch 00011: val_loss improved from 0.70693 to 0.70549, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 12/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7137 - accuracy: 0.7062 - val_loss: 0.7048 - val_accuracy: 0.7103
+
+Epoch 00012: val_loss improved from 0.70549 to 0.70475, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 13/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.7119 - accuracy: 0.7076 - val_loss: 0.7051 - val_accuracy: 0.7096
+
+Epoch 00013: val_loss did not improve from 0.70475
+Epoch 14/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7097 - accuracy: 0.7084 - val_loss: 0.7040 - val_accuracy: 0.7116
+
+Epoch 00014: val_loss improved from 0.70475 to 0.70397, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 15/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7084 - accuracy: 0.7093 - val_loss: 0.7044 - val_accuracy: 0.7106
+
+Epoch 00015: val_loss did not improve from 0.70397
+Epoch 16/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.7061 - accuracy: 0.7104 - val_loss: 0.7043 - val_accuracy: 0.7099
+
+Epoch 00016: val_loss did not improve from 0.70397
+Epoch 17/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.7045 - accuracy: 0.7109 - val_loss: 0.7030 - val_accuracy: 0.7112
+
+Epoch 00017: val_loss improved from 0.70397 to 0.70304, saving model to testbest_model_ternary_CNNsq_kappa0.15/
+Epoch 18/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.7023 - accuracy: 0.7126 - val_loss: 0.7042 - val_accuracy: 0.7117
+
+Epoch 00018: val_loss did not improve from 0.70304
+Epoch 19/500
+352/352 [==============================] - 48s 135ms/step - loss: 0.7003 - accuracy: 0.7138 - val_loss: 0.7038 - val_accuracy: 0.7107
+
+Epoch 00019: val_loss did not improve from 0.70304
+Epoch 20/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.6981 - accuracy: 0.7156 - val_loss: 0.7056 - val_accuracy: 0.7112
+
+Epoch 00020: val_loss did not improve from 0.70304
+Epoch 21/500
+352/352 [==============================] - 48s 135ms/step - loss: 0.6963 - accuracy: 0.7164 - val_loss: 0.7057 - val_accuracy: 0.7114
+
+Epoch 00021: val_loss did not improve from 0.70304
+Epoch 22/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.6938 - accuracy: 0.7175 - val_loss: 0.7056 - val_accuracy: 0.7104
+
+Epoch 00022: val_loss did not improve from 0.70304
+Epoch 23/500
+352/352 [==============================] - 48s 135ms/step - loss: 0.6922 - accuracy: 0.7190 - val_loss: 0.7073 - val_accuracy: 0.7099
+
+Epoch 00023: val_loss did not improve from 0.70304
+Epoch 24/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.6902 - accuracy: 0.7198 - val_loss: 0.7079 - val_accuracy: 0.7107
+
+Epoch 00024: val_loss did not improve from 0.70304
+Epoch 25/500
+352/352 [==============================] - 45s 128ms/step - loss: 0.6871 - accuracy: 0.7223 - val_loss: 0.7094 - val_accuracy: 0.7094
+
+Epoch 00025: val_loss did not improve from 0.70304
+Epoch 26/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.6844 - accuracy: 0.7234 - val_loss: 0.7098 - val_accuracy: 0.7094
+
+Epoch 00026: val_loss did not improve from 0.70304
+Epoch 27/500
+352/352 [==============================] - 45s 129ms/step - loss: 0.6818 - accuracy: 0.7254 - val_loss: 0.7136 - val_accuracy: 0.7083
+
+Epoch 00027: val_loss did not improve from 0.70304
+Epoch 00027: early stopping
+The data set contains images
+56456/56456 [==============================] - 425s 8ms/step - loss: 0.7150 - accuracy: 0.7056
+Testing Loss = 0.714976, Testing Accuracy = 0.705558
+The data set contains images
+[[0.4480013847351074, 0.05973908677697182, 0.49225950241088867], [0.9378713369369507, 0.001290344400331378, 0.060838356614112854], [0.8475766181945801, 0.05057820305228233, 0.10184517502784729], [0.8843138217926025, 0.03823340684175491, 0.07745281606912613], [0.7183806896209717, 0.19929957389831543, 0.08231975138187408], [0.3523958623409271, 0.5552163124084473, 0.0923878476023674], [0.8475766181945801, 0.05057820305228233, 0.10184517502784729], [0.7571540474891663, 0.14960426092147827, 0.09324171394109726], [0.4862736761569977, 0.11747610569000244, 0.39625030755996704], [0.9349189400672913, 0.035889364778995514, 0.029191728681325912]]
+[[0.0, 0.0, 1.0], [1.0, 0.0, 0.0], [0.0, 0.0, 1.0], [0.0, 1.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [0.0, 0.0, 1.0], [1.0, 0.0, 0.0], [0.0, 0.0, 1.0], [1.0, 0.0, 0.0]]
+3
