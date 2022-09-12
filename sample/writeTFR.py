@@ -83,7 +83,9 @@ def create_TFRecord(npy_files):
                 datasizes.append(int(f.readline()))
         dataset = np.array([np.load(npy_file, allow_pickle=True) for npy_file in npy_files])
     
-    print (datasizes)
+    print ("datasizes in the npy", datasizes)
+    #datasizes = [235000, 250000, 220000]
+    #print ("redefine datasizes to", datasizes)
     
     datasize = sum(datasizes)
     trainsize = int(datasize*0.8)

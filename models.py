@@ -173,7 +173,7 @@ class CNN_ternary(tf.keras.Model):
         self.h2ptjl = tf.keras.Sequential([
             tf.keras.layers.Lambda(lambda x: x[:, :, :, :]),
             tf.keras.layers.BatchNormalization(),
-            tf.keras.layers.Conv2D(32, (6,6), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(32, (6,6), padding='same', activation='relu'),#, kernel_regularizer=tf.keras.regularizers.L2(0.01)),
             tf.keras.layers.MaxPool2D((2,2)),
             tf.keras.layers.Conv2D(128, (4,4), padding='same', activation='relu'),
             tf.keras.layers.MaxPool2D((2,2)),

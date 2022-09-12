@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import time
 import os
-os.environ['CUDA_VISIBLE_DEVICES']='2'
+os.environ['CUDA_VISIBLE_DEVICES']='0'
 import sys
 os.chdir('/home/samhuang/ML/')
 sys.path.insert(0, '/home/samhuang/ML')
@@ -25,6 +25,7 @@ import random
 from tqdm import tqdm
 from train_utils import *
 import logging
+from print_and_draw import *
 from datetime import datetime, date
 
 physical_gpus = tf.config.list_physical_devices('GPU')
@@ -71,7 +72,8 @@ class Logger(object):
     def __init__(self):
         self.terminal = sys.stdout
         os.system('mkdir '+save_model_name)
-        self.log = open(save_model_name+data_folder.split('/')[1]+'.log', "a")
+        #self.log = open(save_model_name+data_folder.split('/')[1]+'.log', "a")
+        self.log = open(save_model_name+'latest_run.log', "w+")
 
     def write(self, message):
         self.terminal.write(message)
@@ -129,20 +131,22 @@ for dd in dataset_tr:
 # Create the model  
 model = models.CNN_ternary(dim_image=dim_image[0] + [3])
 #print(model.summary())
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), 
-              loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
-              metrics=['accuracy'])
+#model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+#model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
-early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=min_delta, verbose=1, patience=patience)
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0002, verbose=1, patience=patience)
+#early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=min_delta, verbose=1, patience=patience)
 check_point    = tf.keras.callbacks.ModelCheckpoint(save_model_name, monitor='val_loss', verbose=1, save_best_only=True)
 
 
 history = model.fit(dataset_tr, validation_data=dataset_vl , epochs=train_epochs, batch_size=batch_size, callbacks=[early_stopping, check_point])
-print(model.summary())
-print(model.layers)
+#print(model.summary())
+#print(model.layers)
+print_layer_and_params(model, history)
 #for layers in enumerate(model.layers):
 #    print (layers.summary())
-model.save(save_model_name)
+#model.save(save_model_name)
 
 
 os.system('mkdir '+save_model_name+'/figures')
@@ -215,7 +219,7 @@ signal=[r'$W^+$',r'$W^-$',r'$Z$']
 for i in range(n_class):
     print ('{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
     plt.plot(fpr[i], tpr[i], label='{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
-            
+
 plt.plot([0, 1], [0, 1], color="navy", linestyle="--")
 plt.ylabel('True Positive Rate')
 plt.xlabel('False Positive Rate')
@@ -231,3 +235,7 @@ fig.savefig(save_model_name+'/figures/roc_auc.png', dpi=300)
 
 ##############################################################
 sys.stdout.close()
+
+
+#os.system("sed -i -r \\'s/^M.*\\(.{150}\\)/\1/g\\' "+save_model_name+"latest_run.log"+" && sed -i -r 's/[\\^M\\^H]//g' "+save_model_name+"latest_run.log")
+os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[1]+'.log')

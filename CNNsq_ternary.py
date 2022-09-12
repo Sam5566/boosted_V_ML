@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import time
 import os
-os.environ['CUDA_VISIBLE_DEVICES']='2'
+os.environ['CUDA_VISIBLE_DEVICES']='1'
 import sys
 os.chdir('/home/samhuang/ML/')
 sys.path.insert(0, '/home/samhuang/ML')
@@ -25,6 +25,7 @@ import random
 from tqdm import tqdm
 from train_utils import *
 import logging
+from print_and_draw import *
 from datetime import datetime, date
 
 physical_gpus = tf.config.list_physical_devices('GPU')
@@ -137,6 +138,7 @@ check_point    = tf.keras.callbacks.ModelCheckpoint(save_model_name, monitor='va
                                                     verbose=1, save_best_only=True)
 
 history = model.fit(dataset_tr, validation_data=dataset_vl , epochs=train_epochs, batch_size=batch_size, callbacks=[early_stopping, check_point])
+print_layer_and_params(model, history)
 model.save(save_model_name)
 
 

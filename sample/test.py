@@ -1,7 +1,5 @@
-import numpy as np
-with open('samples_kappa0.15.npy', 'rb') as datas:
-    for i in range(636414):
-        a = np.load(datas, allow_pickle=True)
-        if a[0]!='Z':
-            print (a[0])
-
+import os
+save_model_name='test_'
+#os.system("echo sed -i -r \\'s/\\.*\\(.{150}\\)/\1/g\\' "+save_model_name+"latest_run.log"+" && echo sed -i -r \\'s/[\\\\]//g\\' "+save_model_name+"latest_run.log")
+os.system("echo sed -i -r \\'s/.*\\(.{150}\\)/\1/g\\' "+save_model_name+"latest_run.log")
+os.system("echo sed -i -r \\'s/[\\]//g\\' "+save_model_name+"latest_run.log")
