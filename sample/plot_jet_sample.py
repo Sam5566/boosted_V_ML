@@ -52,6 +52,7 @@ for i in range(len(sys.argv)):
 #print (imags[0][0])
 #print (type(imags[0][0]))
 
+print ("Start plotting...")
 ## P_T image distribution
 fig, ax = plt.subplots(1,3, figsize=(15,5))
 imag = ax[0].imshow(imags[0][0]/len(dfs[0]), extent=[-0.8, 0.8, -0.8, 0.8], norm=colors.SymLogNorm(linthresh=0.1, linscale=0.4,vmin=0), cmap='Blues')
@@ -121,3 +122,4 @@ ax.set_xlabel(r'$p_T$')
 ax.set_aspect(800)
 plt.savefig('figures/'+ figure_folder + 'pT_distribution.png', dpi=300)
 
+print ("Finish plotting...")

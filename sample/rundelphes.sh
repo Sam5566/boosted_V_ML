@@ -16,4 +16,4 @@ if [ -e $out_directory/Events/$launch_directory/tag_1_pythia8_events.hepmc.gz ];
 fi
 
 DelphesHepMC /home/samhuang/ML/sample/test_jenis_setting/Cards/delphes_card.dat /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/$out_file /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/tag_1_pythia8_events.hepmc & > /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/delphes.log1 &
-DelphesHepMC /home/samhuang/ML/sample/test_jenis_setting/Cards/delphes_card_CMS.dat /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/$out_file2 /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/tag_1_pythia8_events.hepmc & > /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/delphes.log2 &
+#DelphesHepMC /home/samhuang/ML/sample/test_jenis_setting/Cards/delphes_card_CMS.dat /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/$out_file2 /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/tag_1_pythia8_events.hepmc & > /home/samhuang/ML/sample/$out_directory/Events/$launch_directory/delphes.log2 &
