@@ -131,7 +131,7 @@ for dd in dataset_tr:
 '''
 
 # Create the model  
-model = models.CNN_ternary(dim_image=dim_image[0] + [3])
+model = models.CNN_ternary(dim_image=dim_image[0] + [3], n_class=3)
 #print(model.summary())
 #model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -238,5 +238,5 @@ fig.savefig(save_model_name+'/figures/roc_auc.png', dpi=300)
 ##############################################################
 sys.stdout.close()
 
-os.system("source ../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
-os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[1]+'.log')
+os.system("#!/bin/bash && source ../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
+os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[5]+'.log')

@@ -44,15 +44,17 @@ learning_rate = 1e-4
 N_labels = 2
 dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
 signal = [r'$W^+$',r'$Z$']
-signal = [r'$W^+$',r'$W^-$']
-save_model_name = 'best_model_binary-WpZ_CNN_kappa0.15/'
-save_model_name = 'best_model_binary-WpWm_CNN_kappa0.15/'
+#signal = [r'$W^+$',r'$W^-$']
+best_model_dir = '/home/samhuang/ML/best_model/'
+save_model_name = best_model_dir+'best_model_binary-WpZ_CNN_kappa0.15/'
+#save_model_name = best_model_dir+'best_model_binary-WpWm_CNN_kappa0.15/'
 
 # Input datasets
+sample_folder = '/home/samhuang/ML/sample/'
 #data_folder = "sample/samples_kappa0.15/samples_kappa0.15/"
 #data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
-data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
-data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
+data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+#data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
 #data_folder = "/home/samhuang/../public/Polar_new/samples/"
 #data_folder = "samples/"
 data_tr = data_folder+"train.tfrecord"
@@ -76,28 +78,8 @@ plt.rcParams["ytick.major.size"] = 6
 plt.rcParams['ytick.major.width'] = 1.5 
 
 ###################################################
-class Logger(object):
-    def __init__(self):
-        self.terminal = sys.stdout
-        os.system('mkdir '+save_model_name)
-        self.log = open(save_model_name+data_folder.split('/')[1]+'.log', "a")
-
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message) 
-    def flush(self):
-        self.terminal.flush()
-        self.log.flush() 
-    def close(self):
-        if self.terminal != None:
-            sys.stdout = self.terminal
-            self.terminal = None
-        if self.log != None:
-            self.log.close()
-            self.log = None
-
 sys.stdout = Logger()
-
+sys.stdout.give_model_log_directory(save_model_name)
 
 print ("")
 print ("")
@@ -136,19 +118,19 @@ for dd in dataset_tr:
 '''
 
 # Create the model  
-model = models.CNN_binary(dim_image=dim_image[0] + [2])
+model = models.CNN(dim_image=dim_image[0] + [2], n_class=2)
 #print(model.summary())
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), 
-              loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
-              metrics=['accuracy'])
+#model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
-early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=min_delta, verbose=1, patience=patience)
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0002, verbose=1, patience=patience)
+#early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=min_delta, verbose=1, patience=patience)
 check_point    = tf.keras.callbacks.ModelCheckpoint(save_model_name, monitor='val_loss', verbose=1, save_best_only=True)
 
 
-history = model.fit(dataset_tr, validation_data=dataset_vl , epochs=train_epochs, batch_size=batch_size, callbacks=[early_stopping, check_point], verbose=1)
+history = model.fit(dataset_tr, validation_data=dataset_vl , epochs=train_epochs, batch_size=batch_size, callbacks=[early_stopping, check_point])
 print_layer_and_params(model, history)
-model.save(save_model_name)
+#model.save(save_model_name)
 
 
 os.system('mkdir '+save_model_name+'/figures')
@@ -236,3 +218,8 @@ fig.savefig(save_model_name+'/figures/roc_auc.png', dpi=300)
 
 ##############################################################
 sys.stdout.close()
+
+
+os.system("#!/bin/bash && source ../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
+os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[5]+'.log')
+

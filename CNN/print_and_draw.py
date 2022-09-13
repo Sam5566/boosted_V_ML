@@ -30,3 +30,25 @@ def print_layer_and_params(model, history):
 def orgainize_result_table(model_directory_name):
     mdn = model_directory_name
     os.system(" echo ")
+
+
+class Logger(object):
+    def __init__(self):
+        self.terminal = sys.stdout
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+    def flush(self):
+        self.terminal.flush()
+        self.log.flush()
+    def close(self):
+        if self.terminal != None:
+            sys.stdout = self.terminal
+            self.terminal = None
+        if self.log != None:
+            self.log.close()
+            self.log = None
+    def give_model_log_directory(self, save_model_name):
+        os.system('mkdir '+save_model_name)
+        self.log = open(save_model_name+'latest_run.log', "w+")
