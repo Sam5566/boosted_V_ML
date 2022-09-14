@@ -11,8 +11,8 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from tqdm import tqdm
 from contextlib import ExitStack
 import itertools
-kappa = "0.15"
-datafolder = 'sample/samples_kappa'+kappa+'/'
+kappa = "0.3"
+datafolder = '../sample/samples_kappa'+kappa+'/'
 datanames = ['VBF_H5pp_ww_jjjj', 'VBF_H5mm_ww_jjjj', 'VBF_H5z_zz_jjjj']
 data_counts = []
 for dataname in datanames: 
