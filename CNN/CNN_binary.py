@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import time
 import os
-os.environ['CUDA_VISIBLE_DEVICES']='1'
+os.environ['CUDA_VISIBLE_DEVICES']='0'
 import sys
 os.chdir('/home/samhuang/ML/')
 sys.path.insert(0, '/home/samhuang/ML')
@@ -43,17 +43,22 @@ min_delta = 0.
 learning_rate = 1e-4
 N_labels = 2
 dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
-signal = [r'$W^+$',r'$Z$']
-#signal = [r'$W^+$',r'$W^-$']
+#signal = [r'$W^+$',r'$Z$']
+signal = [r'$W^+$',r'$W^-$']
 best_model_dir = '/home/samhuang/ML/best_model/'
-save_model_name = best_model_dir+'best_model_binary-WpZ_CNN_kappa0.15/'
-#save_model_name = best_model_dir+'best_model_binary-WpWm_CNN_kappa0.15/'
-
-# Input datasets
 sample_folder = '/home/samhuang/ML/sample/'
+if signal==[r'$W^+$',r'$Z$']:
+    save_model_name = best_model_dir+'best_model_binary-WpZ_CNN_kappa0.15/'
+    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+elif signal==[r'$W^+$',r'$W^-$']:
+    save_model_name = best_model_dir+'best_model_binary-WpWm_CNN_kappa.15/'
+    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
+    
+# Input datasets
+#sample_folder = '/home/samhuang/ML/sample/'
 #data_folder = "sample/samples_kappa0.15/samples_kappa0.15/"
 #data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
-data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+#data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 #data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
 #data_folder = "/home/samhuang/../public/Polar_new/samples/"
 #data_folder = "samples/"
@@ -87,6 +92,7 @@ print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 print ("New Run")
 e = datetime.now()
 print ("Current date and time = %s" % e)
+print ("Binary task for ", signal)
 print ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 #######################  main code  #############################
 

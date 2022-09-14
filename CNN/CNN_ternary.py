@@ -131,11 +131,11 @@ for dd in dataset_tr:
 '''
 
 # Create the model  
-model = models.CNN_ternary(dim_image=dim_image[0] + [3], n_class=3)
+model = models.CNN(dim_image=dim_image[0] + [3], n_class=3)
 #print(model.summary())
-#model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+#model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0002, verbose=1, patience=patience)
 #early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=min_delta, verbose=1, patience=patience)

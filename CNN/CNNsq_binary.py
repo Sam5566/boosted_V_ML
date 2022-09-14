@@ -26,7 +26,7 @@ import logging
 from datetime import datetime, date
 from print_and_draw import *
 
-os.environ['CUDA_VISIBLE_DEVICES']='2'
+os.environ['CUDA_VISIBLE_DEVICES']='1'
 physical_gpus = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_gpus[0], True)
 #################  input and variables  #######################
@@ -42,12 +42,16 @@ dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
 signal = [r'$W^+$',r'$W^-$']
 #signal = [r'$W^+$',r'$Z$']
 best_model_dir = '/home/samhuang/ML/best_model/'
-save_model_name = best_model_dir+'best_model_binary-WpWm_CNNsq_kappa0.15/'
-#save_model_name = best_model_dir+'best_model_binary-WpZ_CNNsq_kappa0.15/'
-
-# Input datasets
 sample_folder = '/home/samhuang/ML/sample/'
-data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
+if signal==[r'$W^+$',r'$Z$']:
+    save_model_name = best_model_dir+'best_model_binary-WpZ_CNNsq_kappa0.15/'
+    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+elif signal==[r'$W^+$',r'$W^-$']:
+    save_model_name = best_model_dir+'best_model_binary-WpWm_CNNsq_kappa.15/'
+    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
+# Input datasets
+#sample_folder = '/home/samhuang/ML/sample/'
+#data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
 #data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 
 data_tr = data_folder+"train.tfrecord"
