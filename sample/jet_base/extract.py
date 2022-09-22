@@ -380,7 +380,7 @@ def main():
 	kappa = float(sys.argv[1])
 
 	inname = sys.argv[2].split('/')[5] #// should be changed with different directory structure
-	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'/'
+	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "jet_base/samples_kappa"+str(kappa)+'/'
 	os.system('mkdir '+outputfiledir)
 	outname = outputfiledir + inname + '.tfrecord'
 	imagename = outputfiledir + inname + '.npy'

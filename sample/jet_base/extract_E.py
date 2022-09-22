@@ -220,15 +220,15 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		if len(particle_list) != 2:
 			pbar.update(1)
 			continue
-		if (particle_list[0].PID==24) and (signal_label!=[1, 0, 0]):
-			pbar.update(1)
-			continue
-		elif (particle_list[0].PID==-24) and (signal_label!=[0, 1, 0]):
-			pbar.update(1)
-			continue
-		elif (particle_list[0].PID==23) and (signal_label!=[0, 0, 1]):
-			pbar.update(1)
-			continue
+		#if (particle_list[0].PID==24) and (signal_label!=[1, 0, 0]):
+		#	pbar.update(1)
+		#	continue
+		#elif (particle_list[0].PID==-24) and (signal_label!=[0, 1, 0]):
+		#	pbar.update(1)
+		#	continue
+		#elif (particle_list[0].PID==23) and (signal_label!=[0, 0, 1]):
+		#	pbar.update(1)
+		#	continue
 
 		#print (evt_id, p1.Status, p1.M1, p1.M2,  p2.Status, p2.M1, p2.M2)
 		Npass[2] += 1
@@ -324,9 +324,9 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		json_obj['pTj'] = [item for sublist in pTj for item in sublist]
 		json_obj['Qkj'] = [item for sublist in pTj for item in sublist]
 		
-		if particle_list[0].PID!=particle_list[1].PID:
-			print (particle_list[0].PID, particle_list[1].PID)
-			print ("particle type of two particles are not the same")
+		#if particle_list[0].PID!=particle_list[1].PID:
+		#	print (particle_list[0].PID, particle_list[1].PID)
+		#	print ("particle type of two particles are not the same")
 		elif particle_list[0].PID==24:
 			json_obj['particle_type']='W+'
 			json_obj['labels']=[1,0,0]#'W+'
@@ -383,14 +383,15 @@ def main():
 	kappa = float(sys.argv[1])
 
 	inname = sys.argv[2].split('/')[5] #// should be changed with different directory structure
-	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'_E/'
+	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "jet_base/samples_kappa"+str(kappa)+'_E/'
 	os.system('mkdir '+outputfiledir)
 	outname = outputfiledir + inname + '.tfrecord'
 	imagename = outputfiledir + inname + '.npy'
 	countname = outputfiledir + inname + '.count'
 
 	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1]}
-	signal_label = signal_list[inname]
+	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0, 0, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0, 0, 0, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1, 0, 0, 0], 'VBF_H5z_ww_jjjj': [0, 0, 0, 1, 0, 0], 'VBF_H5p_wz_jjjj': [0, 0, 0, 0, 1, 0], 'VBF_H5m_wz_jjjj': [0, 0, 0, 0, 0, 1]}
+    signal_label = signal_list[inname]
 	print ("Datatype:",signal_label)
 
 	#create a chain of the Delphes tree
