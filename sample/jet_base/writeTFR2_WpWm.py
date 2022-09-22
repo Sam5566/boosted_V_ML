@@ -48,14 +48,14 @@ def get_sequence_example_object(data_element_dict):
 
 def determine_entry(entry, idx):
 
-    if (entry[0]=='Z'):
-        #print ("Z")
-        entry[0]=[0,1]
-        #N_Z += 1
-    elif (entry[0]=='W+'):
+    if (entry[0]=='W+'):
         #print ("W+")
         entry[0]=[1,0]
         #N_Wp += 1
+    elif (entry[0]=='W-'):
+        #print ("W-")
+        entry[0]=[0,1]
+        #N_Wm += 1
     else:
         print ("not string entry, entry[0] is", entry[0], "at", idx)
         raise AssertionError
@@ -75,6 +75,11 @@ def create_TFRecord(npy_files):
             with open(fname.split('.npy')[0] + '.count') as f:
                 datasizes.append(int(f.readline()))
         dataset = np.array([np.load(npy_file, allow_pickle=True) for npy_file in npy_files])
+
+    print ("datasizes in the npy", datasizes)
+    #datasizes = [235000, 250000, 220000]
+    datasizes = [150000, 150000]
+    print ("redefine datasizes to", datasizes)
     
     datasize = sum(datasizes)
     trainsize = int(datasize*0.8)

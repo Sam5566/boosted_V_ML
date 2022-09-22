@@ -1,18 +1,22 @@
 ###############################################################################################
 #
-# Generate folder for process: VBF > H5ppmm > VV > jjjj
+# Generate folder for process: VBF > H5(pmz) > VV > jjjj
 #
 ###############################################################################################
-if [ -d "test4/"  ]
+if [ -d "any_folder/"  ]
 then
 	echo "Process already generated."
 else
 	mg5_aMC << eof
 	import model GM_NLO
-	generate p p  > H5pp j j , ( H5pp > w+ w+, w+ > j j )
-	add process p p  > H5pp~ j j , ( H5pp~ > w- w-, w- > j j )
-	add process p p  > H5z j j , ( H5z > z z, z > j j )
-	output test4
+    define v = w+ w- z
+	generate p p  > H5pp j j $$v, ( H5pp > w+ w+, (w+ > j j), (w+ > j j))
+	add process p p  > H5pp~ j j $$v, ( H5pp~ > w- w-, (w- > j j), (w- > j j))
+	add process p p  > H5z j j $$v, ( H5z > z z, (z > j j), (z > j j))
+	add process p p  > H5z j j $$v, ( H5z > w+ w-, (w+ > j j), (w- > j j)), add process p p  > H5z j j $$v, ( H5z > w- w+, (w+ > j j), (w- > j j))
+	add process p p  > H5p j j $$v, ( H5p > w+ z, (w+ > j j), (z > j j)), add process p p  > H5p j j $$v, ( H5p > z w+, (w+ > j j), (z > j j))
+	add process p p  > H5m j j $$v, ( H5m > w- z, (w- > j j), (z > j j)), add process p p  > H5m j j $$v, ( H5m > z w-, (w- > j j), (z > j j))
+	output any_folder
 	exit
 eof
 fi

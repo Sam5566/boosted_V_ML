@@ -36,10 +36,10 @@ patience = 10
 min_delta = 0.
 learning_rate = 1e-4
 dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
-save_model_name = 'best_model_CNN_2-test2/'
+save_model_name = 'best_model/best_model_binary-WpZ_CNNsq_kappa0.15_E/'
 
 # Input datasets
-data_folder = "sample/samples_kappa0.3/samples_kappa0.3/"
+data_folder = "sample/samples_kappa0.15_E/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj"
 #data_folder = "/home/samhuang/../public/Polar_new/samples/"
 #data_folder = "samples/"
 data_tr = data_folder+"train.tfrecord"
@@ -86,9 +86,10 @@ for i in range(n_class):
     si[i] = tpr[i] / np.sqrt(fpr[i])
  
 fig = plt.figure(figsize=(8,6))
-signal=[r'$W^+$',r'$W^-$',r'$Z$']
+#signal=[r'$W^+$',r'$W^-$',r'$Z$']
+signal=[r'$W^+$',r'$Z$']
 for i in range(n_class):
-    plt.plot(fpr[i], tpr[i], label='{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
+    plt.plot(fpr[i], tpr[i], label='{0} (auc = {1:0.4f})'.format(signal[i], roc_auc[i]))
             
 plt.plot([0, 1], [0, 1], color="navy", linestyle="--")
 plt.ylabel('True Positive Rate')

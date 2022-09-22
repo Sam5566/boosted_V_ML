@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import time
 import os
-os.environ['CUDA_VISIBLE_DEVICES']='0'
+os.environ['CUDA_VISIBLE_DEVICES']='2'
 import sys
 os.chdir('/home/samhuang/ML/CNN/')
 sys.path.insert(0, '/home/samhuang/ML')
@@ -40,12 +40,12 @@ min_delta = 0.
 learning_rate = 1e-4
 dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
 best_model_dir = '/home/samhuang/ML/best_model/'
-save_model_name = best_model_dir+'best_model_ternary_CNN_kappa0.15/'
+save_model_name = best_model_dir+'best_model_ternary_CNN_kappa0.15_E/'
 
 # Input datasets
 sample_folder = '/home/samhuang/ML/sample/'
 #data_folder = "sample/samples_kappa0.15/samples_kappa0.15/"
-data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+data_folder = sample_folder+"samples_kappa0.15_E/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 #data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
 #data_folder = "/home/samhuang/../public/Polar_new/samples/"
 #data_folder = "samples/"
@@ -219,7 +219,7 @@ for i in range(n_class):
 fig = plt.figure(figsize=(8,6))
 signal=[r'$W^+$',r'$W^-$',r'$Z$']
 for i in range(n_class):
-    print ('{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
+    print ('{0} (auc = {1:0.4f})'.format(signal[i], roc_auc[i]))
     plt.plot(fpr[i], tpr[i], label='{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
 
 plt.plot([0, 1], [0, 1], color="navy", linestyle="--")
@@ -238,5 +238,6 @@ fig.savefig(save_model_name+'/figures/roc_auc.png', dpi=300)
 ##############################################################
 sys.stdout.close()
 
-os.system("#!/bin/bash && source ../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
+os.system("./../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
 os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[5]+'.log')
+os.system('ls -lh '+save_model_name+'*.log')

@@ -14,6 +14,8 @@ import itertools
 kappa = "0.3"
 datafolder = '../sample/samples_kappa'+kappa+'/'
 datanames = ['VBF_H5pp_ww_jjjj', 'VBF_H5mm_ww_jjjj', 'VBF_H5z_zz_jjjj']
+#datanames = ['VBF_H5pp_ww_jjjj', 'VBF_H5z_zz_jjjj']
+#datanames = ['VBF_H5pp_ww_jjjj', 'VBF_H5mm_ww_jjjj']
 data_counts = []
 for dataname in datanames: 
     data_counts.append(int(np.loadtxt(datafolder+dataname+'.count')))
@@ -49,7 +51,7 @@ if (figure_data):
 else:
     dfs = []
     for dataname in datanames:
-        df = pd.read_csv(datafolder+dataname+'_properties.txt', index_col=0).replace('W+',1).replace('W-',2).replace('Z',0)
+        df = pd.read_csv(datafolder+dataname+'_properties.txt', index_col=0).replace('W+',1).replace('W-',2).replace('Z',0)[0:300000]
         print (df)
         dfs.append(df)
 
@@ -101,6 +103,7 @@ print(confusion)
 
 print (testX, predY)
 testX['prediction'] = predY
+testX['particle_type'] = testY
 
 plt.scatter(testX[testX['prediction']==0]['jet charge'], testX[testX['prediction']==0]['jet mass'], c='r', label=r'$Z$')
 plt.scatter(testX[testX['prediction']==1]['jet charge'], testX[testX['prediction']==1]['jet mass'], c='b', label=r'$W^+$')
@@ -115,8 +118,12 @@ plt.savefig('figures/BDT_prediction_kappa'+kappa+'.png', dpi=300)
 fpr, tpr, roc_auc = dict(), dict(), dict()
 signal=[r'$Z$',r'$W^+$',r'$W^-$']
 n_class = len(signal)
+
 for i in range(n_class):
+    aa = testX[testX['particle_type']==i]
+    print(signal[i] + " Accuracy: %.2f%%" % (accuracy_score(aa['particle_type'], aa['prediction']) * 100.0))
     fpr[i], tpr[i], _ = roc_curve(testY, predY, pos_label=i)
+    #fpr[i], tpr[i], _ = roc_curve(aa['particle_type']+1, (aa['prediction']+1)/(aa['particle_type']+1), pos_label=1)
     roc_auc[i] = auc(fpr[i], tpr[i])
 
 fig = plt.figure(figsize=(8,6))

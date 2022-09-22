@@ -113,7 +113,7 @@ def preprocess(jet, constituents, kappa):
 	s_etaeta, s_etaphi, s_phiphi = 0., 0., 0.
 	pt_quadrants = [0., 0., 0., 0.]
 	eta_flip, phi_flip = 1., 1.
-	pt_news, eta_news, phi_news, Q_kappas = [], [], [], []
+	pt_news, eta_news, phi_news, Q_kappas, E_news = [], [], [], [], []
 
 	for consti_id, consti in enumerate(constituents):
 		try:
@@ -122,13 +122,15 @@ def preprocess(jet, constituents, kappa):
 			phi_central += consti.PT * std_phi(consti.Phi)
 			Q_kappas.append((consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa)
 			pt_news.append(consti.PT)
+			E_news.append(consti.P4().E())
 		except:
 			pt_sum += consti.ET
 			eta_central += consti.ET * consti.Eta
 			phi_central += consti.ET * std_phi(consti.Phi)
 			Q_kappas.append(0.)
 			pt_news.append(consti.ET)
-	
+			E_news.append(consti.P4().E())
+
 	eta_central /= pt_sum
 	phi_central /= pt_sum
 
@@ -186,7 +188,7 @@ def preprocess(jet, constituents, kappa):
 	eta_news = [eta_new * eta_flip for eta_new in eta_news]
 	phi_news = [phi_new * phi_flip for phi_new in phi_news]
 
-	return pt_news, eta_news, phi_news, Q_kappas
+	return pt_news, eta_news, phi_news, Q_kappas, E_news
 
 
 def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwriter, imagewriter):
@@ -264,23 +266,24 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#print (jet_list[0].Eta, jet_list[1].Eta)
 		#print (std_phi(jet_list[0].Phi), std_phi(jet_list[1].Phi))
 
-		json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'pTj': [], 'Qkj': []}
+		json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'E': None, 'pTj': [], 'Qkj': []}
 
-		
+
 		jet = jet_list[0]
 		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
+		pt_news, eta_news, phi_news, Q_kappas, E_news = preprocess(jet, constituents, kappa)
 		
 		for id_1st, consti in enumerate(constituents):
 			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
 			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
+			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st], E_news[id_1st]])
  
 
 		eta_list = [x[3] for x in json_obj['nodes']]
 		phi_list = [x[4] for x in json_obj['nodes']]
 		pT_list  = [x[0] for x in json_obj['nodes']]
 		Qk_list  = [x[7] for x in json_obj['nodes']]
+		E_list  = [x[8] for x in json_obj['nodes']]
 		pTj.append(pT_list)
 		Qkj.append(Qk_list)
 		jet1_mass = jet.Mass
@@ -297,21 +300,23 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 
 		hpT1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
 		hQk1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
+		hE1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=E_list)
 
 		jet = jet_list[1]
 		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
+		pt_news, eta_news, phi_news, Q_kappas, E_news = preprocess(jet, constituents, kappa)
 		
 		for id_1st, consti in enumerate(constituents):
 			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
 			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
+			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st], E_news[id_1st]])
  
 
 		eta_list = [x[3] for x in json_obj['nodes']]
 		phi_list = [x[4] for x in json_obj['nodes']]
 		pT_list  = [x[0] for x in json_obj['nodes']]
 		Qk_list  = [x[7] for x in json_obj['nodes']]
+		E_list  = [x[8] for x in json_obj['nodes']]
 		pTj.append(pT_list)
 		Qkj.append(Qk_list)
 		jet2_mass = jet.Mass
@@ -346,12 +351,14 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 
 		hpT2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
 		hQk2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
+		hE2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=E_list)
 
 		#print ("################################")
 		#print (len((hpT1+hpT2)[(hpT1+hpT2)==0]))
 
 		json_obj['pT'] = (hpT1+hpT2)#.tolist()
 		json_obj['Qk'] = (hQk1+hQk2)#.tolist()
+		json_obj['E'] = (hE1+hE2)#.tolist()
 		json_list.append(json_obj)
   
 		#sequence_example = get_sequence_example_object(json_obj)
@@ -359,12 +366,8 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#tfwriter.write(sequence_example.SerializeToString())
 
 		#image = np.array([np.array(json_obj['particle_type']), json_obj['pT'], json_obj['Qk']], dtype=object)
-		image = np.array([np.array(json_obj['particle_type']), hpT1, hQk1], dtype=object)
-		np.save(imagewriter, image)
-
-		evt_total += 1
-		
-		image = np.array([np.array(json_obj['particle_type']), hpT2, hQk2], dtype=object)
+		#image = np.array([np.array(json_obj['particle_type']), hpT1+hpT2, hQk1+hQk2, hE1+hE2], dtype=object)
+		image = np.array([np.array(json_obj['particle_type']), hpT1+hpT2, hQk1+hQk2], dtype=object)
 		np.save(imagewriter, image)
 
 		evt_total += 1
@@ -380,7 +383,7 @@ def main():
 	kappa = float(sys.argv[1])
 
 	inname = sys.argv[2].split('/')[5] #// should be changed with different directory structure
-	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'/'
+	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'_E/'
 	os.system('mkdir '+outputfiledir)
 	outname = outputfiledir + inname + '.tfrecord'
 	imagename = outputfiledir + inname + '.npy'

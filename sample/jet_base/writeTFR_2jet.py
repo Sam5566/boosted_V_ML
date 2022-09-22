@@ -35,8 +35,10 @@ def get_sequence_example_object(data_element_dict):
     feature_lists = tf.train.FeatureLists(
             feature_list=
             {
-                'pT'   : image_feature(data_element_dict['pT']),
-                'Qk'   : image_feature(data_element_dict['Qk']),
+                'pT1'   : image_feature(data_element_dict['pT1']),
+                'pT2'   : image_feature(data_element_dict['pT2']),
+                'Qk1'   : image_feature(data_element_dict['Qk1']),
+                'Qk2'   : image_feature(data_element_dict['Qk2']),
             }
     )
                 
@@ -48,14 +50,20 @@ def get_sequence_example_object(data_element_dict):
 
 def determine_entry(entry, idx):
 
-    if (entry[0]=='W+'):
+    if (entry[0]=='Z'):
+        #print ("Z")
+        entry[0]=[0,0,1]
+        #N_Z += 1
+    elif (entry[0]=='W+'):
         #print ("W+")
-        entry[0]=[1,0]
+        entry[0]=[1,0,0]
         #N_Wp += 1
     elif (entry[0]=='W-'):
         #print ("W-")
-        entry[0]=[0,1]
+        entry[0]=[0,1,0]
         #N_Wm += 1
+    elif (entry[0]==[0,1,0]) or (entry[0]==[1,0,0]) or (entry==[0,0,1]):
+        pass
     else:
         print ("not string entry, entry[0] is", entry[0], "at", idx)
         raise AssertionError
@@ -72,9 +80,16 @@ def create_TFRecord(npy_files):
         npy_files = [npy_files]
     elif type(npy_files)==list:
         for fname in npy_files:
+            print (fname.split('.npy')[0] + '.count')
             with open(fname.split('.npy')[0] + '.count') as f:
                 datasizes.append(int(f.readline()))
         dataset = np.array([np.load(npy_file, allow_pickle=True) for npy_file in npy_files])
+    
+    print ("datasizes in the npy", datasizes)
+    #datasizes = [235000, 250000, 220000]
+    datasizes = [150000, 150000, 150000]
+    #datasizes = [250000, 250000, 250000]
+    print ("redefine datasizes to", datasizes)
     
     datasize = sum(datasizes)
     trainsize = int(datasize*0.8)
@@ -107,7 +122,7 @@ def create_TFRecord(npy_files):
                     entry = np.load(npy_readers[idx], allow_pickle=True)
                     entry[0] = determine_entry(entry, idx)
                     #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                    dict_obj = {'labels': entry[0], 'pT1': entry[1], 'pT2':entry[2], 'Qk1': entry[3], 'Qk2': entry[4]}
                     sequence_example = get_sequence_example_object(dict_obj)
                     tfwriter.write(sequence_example.SerializeToString())
                     pbar.update(1)
@@ -119,7 +134,7 @@ def create_TFRecord(npy_files):
                     entry = np.load(npy_readers[idx], allow_pickle=True)
                     entry[0] = determine_entry(entry, idx)
                     #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                    dict_obj = {'labels': entry[0], 'pT1': entry[1], 'pT2': entry[2], 'Qk1': entry[3], 'Qk2': entry[4]}
                     sequence_example = get_sequence_example_object(dict_obj)
                     tfwriter.write(sequence_example.SerializeToString())
                     pbar.update(1)
@@ -132,7 +147,7 @@ def create_TFRecord(npy_files):
                         
                     entry[0] = determine_entry(entry, idx)
                     #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                    dict_obj = {'labels': entry[0], 'pT1': entry[1], 'pT2': entry[2], 'Qk1': entry[3], 'Qk2': entry[4]}
                     sequence_example = get_sequence_example_object(dict_obj)
                     tfwriter.write(sequence_example.SerializeToString())
                     pbar.update(1)

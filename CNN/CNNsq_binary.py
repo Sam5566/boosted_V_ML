@@ -5,12 +5,12 @@ from __future__ import print_function
 import time
 import os
 import sys
-os.chdir('/home/samhuang/ML/CNN')
 sys.path.insert(0, '/home/samhuang/ML')
 sys.path.insert(0, '/home/samhuang/ML/sample')
 #sys.path.insert(0, '/home/samhuang/../public/Polar_new/samples')
 from readTFR import *
 from matplotlib import pyplot as plt
+plt.switch_backend('agg')
 import matplotlib as mpl
 from sklearn.metrics import roc_curve, auc
 import models
@@ -43,12 +43,13 @@ signal = [r'$W^+$',r'$W^-$']
 #signal = [r'$W^+$',r'$Z$']
 best_model_dir = '/home/samhuang/ML/best_model/'
 sample_folder = '/home/samhuang/ML/sample/'
+back='_E'
 if signal==[r'$W^+$',r'$Z$']:
-    save_model_name = best_model_dir+'best_model_binary-WpZ_CNNsq_kappa0.15/'
-    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+    save_model_name = best_model_dir+'best_model_binary-WpZ_CNNsq_kappa0.15'+back+'/'
+    data_folder = sample_folder+"samples_kappa0.15"+back+"/VBF_H5pp_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 elif signal==[r'$W^+$',r'$W^-$']:
-    save_model_name = best_model_dir+'best_model_binary-WpWm_CNNsq_kappa.15/'
-    data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
+    save_model_name = best_model_dir+'best_model_binary-WpWm_CNNsq_kappa0.15'+back+'/'
+    data_folder = sample_folder+"samples_kappa0.15"+back+"/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
 # Input datasets
 #sample_folder = '/home/samhuang/ML/sample/'
 #data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
@@ -197,7 +198,7 @@ for i in range(n_class):
  
 fig = plt.figure(figsize=(8,6))
 for i in range(n_class):
-    print ('{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
+    print ('{0} (auc = {1:0.4f})'.format(signal[i], roc_auc[i]))
     plt.plot(fpr[i], tpr[i], label='{0} (auc = {1:0.2f})'.format(signal[i], roc_auc[i]))
             
 plt.plot([0, 1], [0, 1], color="navy", linestyle="--")
@@ -216,6 +217,6 @@ fig.savefig(save_model_name+'/figures/roc_auc.png', dpi=300)
 ##############################################################
 sys.stdout.close()
 
-os.system("#!/bin/bash && source ../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
+os.system("./../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
 os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[5]+'.log')
 

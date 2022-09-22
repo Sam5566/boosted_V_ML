@@ -113,7 +113,7 @@ def preprocess(jet, constituents, kappa):
 	s_etaeta, s_etaphi, s_phiphi = 0., 0., 0.
 	pt_quadrants = [0., 0., 0., 0.]
 	eta_flip, phi_flip = 1., 1.
-	pt_news, eta_news, phi_news, Q_kappas, E_news = [], [], [], [], []
+	pt_news, eta_news, phi_news, Q_kappas = [], [], [], []
 
 	for consti_id, consti in enumerate(constituents):
 		try:
@@ -122,15 +122,13 @@ def preprocess(jet, constituents, kappa):
 			phi_central += consti.PT * std_phi(consti.Phi)
 			Q_kappas.append((consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa)
 			pt_news.append(consti.PT)
-			E_news.append(consti.P4().E())
 		except:
 			pt_sum += consti.ET
 			eta_central += consti.ET * consti.Eta
 			phi_central += consti.ET * std_phi(consti.Phi)
 			Q_kappas.append(0.)
 			pt_news.append(consti.ET)
-			E_news.append(consti.P4().E())
-
+	
 	eta_central /= pt_sum
 	phi_central /= pt_sum
 
@@ -188,7 +186,7 @@ def preprocess(jet, constituents, kappa):
 	eta_news = [eta_new * eta_flip for eta_new in eta_news]
 	phi_news = [phi_new * phi_flip for phi_new in phi_news]
 
-	return pt_news, eta_news, phi_news, Q_kappas, E_news
+	return pt_news, eta_news, phi_news, Q_kappas
 
 
 def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwriter, imagewriter):
@@ -220,15 +218,15 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		if len(particle_list) != 2:
 			pbar.update(1)
 			continue
-		if (particle_list[0].PID==24) and (signal_label!=[1, 0, 0]):
-			pbar.update(1)
-			continue
-		elif (particle_list[0].PID==-24) and (signal_label!=[0, 1, 0]):
-			pbar.update(1)
-			continue
-		elif (particle_list[0].PID==23) and (signal_label!=[0, 0, 1]):
-			pbar.update(1)
-			continue
+		#if (particle_list[0].PID==24) and (signal_label!=[1, 0, 0]):
+	   	#	pbar.update(1)
+		#	continue
+		#elif (particle_list[0].PID==-24) and (signal_label!=[0, 1, 0]):
+		#	pbar.update(1)
+		#	continue
+		#elif (particle_list[0].PID==23) and (signal_label!=[0, 0, 1]):
+		#	pbar.update(1)
+		#	continue
 
 		#print (evt_id, p1.Status, p1.M1, p1.M2,  p2.Status, p2.M1, p2.M2)
 		Npass[2] += 1
@@ -266,24 +264,23 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#print (jet_list[0].Eta, jet_list[1].Eta)
 		#print (std_phi(jet_list[0].Phi), std_phi(jet_list[1].Phi))
 
-		json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'E': None, 'pTj': [], 'Qkj': []}
+		json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'pTj': [], 'Qkj': []}
 
-
+		
 		jet = jet_list[0]
 		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas, E_news = preprocess(jet, constituents, kappa)
+		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
 		
 		for id_1st, consti in enumerate(constituents):
 			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
 			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st], E_news[id_1st]])
+			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
  
 
 		eta_list = [x[3] for x in json_obj['nodes']]
 		phi_list = [x[4] for x in json_obj['nodes']]
 		pT_list  = [x[0] for x in json_obj['nodes']]
 		Qk_list  = [x[7] for x in json_obj['nodes']]
-		E_list  = [x[8] for x in json_obj['nodes']]
 		pTj.append(pT_list)
 		Qkj.append(Qk_list)
 		jet1_mass = jet.Mass
@@ -300,23 +297,21 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 
 		hpT1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
 		hQk1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
-		hE1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=E_list)
 
 		jet = jet_list[1]
 		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas, E_news = preprocess(jet, constituents, kappa)
+		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
 		
 		for id_1st, consti in enumerate(constituents):
 			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
 			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st], E_news[id_1st]])
+			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
  
 
 		eta_list = [x[3] for x in json_obj['nodes']]
 		phi_list = [x[4] for x in json_obj['nodes']]
 		pT_list  = [x[0] for x in json_obj['nodes']]
 		Qk_list  = [x[7] for x in json_obj['nodes']]
-		E_list  = [x[8] for x in json_obj['nodes']]
 		pTj.append(pT_list)
 		Qkj.append(Qk_list)
 		jet2_mass = jet.Mass
@@ -324,10 +319,10 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		json_obj['pTj'] = [item for sublist in pTj for item in sublist]
 		json_obj['Qkj'] = [item for sublist in pTj for item in sublist]
 		
-		if particle_list[0].PID!=particle_list[1].PID:
-			print (particle_list[0].PID, particle_list[1].PID)
-			print ("particle type of two particles are not the same")
-		elif particle_list[0].PID==24:
+		#if particle_list[0].PID!=particle_list[1].PID:
+		#	print (particle_list[0].PID, particle_list[1].PID)
+		#	print ("particle type of two particles are not the same")
+		if particle_list[0].PID==24:
 			json_obj['particle_type']='W+'
 			json_obj['labels']=[1,0,0]#'W+'
 		elif particle_list[0].PID==-24:
@@ -351,14 +346,12 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 
 		hpT2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
 		hQk2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
-		hE2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=E_list)
 
 		#print ("################################")
 		#print (len((hpT1+hpT2)[(hpT1+hpT2)==0]))
 
 		json_obj['pT'] = (hpT1+hpT2)#.tolist()
 		json_obj['Qk'] = (hQk1+hQk2)#.tolist()
-		json_obj['E'] = (hE1+hE2)#.tolist()
 		json_list.append(json_obj)
   
 		#sequence_example = get_sequence_example_object(json_obj)
@@ -366,7 +359,12 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#tfwriter.write(sequence_example.SerializeToString())
 
 		#image = np.array([np.array(json_obj['particle_type']), json_obj['pT'], json_obj['Qk']], dtype=object)
-		image = np.array([np.array(json_obj['particle_type']), hpT1+hpT2, hQk1+hQk2, hE1+hE2], dtype=object)
+		image = np.array([np.array(json_obj['particle_type']), hpT1, hQk1], dtype=object)
+		np.save(imagewriter, image)
+
+		evt_total += 1
+		
+		image = np.array([np.array(json_obj['particle_type']), hpT2, hQk2], dtype=object)
 		np.save(imagewriter, image)
 
 		evt_total += 1
@@ -379,23 +377,24 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 def main():
 	histbins = [75, 75]
 	histranges = [[-0.8, 0.8], [-0.8, 0.8]]
-	kappa = 0.15
+	kappa = float(sys.argv[1])
 
-	inname = sys.argv[1].split('/')[5] #// should be changed with different directory structure
-	outputfiledir = sys.argv[1].split('/')[0]+'/'+ sys.argv[1].split('/')[1]+'/'+ sys.argv[1].split('/')[2]+'/'+ sys.argv[1].split('/')[3]+'/' + sys.argv[1].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'_E/'
+	inname = sys.argv[2].split('/')[5] #// should be changed with different directory structure
+	outputfiledir = sys.argv[2].split('/')[0]+'/'+ sys.argv[2].split('/')[1]+'/'+ sys.argv[2].split('/')[2]+'/'+ sys.argv[2].split('/')[3]+'/' + sys.argv[2].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'/'
 	os.system('mkdir '+outputfiledir)
 	outname = outputfiledir + inname + '.tfrecord'
 	imagename = outputfiledir + inname + '.npy'
 	countname = outputfiledir + inname + '.count'
 
 	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1]}
+	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0, 0, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0, 0, 0, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1, 0, 0, 0], 'VBF_H5z_ww_jjjj': [0, 0, 0, 1, 0, 0], 'VBF_H5p_wz_jjjj': [0, 0, 0, 0, 1, 0], 'VBF_H5m_wz_jjjj': [0, 0, 0, 0, 0, 1]}
 	signal_label = signal_list[inname]
 	print ("Datatype:",signal_label)
 
 	#create a chain of the Delphes tree
 	chain = r.TChain("Delphes")
 
-	for rootfile in sys.argv[1:]:
+	for rootfile in sys.argv[2:]:
 		chain.Add(rootfile)
 
 

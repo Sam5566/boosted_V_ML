@@ -1,6 +1,6 @@
 #!/bin/bash
-out_directory="VBF_H5z_zz_jjjj"
-launch_directory="run_03"
+out_directory="VBF_H5p_wz_jjjj"
+launch_directory="run_01"
 
 out_file="tag_1_delphes_events.root"
 

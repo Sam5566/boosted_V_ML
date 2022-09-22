@@ -106,3 +106,174 @@ class CNNsq(tf.keras.Model):
         
         return self._output(latent_all)
 
+## sam's production
+#// concept: use two jet image as one input and divide them into different channels.
+class CNN_2jet(tf.keras.Model):
+    def __init__(self, name="CNN_2jet", dim_image=(75, 75, 4), n_class=3):
+        super(CNN_2jet, self).__init__(name=name)
+        
+        """h2ptjl Channel"""
+        self.h2ptjl = tf.keras.Sequential([
+            tf.keras.layers.Lambda(lambda x: x[:, :, :, 0:2]),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (6,6), padding='same', activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(128, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(256, (6,6), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+
+        """h2ptj2 Channel"""
+        self.h2ptj2 = tf.keras.Sequential([
+            tf.keras.layers.Lambda(lambda x: x[:, :, :, 2:]),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (6,6), padding='same', activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(128, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(256, (6,6), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+        
+        """Output Layer"""
+        self._output = tf.keras.layers.Dense(n_class, activation='softmax')
+        
+    @tf.function
+    def call(self, inputs, training=False):
+        """h2ptjl"""
+        latent_h2ptj1 = self.h2ptjl(inputs)
+
+        """h2ptj2"""
+        latent_h2ptj2 = self.h2ptj2(inputs)
+        
+        """Output"""
+        latent_all = tf.concat([latent_h2ptj1, latent_h2ptj2], axis=1)
+        
+        return self._output(latent_all)
+
+
+
+
+class CNNsq_2jet(tf.keras.Model):
+    def __init__(self, name="CNNsq_2jet", dim_image=(75, 75, 4), n_class=2):
+        super(CNNsq_2jet, self).__init__(name=name)
+        
+        """h2ptj Channel"""
+        self.h2ptj1 = tf.keras.Sequential([
+            #tf.keras.layers.Lambda(lambda x: x[:, :, :, 0]),
+            tf.keras.layers.Lambda(lambda x: tf.expand_dims(x[:, :, :,0]    , -1)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(128, (5,5), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(256, (5,5), padding='same', activation='relu'),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+
+        self.h2ptj2 = tf.keras.Sequential([
+            #tf.keras.layers.Lambda(lambda x: x[:, :, :, 0]),
+            tf.keras.layers.Lambda(lambda x: tf.expand_dims(x[:, :, :,2]    , -1)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(128, (5,5), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(256, (5,5), padding='same', activation='relu'),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+
+        """h2Qkj Channel"""
+        self.h2Qkj1 = tf.keras.Sequential([
+            #tf.keras.layers.Lambda(lambda x: x[:, :, :, 1]),
+            tf.keras.layers.Lambda(lambda x: tf.expand_dims(x[:, :, :,1], -1)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(64, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(256, (6,6), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+        
+        self.h2Qkj2 = tf.keras.Sequential([
+            #tf.keras.layers.Lambda(lambda x: x[:, :, :, 1]),
+            tf.keras.layers.Lambda(lambda x: tf.expand_dims(x[:, :, :,3], -1)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(64, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.Conv2D(64, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(256, (6,6), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+        
+        """Output Layer"""
+        self._output = tf.keras.layers.Dense(n_class, activation='softmax')
+        
+    @tf.function
+    def call(self, inputs, training=False):
+        """h2ptj1"""
+        latent_h2ptj1 = self.h2ptj1(inputs)
+
+        """h2Qkj1"""
+        latent_h2Qkj1 = self.h2Qkj1(inputs)
+        
+        """h2ptj2"""
+        latent_h2ptj2 = self.h2ptj2(inputs)
+
+        """h2Qkj"""
+        latent_h2Qkj2 = self.h2Qkj2(inputs)
+        
+        """Output"""
+        #latent_all = tf.concat([latent_h2ptj, latent_h2ptjl], axis=1)
+        latent_all = tf.concat([latent_h2ptj1, latent_h2ptj2, latent_h2Qkj1, latent_h2Qkj2], axis=1)
+        
+        return self._output(latent_all)

@@ -1,7 +1,7 @@
 # Descriptions
 In this folder, we generate samples in Directory **VBF_H5pp_ww_jjjj**, **VBF_H5mm_ww_jjjj**, and **VBF_H5z_ww_jjjj**. Then the jet samples are selected in **extract.py** and the selected samples are divided into training, valid, and testing dataest in **convert.py**. For the last two step, they are executed in **run.sh**. The datasets are saved in folder **samples_kappa* ** (They are not archived in GitHub since they are too big.), and ready to be used for machine learning.
 
-# Coding script Usage
+# Coding script usage
 Here are the fundamental functional script for the data processing. 
 * **convert (py)**: convert the selected jet samples into training, valid, and testing datasets.
 * **extract (py)**: select the proper jet from the Delphes samples and extract their jet images.
@@ -12,3 +12,4 @@ Here are the fundamental functional script for the data processing.
 * **writeTFR (py)**: helper functions that transform the data from npy to tfrecord.
 
 
+For the detail of the suffix after main function name, please refer to .
