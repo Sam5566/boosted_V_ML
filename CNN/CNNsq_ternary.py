@@ -40,12 +40,12 @@ min_delta = 0.
 learning_rate = 1e-4
 dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
 best_model_dir = '/home/samhuang/ML/best_model/'
-save_model_name = best_model_dir+'best_model_ternary_CNNsq_kappa0.15_E/'
+save_model_name = best_model_dir+'best_model_ternary_CNNsq_kappa0.15/'
 
 # Input datasets
-sample_folder = '/home/samhuang/ML/sample/'
+sample_folder = '/home/samhuang/ML/sample/jet_base/'
 #data_folder = "sample/samples_kappa0.3/samples_kappa0.3/"
-data_folder = sample_folder+"samples_kappa0.15_E/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
+data_folder = sample_folder+"samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 #data_folder = "/home/samhuang/../public/Polar_new/samples/"
 #data_folder = "samples/"
 data_tr = data_folder+"train.tfrecord"

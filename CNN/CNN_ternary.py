@@ -32,7 +32,7 @@ physical_gpus = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_gpus[0], True)
 #################  input and variables  #######################
 # Data / training parameters.
-train_epochs = 500
+train_epochs = 1
 batch_size = 512
 shuffle_size_tr = 1
 patience = 20
@@ -43,7 +43,7 @@ best_model_dir = '/home/samhuang/ML/best_model/'
 save_model_name = best_model_dir+'best_model_ternary_CNN_kappa0.15_E/'
 
 # Input datasets
-sample_folder = '/home/samhuang/ML/sample/'
+sample_folder = '/home/samhuang/ML/sample/jet_base/'
 #data_folder = "sample/samples_kappa0.15/samples_kappa0.15/"
 data_folder = sample_folder+"samples_kappa0.15_E/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 #data_folder = "sample/samples_kappa0.15/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj/"
@@ -146,6 +146,7 @@ history = model.fit(dataset_tr, validation_data=dataset_vl , epochs=train_epochs
 #print(model.summary())
 #print(model.layers)
 print_layer_and_params(model, history)
+tf.keras.utils.plot_model(model, to_file=save_model_name+'/figures/model.png', show_shapes=True, expand_nested=True, show_layer_names=True, dpi=300)
 #for layers in enumerate(model.layers):
 #    print (layers.summary())
 #model.save(save_model_name)

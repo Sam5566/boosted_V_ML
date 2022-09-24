@@ -86,6 +86,32 @@ def std_Deltaphi(Deltaphi):
 	else:
 		return Deltaphi
 
+def match_particle_and_jet(jet_list, particle_list, particle_order_list):
+	flat_po_list = np.sum(particle_order_list)
+	#print (flat_po_list)
+	#print ("#############################")
+	#print (flat_po_list.count(3))
+	if (flat_po_list.count(1) == 1) and (flat_po_list.count(2) == 1) and (max(flat_po_list)==2):
+		#print ("standard case")
+		if flat_po_list.index(1) > flat_po_list.index(2):
+			jet_list_p = [jet_list[1], jet_list[0]]
+			return jet_list_p, particle_list
+		return jet_list, particle_list
+	elif (flat_po_list.count(1) == 2) and (flat_po_list.count(2) == 1) and (max(flat_po_list)==2):
+		print ("Two jets match particle 1")
+		if particle_order_list.index([1]) > particle_order_list.index([1,2]):
+			jet_list_p = [jet_list[particle_order_list.index([1])], jet_list[particle_order_list.index([1,2])]]
+			return jet_list_p, particle_list
+		return jet_list, particle_list
+	elif (flat_po_list.count(1) == 1) and (flat_po_list.count(2) == 2) and (max(flat_po_list)==2):
+		print ("Two jets match particle 1")
+		if particle_order_list.index([1,2]) > particle_order_list.index([2]):
+			jet_list_p = [jet_list[particle_order_list.index([1,2])], jet_list[particle_order_list.index([2])]]
+			return jet_list_p, particle_list
+		return jet_list, particle_list
+	return jet_list, particle_list
+
+
 def process(j1, j2, eta_cent, phi_cent, theta, flip, histbins, histranges):
 	pt_list, eta_list, phi_list = [], [], []
 	deques = [j1.Constituents, j2.Constituents]
@@ -253,10 +279,16 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		particle_order_list.append([]) #//make sure the shape of the list is the same
 				
 		#print ("N of jet:", len(jet_list))
+		#print (particle_list)
+		#print (jet_list)
 		#print (particle_order_list, np.sum(particle_order_list), len(np.unique(np.sum(particle_order_list))), len(jet_list) < 2 or (len(np.unique(np.sum(particle_order_list)))!=2))
 		if len(jet_list) < 2 or (len(np.unique(np.sum(particle_order_list)))!=2):
 				pbar.update(1)
 				continue
+		if len(jet_list)>2:
+			print (jet_list)
+		match_particle_and_jet(jet_list, particle_list, particle_order_list)
+
 		Npass[4] += 1
 		#print (evt_id, "found")
 		#print (particle_list[0].Eta, particle_list[1].Eta)
@@ -337,7 +369,6 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
    
 
 		data_collect.append([json_obj['particle_type'], jet1_mass, jet1_Qk])
-		data_collect.append([json_obj['particle_type'], jet2_mass, jet2_Qk])
 
 		#print ("################################")
 		#print (eta_list)
@@ -360,12 +391,26 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 
 		#image = np.array([np.array(json_obj['particle_type']), json_obj['pT'], json_obj['Qk']], dtype=object)
 		image = np.array([np.array(json_obj['particle_type']), hpT1, hQk1], dtype=object)
+		print (image)
 		np.save(imagewriter, image)
 
 		evt_total += 1
-		
+		if particle_list[1].PID==24:
+			json_obj['particle_type']='W+'
+			json_obj['labels']=[1,0,0]#'W+'
+		elif particle_list[1].PID==-24:
+			json_obj['particle_type']='W-'
+			json_obj['labels']=[0,1,0]#'W-'
+		elif abs(particle_list[1].PID)==23:
+			json_obj['particle_type']='Z'
+			json_obj['labels']=[0,0,1]#'Z'
+		else:
+			print (particle_list[0].PID)
+			print ("no particle type")
 		image = np.array([np.array(json_obj['particle_type']), hpT2, hQk2], dtype=object)
+		print (image)
 		np.save(imagewriter, image)
+		data_collect.append([json_obj['particle_type'], jet2_mass, jet2_Qk])
 
 		evt_total += 1
 		pbar.update(1)
