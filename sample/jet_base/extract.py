@@ -86,6 +86,13 @@ def std_Deltaphi(Deltaphi):
 	else:
 		return Deltaphi
 
+def delta_phi(phi_1, phi_2):
+    dPhi = abs(phi_1 - phi_2)
+    if dPhi > np.pi:
+        return 2 * np.pi - dPhi
+    else:
+        return dPhi
+
 def match_particle_and_jet(jet_list, particle_list, particle_order_list):
 	flat_po_list = np.sum(particle_order_list)
 	#print (flat_po_list)
@@ -111,8 +118,10 @@ def match_particle_and_jet(jet_list, particle_list, particle_order_list):
 		return jet_list, particle_list
 	return jet_list, particle_list
 
+def _shift(a):
+	return(a - np.pi*( 2*(a>0)-1 ))
 
-def process(j1, j2, eta_cent, phi_cent, theta, flip, histbins, histranges):
+def process(j1, j2, eta_cent, phi_cent, theta, flip):
 	pt_list, eta_list, phi_list = [], [], []
 	deques = [j1.Constituents, j2.Constituents]
 	for consti in chain(*deques):
@@ -134,25 +143,112 @@ def process(j1, j2, eta_cent, phi_cent, theta, flip, histbins, histranges):
 	
 	return eta_list, phi_list, pt_list
 
+def preprocess2(jet, constituents, kappa):
+	s_etaeta, s_etaphi, s_phiphi = 0., 0., 0.
+	data = []
+	for consti_id, consti in enumerate(constituents):
+		try:
+			data.append([consti.Phi, consti.Eta, consti.PT, (consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa])
+		except:
+			data.append([consti.Phi, consti.Eta, consti.ET,0])
+	
+	data = np.array(data)
+	N_consti = len(data)
+
+	shifted_phi = _shift(data[:,0])
+	# shift phi in order to make the data as close as possible if they are around pi boundary
+	if (np.var(shifted_phi) < np.var(data[:,0])):
+		data[:,0] = shifted_phi
+	
+	#eta_central = np.sum(data[:,2]*data[:,1])/np.sum(data[:,2])
+	#phi_central = np.sum(data[:,2]*data[:,0])/np.sum(data[:,2])
+	
+	# shift (centralize)
+	mu = np.zeros(2)
+	for i in range(N_consti):
+		mu += data[i,2] * data[i,range(2)]
+	mu /= sum(data[:,2])
+	#print ("mu",mu)
+	data[:,range(0,2)] -= mu
+	#print (data[:,range(2)])
+
+	# rotation version 1
+	'''
+	for ii in range(N_consti):
+		s_etaeta += data[ii,2] * data[ii,1]**2
+		s_phiphi += data[ii,2] * data[ii,0]**2
+		s_etaphi += data[ii,2] * data[ii,1]*data[ii,0]
+
+	#print ("sigma", np.array([[s_etaeta, s_etaphi], [s_etaphi, s_phiphi]])/np.sum(data[:,2]))
+	angle = -np.arctan((-s_etaeta + s_phiphi + np.sqrt((s_etaeta - s_phiphi)**2 + 4. * s_etaphi**2))/(2. * s_etaphi))
+
+	RotMatrix = np.array([[np.cos(angle), np.sin(angle)], [-np.sin(angle), np.cos(angle)]])
+	#print (RotMatrix)
+	for ii in range(N_consti):
+		data[ii,range(2)] = RotMatrix @ data[ii, range(2)]
+	'''
+	
+	# rotation version 2 
+	sigma = np.zeros((2,2))
+	for ii in range(N_consti):
+		sigma += data[ii,2] * np.outer(data[ii,[1,0]], data[ii,[1,0]])
+	sigma /= sum(data[:,2])
+	#print ("sigma", sigma)
+	w, v = np.linalg.eigh(sigma)
+	RotMatrix = np.array([v[0,:],v[1,:]])
+	#print (RotMatrix)
+	for ii in range(N_consti):
+		data[ii,range(2)] = RotMatrix @ data[ii,range(2)]
+
+	#print (data[:,range(2)])
+
+    # flip
+	lmass, rmass = 0, 0
+	umass, dmass = 0, 0
+	for i in range(N_consti):
+		if data[i,0] > 0:
+			rmass += data[i,2]
+		else:
+			lmass += data[i,2]
+		if data[i,1] > 0:
+			umass += data[i,2]
+		else:
+			dmass += data[i,2]
+	if lmass > rmass:
+		data[:,0] *= -1
+	if dmass > umass:
+		data[:,1] *= -1
+	
+	return data[:,2], data[:,1], data[:,0], data[:,3], data[data[:,2]>0.5][:,3]
+
+
+
 def preprocess(jet, constituents, kappa):
 	pt_sum, eta_central, phi_central = 0., 0., 0.
 	s_etaeta, s_etaphi, s_phiphi = 0., 0., 0.
 	pt_quadrants = [0., 0., 0., 0.]
 	eta_flip, phi_flip = 1., 1.
-	pt_news, eta_news, phi_news, Q_kappas = [], [], [], []
+	pt_news, eta_news, phi_news, Q_kappas, Q_kappas_BDT = [], [], [], [], [] #// BDT variable Q_kappa sum over all constituents that have pT >0.5 GeV
 
 	for consti_id, consti in enumerate(constituents):
+		
 		try:
+			print (consti.Phi, consti.Eta, consti.PT, (consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa)
 			pt_sum += consti.PT
 			eta_central += consti.PT * consti.Eta
 			phi_central += consti.PT * std_phi(consti.Phi)
 			Q_kappas.append((consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa)
+			if consti.PT >0.5:
+				Q_kappas_BDT.append((consti.Charge)*(consti.PT)**kappa/(jet.PT)**kappa)
 			pt_news.append(consti.PT)
 		except:
+			print (consti.Phi, consti.Eta, consti.ET,0)
 			pt_sum += consti.ET
 			eta_central += consti.ET * consti.Eta
 			phi_central += consti.ET * std_phi(consti.Phi)
 			Q_kappas.append(0.)
+			if consti.ET >0.5:
+				Q_kappas_BDT.append(0.)
 			pt_news.append(consti.ET)
 	
 	eta_central /= pt_sum
@@ -172,10 +268,11 @@ def preprocess(jet, constituents, kappa):
 	s_etaphi /= pt_sum
 	s_phiphi /= pt_sum
 
+	print ("sigma",[[s_etaeta, s_etaphi], [s_etaphi, s_phiphi]])
 	angle = -np.arctan((-s_etaeta + s_phiphi + np.sqrt((s_etaeta - s_phiphi)**2 + 4. * s_etaphi**2))/(2. * s_etaphi))
-
+	print ([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
 	for consti_id, consti in enumerate(constituents):
-		eta_shift, phi_shift = consti.Eta - eta_central, std_phi(consti.Phi - phi_central)
+		eta_shift, phi_shift = consti.Eta - eta_central, std_phi(consti.Phi) - phi_central
 		eta_rotat, phi_rotat = eta_shift * np.cos(angle) - phi_shift * np.sin(angle), phi_shift * np.cos(angle) + eta_shift * np.sin(angle)
 
 		eta_news.append(eta_rotat)
@@ -201,6 +298,8 @@ def preprocess(jet, constituents, kappa):
 			elif eta_rotat < 0. and phi_rotat > 0.:
 				pt_quadrants[3] += consti.ET
 
+		print([consti.Phi, consti.Eta], [phi_central, eta_central], '=', [phi_shift, eta_shift])
+		print('=>',[phi_shift, eta_shift], '=>', [eta_rotat, phi_rotat])
 	if np.argmax(pt_quadrants) == 1:
 		phi_flip = -1.
 	elif np.argmax(pt_quadrants) == 2:
@@ -212,7 +311,9 @@ def preprocess(jet, constituents, kappa):
 	eta_news = [eta_new * eta_flip for eta_new in eta_news]
 	phi_news = [phi_new * phi_flip for phi_new in phi_news]
 
-	return pt_news, eta_news, phi_news, Q_kappas
+	return pt_news, eta_news, phi_news, Q_kappas, Q_kappas_BDT
+
+
 
 
 def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwriter, imagewriter):
@@ -222,24 +323,90 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 	Npass = np.zeros(5)
 	total = File.GetEntries()
 	for evt_id, evt in enumerate(File):
+		#print ("#########################")
 		pTj, Qkj = [], []
 		if (evt_id > total):
 			break
 		particle_number = 2 #// number of the particle in the final state
 		particle_list = []
 		tmp_particle_list = []
+		'''
 		for particle_id, particle in enumerate(evt.Particle):
-			if (abs(particle.PID) in [255,257]) and (abs(evt.Particle[particle.D1].PID) in [23,24]) and (abs(evt.Particle[particle.D2].PID) in [23,24]):
+			if (abs(particle.PID) in [255,256,257]) and (abs(evt.Particle[particle.D1].PID) in [23,24]) and (abs(evt.Particle[particle.D2].PID) in [23,24]):
 				if (particle.D1< particle.D2) and (abs(evt.Particle[particle.D1].PID) in [23, 24]) and (abs(evt.Particle[particle.D2].PID) in [23, 24]) and (abs(evt.Particle[evt.Particle[particle.D1].D1].PID) <= 6) and (abs(evt.Particle[evt.Particle[particle.D1].D2].PID) <= 6) and (abs(evt.Particle[evt.Particle[particle.D2].D1].PID) <= 6) and (abs(evt.Particle[evt.Particle[particle.D2].D2].PID) <= 6):
 					p1, p2 = evt.Particle[evt.Particle[particle.D1].D1], evt.Particle[evt.Particle[particle.D1].D2]
 					p3, p4 = evt.Particle[evt.Particle[particle.D2].D1], evt.Particle[evt.Particle[particle.D2].D2]
 					#print ("pass1")
 					Npass[0] += 1
-					if (p1.Eta - p2.Eta)**2 + std_Deltaphi(std_phi(p1.Phi) - std_phi(p2.Phi))**2 < 0.6**2 and (p3.Eta - p4.Eta)**2 + std_Deltaphi(std_phi(p3.Phi) - std_phi(p4.Phi))**2 < 0.6**2:
+					#if (p1.Eta - p2.Eta)**2 + std_Deltaphi(std_phi(p1.Phi) - std_phi(p2.Phi))**2 < 0.6**2 and (p3.Eta - p4.Eta)**2 + std_Deltaphi(std_phi(p3.Phi) - std_phi(p4.Phi))**2 < 0.6**2:
+					if (p1.Eta - p2.Eta)**2 + delta_phi(p1.Phi, p2.Phi)**2 < 0.6**2 and (p3.Eta - p4.Eta)**2 + delta_phi(p3.Phi, p4.Phi)**2 < 0.6**2:
 						particle_list = [evt.Particle[particle.D1],evt.Particle[particle.D2]]
 						#print ("pass2")
 						Npass[1] += 1
 						break
+		'''
+		# new way to find two boson particles (the way shown in jennis's code)
+		first_h5pp = True
+		id_H5pp, id_w1, id_w2, id_q1, id_q2 = -1, -1, -1, -1, -1
+		
+		#// find vbf forward jet and vector bosons decay from H5
+		for particle_id, particle in enumerate(evt.Particle):
+			if (abs(particle.PID) in [255,256,257]):
+				if first_h5pp:
+					h5pp_mo1 = particle.M1
+					h5pp_mo2 = particle.M2
+					if ((evt.Particle[particle_id+1].M1 == h5pp_mo1) and (evt.Particle[particle_id+1].M2 == h5pp_mo2)):
+						id_q1 = particle_id+1
+					else:
+						print ('strange q1')
+					if ((evt.Particle[particle_id+2].M1 == h5pp_mo1) and (evt.Particle[particle_id+2].M2 == h5pp_mo2)):
+						id_q2 = particle_id+2
+					else:
+						print ('strange q2')
+					
+					first_h5pp = False
+				
+				id_H5pp = particle_id
+
+			elif (abs(particle.PID) in [23,24]):
+				if ((evt.Particle[id_H5pp].D1 == particle_id) or (particle.M1 == id_w1)):
+					id_w1 = particle_id
+				if ((evt.Particle[id_H5pp].D2 == particle_id) or (particle.M1 == id_w2)):
+					id_w2 = particle_id
+
+		#// some of vector boson is retarded (herwig)
+		'''
+		for particle_id, particle in enumerate(evt.Particle):
+			if (abs(particle.PID) in [23,24]):
+				if (particle.M1 == id_w1):
+					id_w1 = particle_id
+				elif (particle.M1 == id_w2):
+					id_w2 = particle_id
+		'''
+		Npass[0] += 1
+		particle_list = [evt.Particle[id_w1], evt.Particle[id_w2]]
+		particle_pass = [False, False]
+		#print (particle_list[0].Status)
+
+		p1, p2 = evt.Particle[particle_list[0].D1], evt.Particle[particle_list[0].D2]
+		p3, p4 = evt.Particle[particle_list[1].D1], evt.Particle[particle_list[1].D2]
+		#print ((p1.Eta - p2.Eta)**2 + std_Deltaphi(std_phi(p1.Phi) - std_phi(p2.Phi))**2)
+		#print ((p3.Eta - p4.Eta)**2 + std_Deltaphi(std_phi(p3.Phi) - std_phi(p4.Phi))**2)
+		
+		#if (p1.Eta - p2.Eta)**2 + std_Deltaphi(std_phi(p1.Phi) - std_phi(p2.Phi))**2 < 0.6**2:
+		if (p1.Eta - p2.Eta)**2 + delta_phi(p1.Phi, p2.Phi)**2 < 0.6**2:
+			particle_pass[0] = True
+			#print ("particle1 pass")
+		#if (p3.Eta - p4.Eta)**2 + std_Deltaphi(std_phi(p3.Phi) - std_phi(p4.Phi))**2 < 0.6**2:
+		if (p3.Eta - p4.Eta)**2 + delta_phi(p3.Phi, p4.Phi)**2 < 0.6**2:
+			particle_pass[1] = True
+			#print ("particle2 pass")
+		if (particle_pass[0]+particle_pass[1]==False):
+			pbar.update(1)
+			continue
+		Npass[1] += 1
+		#exit()
+		'''
 
 		if len(particle_list) != 2:
 			pbar.update(1)
@@ -253,14 +420,13 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#elif (particle_list[0].PID==23) and (signal_label!=[0, 0, 1]):
 		#	pbar.update(1)
 		#	continue
-
-		#print (evt_id, p1.Status, p1.M1, p1.M2,  p2.Status, p2.M1, p2.M2)
+		'''
 		Npass[2] += 1
 
 		jet_list = []
 		particle_order_list = []
 		for jet_id, jet in enumerate(evt.Jet):
-			eta_jet, phi_jet = jet.Eta, std_phi(jet.Phi)
+			eta_jet, phi_jet = jet.Eta, (jet.Phi)
 			#print (evt_id, jet_id, evt.Jet.GetEntries(), eta_jet, jet.PT)
 			if (abs(jet.PT-400.) >= 50. or abs(eta_jet) > 1.):
 				continue
@@ -269,9 +435,10 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 			particle_order_list.append([])
 			[p1, p2] = particle_list
 			#print ((eta_jet - p1.Eta)**2 + std_Deltaphi((phi_jet - std_phi(p1.Phi)))**2, (eta_jet - p2.Eta)**2 + std_Deltaphi((phi_jet - std_phi(p2.Phi)))**2  )
-			if (eta_jet - p1.Eta)**2 + std_Deltaphi((phi_jet - std_phi(p1.Phi)))**2 < 0.1**2: #// \Delta R (V_1,j) < 0.1
+			#if (eta_jet - p1.Eta)**2 + std_Deltaphi((phi_jet - std_phi(p1.Phi)))**2 < 0.1**2: #// \Delta R (V_1,j) < 0.1
+			if (eta_jet - p1.Eta)**2 + delta_phi(phi_jet, p1.Phi)**2 < 0.1**2:
 				particle_order_list[-1].append(1)
-			if (eta_jet - p2.Eta)**2 + std_Deltaphi((phi_jet - std_phi(p2.Phi)))**2 < 0.1**2: #// \Delta R (V_2,j) < 0.1
+			if (eta_jet - p2.Eta)**2 + delta_phi(phi_jet, p2.Phi)**2 < 0.1**2: #// \Delta R (V_2,j) < 0.1
 				particle_order_list[-1].append(2)
 			if (len(particle_order_list[-1])>0):
 				jet_list.append(jet)
@@ -282,12 +449,37 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#print (particle_list)
 		#print (jet_list)
 		#print (particle_order_list, np.sum(particle_order_list), len(np.unique(np.sum(particle_order_list))), len(jet_list) < 2 or (len(np.unique(np.sum(particle_order_list)))!=2))
-		if len(jet_list) < 2 or (len(np.unique(np.sum(particle_order_list)))!=2):
-				pbar.update(1)
-				continue
-		if len(jet_list)>2:
-			print (jet_list)
-		match_particle_and_jet(jet_list, particle_list, particle_order_list)
+		#if len(jet_list) < 2 or (len(np.unique(np.sum(particle_order_list)))!=2):
+		#	pbar.update(1)
+		#	continue
+		#print ("initial", jet_list)
+		if len(jet_list) == 1 or (len(np.unique(np.sum(particle_order_list)))==1):
+			if np.unique(np.sum(particle_order_list))[0] == [1]:
+				particle_pass[1] = False
+				particle_list.pop(1)
+				if particle_pass[0] == False:
+					jet_list.pop(0)
+					particle_list.pop(0)
+			elif np.unique(np.sum(particle_order_list))[0] == [2]:
+				particle_pass[0] = False
+				particle_list.pop(0)
+				if particle_pass[1] == False:
+					jet_list.pop(0)
+					particle_list.pop(0)
+			else:
+				AssertionError("Error: particle jet matching is not correct")
+		
+		elif len(jet_list) > 1 or (len(np.unique(np.sum(particle_order_list)))==2):
+			jet_list, particle_list = match_particle_and_jet(jet_list, particle_list, particle_order_list)
+		else:
+			pbar.update(1)
+			continue
+		
+		#print ("after", jet_list)
+		#if len(jet_list)==0:
+		# if len(jet_list)<2:
+		# 	pbar.update(1)
+		# 	continue
 
 		Npass[4] += 1
 		#print (evt_id, "found")
@@ -296,128 +488,214 @@ def sample_selection(File, histbins, histranges, kappa, signal_label, pbar, tfwr
 		#print (jet_list[0].Eta, jet_list[1].Eta)
 		#print (std_phi(jet_list[0].Phi), std_phi(jet_list[1].Phi))
 
-		json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'pTj': [], 'Qkj': []}
+		obs = []
+		N_obs = 2
+		for ii in range(len(jet_list)):
+			json_obj = {'particle_type': [], 'nodes': [], 'pT': None, 'Qk': None, 'pTj': [], 'Qkj': []}
+			obs.append([-1 for x in range(N_obs)])
 
 		
-		jet = jet_list[0]
-		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
+			jet = jet_list[ii]
+			constituents = [consti for consti in jet.Constituents if consti != 0]
+			pt_news, eta_news, phi_news, Q_kappas, Q_kappas_BDT = preprocess2(jet, constituents, kappa)
 		
-		for id_1st, consti in enumerate(constituents):
-			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
-			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
+			for id_1st, consti in enumerate(constituents):
+				Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
+				json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
+				pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
  
 
-		eta_list = [x[3] for x in json_obj['nodes']]
-		phi_list = [x[4] for x in json_obj['nodes']]
-		pT_list  = [x[0] for x in json_obj['nodes']]
-		Qk_list  = [x[7] for x in json_obj['nodes']]
-		pTj.append(pT_list)
-		Qkj.append(Qk_list)
-		jet1_mass = jet.Mass
-		jet1_Qk   = sum(Q_kappas)
-		
-		
-
-		#print ("################################")
-		#print (eta_list)
-		#print (phi_list)
-		#print (pT_list)
+			eta_list = [x[3] for x in json_obj['nodes']]
+			phi_list = [x[4] for x in json_obj['nodes']]
+			pT_list  = [x[0] for x in json_obj['nodes']]
+			Qk_list  = [x[7] for x in json_obj['nodes']]
+			pTj.append(pT_list)
+			Qkj.append(Qk_list)
+			jet_mass = jet.Mass
+			jet_Qk   =	 sum(Q_kappas_BDT)
 
 		
 
-		hpT1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
-		hQk1, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
+			obs[-1][0], _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
+			obs[-1][1], _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
 
-		jet = jet_list[1]
-		constituents = [consti for consti in jet.Constituents if consti != 0]
-		pt_news, eta_news, phi_news, Q_kappas = preprocess(jet, constituents, kappa)
-		
-		for id_1st, consti in enumerate(constituents):
-			Rin = np.sqrt((consti.Eta - jet.Eta)**2 + std_Deltaphi(std_phi(consti.Phi) - std_phi(jet.Phi))**2)
-			json_obj['nodes'].append([pt_news[id_1st], consti.Eta, std_phi(consti.Phi), eta_news[id_1st], phi_news[id_1st],
-			pt_news[id_1st]/jet.PT, Rin, Q_kappas[id_1st]])
- 
 
-		eta_list = [x[3] for x in json_obj['nodes']]
-		phi_list = [x[4] for x in json_obj['nodes']]
-		pT_list  = [x[0] for x in json_obj['nodes']]
-		Qk_list  = [x[7] for x in json_obj['nodes']]
-		pTj.append(pT_list)
-		Qkj.append(Qk_list)
-		jet2_mass = jet.Mass
-		jet2_Qk   = sum(Q_kappas)
-		json_obj['pTj'] = [item for sublist in pTj for item in sublist]
-		json_obj['Qkj'] = [item for sublist in pTj for item in sublist]
-		
-		#if particle_list[0].PID!=particle_list[1].PID:
-		#	print (particle_list[0].PID, particle_list[1].PID)
-		#	print ("particle type of two particles are not the same")
-		if particle_list[0].PID==24:
-			json_obj['particle_type']='W+'
-			json_obj['labels']=[1,0,0]#'W+'
-		elif particle_list[0].PID==-24:
-			json_obj['particle_type']='W-'
-			json_obj['labels']=[0,1,0]#'W-'
-		elif abs(particle_list[0].PID)==23:
-			json_obj['particle_type']='Z'
-			json_obj['labels']=[0,0,1]#'Z'
-		else:
-			print (particle_list[0].PID)
-			print ("no particle type")
-   
+			if particle_list[ii].PID==24:
+				json_obj['particle_type']='W+'
+				json_obj['labels']=[1,0,0]#'W+'
+			elif particle_list[ii].PID==-24:
+				json_obj['particle_type']='W-'
+				json_obj['labels']=[0,1,0]#'W-'
+			elif abs(particle_list[ii].PID)==23:
+				json_obj['particle_type']='Z'
+				json_obj['labels']=[0,0,1]#'Z'
+			else:
+				print (particle_list[ii].PID)
+				print ("no particle type")
 
-		data_collect.append([json_obj['particle_type'], jet1_mass, jet1_Qk])
+			#if len(jet_list)==2:
+			if (True):
+				data_collect.append([json_obj['particle_type'], jet_mass, jet_Qk])
+				image = np.array([np.array(json_obj['particle_type']), obs[-1][0], obs[-1][1]], dtype=object)
+			#print (image)
+				np.save(imagewriter, image)
+				evt_total += 1
 
-		#print ("################################")
-		#print (eta_list)
-		#print (phi_list)
-		#print (pT_list)
-
-		hpT2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=pT_list)
-		hQk2, _, _ = np.histogram2d(eta_list, phi_list, range=histranges, bins=histbins, weights=Qk_list)
-
-		#print ("################################")
-		#print (len((hpT1+hpT2)[(hpT1+hpT2)==0]))
-
-		json_obj['pT'] = (hpT1+hpT2)#.tolist()
-		json_obj['Qk'] = (hQk1+hQk2)#.tolist()
-		json_list.append(json_obj)
-  
-		#sequence_example = get_sequence_example_object(json_obj)
-		#print (sequence_example)
-		#tfwriter.write(sequence_example.SerializeToString())
-
-		#image = np.array([np.array(json_obj['particle_type']), json_obj['pT'], json_obj['Qk']], dtype=object)
-		image = np.array([np.array(json_obj['particle_type']), hpT1, hQk1], dtype=object)
-		print (image)
-		np.save(imagewriter, image)
-
-		evt_total += 1
-		if particle_list[1].PID==24:
-			json_obj['particle_type']='W+'
-			json_obj['labels']=[1,0,0]#'W+'
-		elif particle_list[1].PID==-24:
-			json_obj['particle_type']='W-'
-			json_obj['labels']=[0,1,0]#'W-'
-		elif abs(particle_list[1].PID)==23:
-			json_obj['particle_type']='Z'
-			json_obj['labels']=[0,0,1]#'Z'
-		else:
-			print (particle_list[0].PID)
-			print ("no particle type")
-		image = np.array([np.array(json_obj['particle_type']), hpT2, hQk2], dtype=object)
-		print (image)
-		np.save(imagewriter, image)
-		data_collect.append([json_obj['particle_type'], jet2_mass, jet2_Qk])
-
-		evt_total += 1
-		pbar.update(1)
+		pbar.update(1)#;print (evt_id, len(jet_list));break
 		
 	return evt_total, data_collect, Npass
 
-			
+
+def preprocess3(data):
+    weight = "PT"
+    n = data.shape[0]
+    # shift
+    var = np.var(data[:,0])
+    if var > 0.5:
+        data[:,0] += np.pi
+        for i in range(n):
+            if data[i,0] > np.pi:
+                data[i,0] -= 2 * np.pi
+    #print ("data", data[:,[0,1]])
+    mu = np.zeros(2)
+    for i in range(0,n):
+        if weight == "1":
+            mu += data[i,range(0,2)]
+        if weight == "PT":
+            mu += data[i,2] * data[i,range(0,2)]
+    if weight == "1":
+        mu /= n
+    if weight == "PT":
+        mu /= sum(data[:,2])
+    #print ("mu",mu)
+    data[:,range(0,2)] -= mu
+    #print (data[:,range(2)])
+    # rotate
+    sigma = np.zeros((2,2))
+    for i in range(0,n):
+        if weight == "1":
+            sigma += np.outer(data[i,range(0,2)], data[i,range(0,2)])
+        if weight == "PT":
+            sigma += data[i,2] * np.outer(data[i,range(0,2)], data[i,range(0,2)])
+    if weight == "1":
+        sigma /= n
+    if weight == "PT":
+        sigma /= sum(data[:,2])
+    #print ("sigma", sigma)
+    w, v = np.linalg.eigh(sigma)
+    R = np.array([v[0,:],v[1,:]])
+    #print (R)
+    for i in range(0,n):
+        data[i,range(0,2)] = R @ data[i,range(0,2)]
+    data[:,[0,1]] = data[:,[1,0]] # not in 
+    #print (data[:,range(2)])
+    # flip
+    lmass, rmass = 0, 0
+    umass, dmass = 0, 0
+    for i in range(0,n):
+        if data[i,0] > 0:
+            rmass += data[i,2]
+        else:
+            lmass += data[i,2]
+        if data[i,1] > 0:
+            umass += data[i,2]
+        else:
+            dmass += data[i,2]
+    if lmass > rmass:
+        data[:,0] *= -1
+    if dmass > umass:
+        data[:,1] *= -1
+    return data
+
+images = [np.array('W-')]
+Npass = np.zeros(5)
+def function(id, evt, imagewriter, pbar):
+    #if (id+1)%10000 == 0:
+        #print(id+1, "events processed. # of selected samples:", len(images))
+    # if len(images) >= 5000: 
+    #     break
+    # print("id: ", id, "Entries = ", evt.Particle.GetEntries())
+    particle_list = []
+    jet_list = []
+    # evt.Particle not subscriptable? 
+    foo = []
+    for particle_id, particle in enumerate(evt.Particle):
+        foo.append(particle)
+    for particle in foo:
+        c1 = abs(particle.PID) in [255, 257]
+        c2 = abs(foo[particle.D1].PID) in [23,24]
+        c3 = abs(foo[particle.D2].PID) in [23,24]
+        if c1 and c2 and c3:
+            p1 = foo[foo[particle.D1].D1]
+            p2 = foo[foo[particle.D1].D2]
+            p3 = foo[foo[particle.D2].D1]
+            p4 = foo[foo[particle.D2].D2]
+            c4 = particle.D1 < particle.D2
+            c5 = abs(foo[particle.D1].PID) in [23,24]
+            c6 = abs(foo[particle.D1].PID) in [23,24]
+            c7 = abs(p1.PID) <= 6
+            c8 = abs(p2.PID) <= 6
+            c9 = abs(p3.PID) <= 6
+            c10 = abs(p4.PID) <= 6
+            if c4 and c5 and c6 and c7 and c8 and c9 and c10:
+                # print(p1.Phi, p2.Phi, p3.Phi, p4.Phi)
+                Npass[0] += 1;c11 = (p1.Eta - p2.Eta)**2 + delta_phi(p1.Phi, p2.Phi)**2 < 0.6**2
+                c12 = (p3.Eta - p4.Eta)**2 + delta_phi(p3.Phi, p4.Phi)**2 < 0.6**2
+                if c11 and c12:
+                    Npass[1] += 1;particle_list = [foo[particle.D1], foo[particle.D2]]
+                    # print(p1.Status, p1.M1, p1.M2)
+                    # print(p2.Status, p2.M1, p2.M2)
+                    break
+    if len(particle_list) != 2:
+        #continue
+        pbar.update(1)
+        return 0
+    Npass[2] += 1
+    for jet_id, jet in enumerate(evt.Jet):
+        eta, phi = jet.Eta, jet.Phi
+        # print(jet_id, "\t", eta, "\t", phi, "\t", jet.PT)
+        if 350 < jet.PT < 450 and abs(eta) <= 1:
+            # V-jet matching
+            Npass[3] += 1;[p1, p2] = particle_list
+            if (eta - p1.Eta)**2 + delta_phi(phi, p1.Phi)**2 < 0.1**2:
+                jet_list.append([jet, 1])
+            if (eta - p2.Eta)**2 + delta_phi(phi, p2.Phi)**2 < 0.1**2:
+                jet_list.append([jet, 2])
+
+    if len(jet_list) == 2 and jet_list[0][1] != jet_list[1][1]:
+        # print(id)
+        jet_list = [jet_list[0][0], jet_list[1][0]]; Npass[4] += 1
+    else:
+        #continue
+        pbar.update(1)
+        return 0
+    # generate img
+    kappa = 0.15
+    for i in [0,1]:
+        img = np.zeros([75,75,2])
+        constituents = [c for c in jet_list[i].Constituents]
+        data = []
+        for c in constituents:
+            try:
+                data.append([c.Phi, c.Eta, c.PT, c.Charge*((c.PT)**kappa)/(jet_list[i].PT**kappa)])
+            except:
+                data.append([c.Phi, c.Eta, c.ET, 0])
+            #print (data[-1])
+        data = np.array(data)
+        data = preprocess3(data)
+        for dt in data:
+            if -0.8 <= dt[0] <= 0.8 and -0.8 <= dt[1] <= 0.8:
+                i, j = int((dt[0]+0.8) / (1.6/75)), int((dt[1]+0.8) / (1.6/75))
+                # print(i,j)
+                img[i,j,0] += dt[2]
+                img[i,j,1] += dt[3]
+        #images.append(img)
+        image = np.array([np.array(images[0]), img[:,:,0], img[:,:,1]], dtype=object)
+        np.save(imagewriter, image)
+    pbar.update(1)
+    #print (id)
+    return 2			
+
 
 def main():
 	histbins = [75, 75]
@@ -431,8 +709,8 @@ def main():
 	imagename = outputfiledir + inname + '.npy'
 	countname = outputfiledir + inname + '.count'
 
-	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1]}
-	signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0, 0, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0, 0, 0, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1, 0, 0, 0], 'VBF_H5z_ww_jjjj': [0, 0, 0, 1, 0, 0], 'VBF_H5p_wz_jjjj': [0, 0, 0, 0, 1, 0], 'VBF_H5m_wz_jjjj': [0, 0, 0, 0, 0, 1]}
+	signal_list = {'VBF_H5pp_ww_jjjj_UFO': [1, 0, 0], 'VBF_H5mm_ww_jjjj_UFO': [0, 1, 0], 'VBF_H5z_zz_jjjj_UFO': [0, 0, 1]}
+	#signal_list = {'VBF_H5pp_ww_jjjj': [1, 0, 0, 0, 0, 0], 'VBF_H5mm_ww_jjjj': [0, 1, 0, 0, 0, 0], 'VBF_H5z_zz_jjjj': [0, 0, 1, 0, 0, 0], 'VBF_H5z_ww_jjjj': [0, 0, 0, 1, 0, 0], 'VBF_H5p_wz_jjjj': [0, 0, 0, 0, 1, 0], 'VBF_H5m_wz_jjjj': [0, 0, 0, 0, 0, 1]}
 	signal_label = signal_list[inname]
 	print ("Datatype:",signal_label)
 
@@ -448,10 +726,13 @@ def main():
 			with open(imagename, 'wb') as imagewriter:
 				evt_total = 0
 				evt_total, data_collection, Npass = sample_selection(chain, histbins, histranges, kappa, signal_label, pbar, tfwriter, imagewriter)
+				#for id, evt in enumerate(chain):
+				#	evt_total += function(id,evt, imagewriter, pbar)
+				#	if id>= 10**4:
+				#		break
 
 	with open(countname, 'w+') as f:
 		f.write('{0:d}\n'.format(evt_total))
-
 	print (Npass, "out of", chain.GetEntries())
 
 	df = pd.DataFrame([])

@@ -85,8 +85,8 @@ def create_TFRecord(npy_files):
     
     print ("datasizes in the npy", datasizes)
     #datasizes = [235000, 250000, 220000]
-    datasizes = [150000, 150000, 150000]
-    #datasizes = [250000, 250000, 250000]
+    #datasizes = [150000, 150000, 150000]
+    datasizes = [min(datasizes[0],250000), min(datasizes[1],250000), min(datasizes[2],250000)]
     print ("redefine datasizes to", datasizes)
     
     datasize = sum(datasizes)

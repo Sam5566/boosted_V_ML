@@ -1,6 +1,5 @@
 import sys
 import os
-os.chdir('/home/samhuang/ML/sample')
 add_path = '/home/samhuang/ML/sample'
 if add_path not in sys.path:
     sys.path.insert(0,add_path)
@@ -32,7 +31,7 @@ for i in range(len(sys.argv)):
     if (i<=1):
         continue
     inname = sys.argv[i].split('/')[5] #// should be changed with different directory structure
-    outputfiledir = sys.argv[i].split('/')[0]+'/'+ sys.argv[i].split('/')[1]+'/'+ sys.argv[i].split('/')[2]+'/'+ sys.argv[i].split('/')[3]+'/' + sys.argv[i].split('/')[4]+'/' + "samples_kappa"+str(kappa)+'/'
+    outputfiledir = sys.argv[i].split('/')[0]+'/'+ sys.argv[i].split('/')[1]+'/'+ sys.argv[i].split('/')[2]+'/'+ sys.argv[i].split('/')[3]+'/' + sys.argv[i].split('/')[4]+'/' + "jet_base/samples_kappa"+str(kappa)+'/'
     imagename = outputfiledir + inname + '.npy'
     countname = outputfiledir + inname + '.count'
 
@@ -100,25 +99,30 @@ plt.savefig('figures/'+ figure_folder + 'Qk_jet.png', dpi=300)
 plt.close()
 
 ## Q_k distribution
+bins = 100
+Xrange = [-2,2]
 fig, ax = plt.subplots(1,1, figsize=(15,5))
-ax.hist(dfs[0]['jet charge'], color='b', histtype='step', density=True, bins=100, range=[-2,2], label=r'$W^+$')
-ax.hist(dfs[1]['jet charge'], color='r', histtype='step', density=True, bins=100, range=[-2,2], label=r'$W^-$')
-ax.hist(dfs[2]['jet charge'], color='brown', histtype='step', density=True, bins=100, range=[-2,2], label=r'$Z$')
+ax.hist(dfs[0]['jet charge'], color='b', histtype='step', density=True, bins=bins, range=Xrange, label=r'$W^+$')
+ax.hist(dfs[1]['jet charge'], color='r', histtype='step', density=True, bins=bins, range=Xrange, label=r'$W^-$')
+ax.hist(dfs[2]['jet charge'], color='brown', histtype='step', density=True, bins=bins, range=Xrange, label=r'$Z$')
 ax.legend()
-ax.set_xlim([-2,2])
+ax.set_xlim(Xrange)
 ax.set_xlabel(r'$Q_k$')
+ax.set_ylabel(r'1/{0:.2f}'.format(bins/(Xrange[1]-Xrange[0])))
 ax.set_aspect(4)
 plt.savefig('figures/'+ figure_folder + 'Qk_distribution.png', dpi=300)
 plt.close()
 
 ## P_T distribution
+Xrange = [60,120]
 fig, ax = plt.subplots(1,1, figsize=(15,5))
-ax.hist(dfs[0]['jet mass'], color='b', histtype='step', density=True, bins=100, range=[60,120], label=r'$W^+$')
-ax.hist(dfs[1]['jet mass'], color='r', histtype='step', density=True, bins=100, range=[60,120], label=r'$W^-$')
-ax.hist(dfs[2]['jet mass'], color='brown', histtype='step', density=True, bins=100, range=[60,120], label=r'$Z$')
+ax.hist(dfs[0]['jet mass'], color='b', histtype='step', density=True, bins=bins, range=Xrange, label=r'$W^+$')
+ax.hist(dfs[1]['jet mass'], color='r', histtype='step', density=True, bins=bins, range=Xrange, label=r'$W^-$')
+ax.hist(dfs[2]['jet mass'], color='brown', histtype='step', density=True, bins=bins, range=Xrange, label=r'$Z$')
 ax.legend()
-ax.set_xlim([60,120])
-ax.set_xlabel(r'$p_T$')
+ax.set_xlim(Xrange)
+ax.set_xlabel(r'$p_T$ (GeV)')
+ax.set_ylabel('1/{0:.2f}'.format(bins/(Xrange[1]-Xrange[0]))+r' $(GeV^{-1})$')
 ax.set_aspect(800)
 plt.savefig('figures/'+ figure_folder + 'pT_distribution.png', dpi=300)
 
