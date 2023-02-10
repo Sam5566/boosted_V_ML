@@ -3,9 +3,8 @@ from __future__ import division
 from __future__ import print_function
 from re import X
 
+import numpy as np
 import tensorflow as tf
-import torch as th
-from torchvision import transforms
 
 class CNN(tf.keras.Model):
     def __init__(self, name="CNN", dim_image=(75, 75, 2), n_class=3):
@@ -43,54 +42,6 @@ class CNN(tf.keras.Model):
         
         return self._output(latent_all)
 
-class CNN_torch(th.nn.Module):
-    def __init__(self, name="CNN_torch", dim_image=( None, 2, 75, 75), n_class=3):
-        super(CNN_torch, self).__init__()
-        
-        """h2ptjl Channel"""
-        # self.h2ptjl = th.nn.Sequential(
-        #     #transforms.Lambda(lambda x: x[:, :, :, :]),
-        #     th.nn.BatchNorm2d(2),
-        #     # th.nn.Conv2d(dim_image[-1], 32, 6, padding='same'),
-        #     # th.nn.ReLU(),
-        #     # th.nn.MaxPool2d(2,2),
-        #     # th.nn.Conv2d(32, 128, 4, padding='same'),
-        #     # th.nn.ReLU(),
-        #     # th.nn.MaxPool2d(2,2),
-        #     # th.nn.Conv2d(128, 256, 6, padding='same'),
-        #     # th.nn.ReLU(),
-        #     # th.nn.MaxPool2d(2,2),
-        #     # th.nn.Dropout(0.1),
-        #     # th.nn.Flatten(),
-        #     #th.nn.Linear(512),
-        #     #th.nn.ReLU(),
-        #     #th.nn.Dropout(0.5),
-        #     #th.nn.Dense(512),
-        #     #th.nn.ReLU(),
-        #     #th.nn.Dropout(0.5),
-        # )
-        
-        self.ba = th.nn.BatchNorm2d(2)
-        """Output Layer"""
-        #self._output = th.nn.Linear(n_class)#, activation='softmax')
-        
-    @tf.function
-    def forward(self, inputs):
-        """h2ptjl"""
-        print ("check0")
-        #latent_h2ptjl = self.h2ptjl(inputs)
-        latent_h2ptjl = self.ba(inputs)
-        # latent_h2ptjl = 1
-        # self.ba(inputs)
-        print ("check")
-        print (th.size())
-        
-        """Output"""
-        #latent_all = tf.concat([latent_h2ptj, latent_h2ptjl], axis=1)
-        latent_all = latent_h2ptjl
-        
-        return self._output(latent_all)
-
 
 class CNN2(tf.keras.Model):
     def __init__(self, name="CNN2", dim_image=(75, 75, 2), n_class=3):
@@ -106,6 +57,7 @@ class CNN2(tf.keras.Model):
         self.dropout1 = tf.keras.layers.Dropout(0.1)
         self.flatten = tf.keras.layers.Flatten()
         self.dense1 = tf.keras.layers.Dense(512, activation='relu')
+        self.dense2 = tf.keras.layers.Dense(512, activation='relu')
         self.dropout2 = tf.keras.layers.Dropout(0.5)
 
         self.h2ptjl = tf.keras.Sequential([
@@ -131,28 +83,74 @@ class CNN2(tf.keras.Model):
     @tf.function
     def call(self, inputs, training=False):
         """h2ptjl"""
+        #latent_h2ptjl = self.h2ptjl(inputs)
+        
+        """Output"""
+        #latent_all = tf.concat([latent_h2ptj, latent_h2ptjl], axis=1)
+        #x = latent_h2ptjl
+        x = self.lambda1(inputs)
+        x = self.batchnorm(x)
+        x = self.conv1(x)
+        x = self.maxpool1(x)
+        x = self.conv2(x)
+        x = self.maxpool1(x)
+        x = self.conv3(x)
+        x = self.maxpool1(x)
+        x = self.dropout1(x)
+        #print (np.shape(x))
+        x = self.flatten(x)
+        #print (x)
+        #print (np.shape(x)) 
+        x = self.dense1(x)
+        x = self.dropout2(x)
+        x = self.dense2(x)
+        x = self.dropout2(x)
+
+        
+        return self._output(x)
+
+class CNN3(tf.keras.Model):
+    def __init__(self, name="CNN3", dim_image=(75, 75, 2), n_class=3):
+        super(CNN3, self).__init__(name=name)
+        
+        """h2ptjl Channel"""
+        self.h2ptjl = tf.keras.Sequential([
+            tf.keras.layers.Lambda(lambda x: x[:, :, :, :]),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(32, (6,6), padding='same', activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.BatchNormalization(),
+            #tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.Conv2D(128, (4,4), padding='same', activation='relu'),
+            tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(256, (6,6), padding='same', activation='relu'),
+            #tf.keras.layers.MaxPool2D((2,2)),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Conv2D(512, (6,6), padding='same', activation='relu'),
+            #tf.keras.layers.MaxPool2D((2,2)),
+            #tf.keras.layers.Conv2D(1024, (6,6), padding='same', activation='relu'),
+            #tf.keras.layers.MaxPool2D((2,2)),
+            #tf.keras.layers.Dropout(0.1),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.L2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+        ])
+        
+        """Output Layer"""
+        self._output = tf.keras.layers.Dense(n_class, activation='softmax')
+        
+    @tf.function
+    def call(self, inputs, training=False):
+        """h2ptjl"""
         latent_h2ptjl = self.h2ptjl(inputs)
         
         """Output"""
         #latent_all = tf.concat([latent_h2ptj, latent_h2ptjl], axis=1)
-        x = latent_h2ptjl
-        # x = self.lambda1(inputs)
-        # x = self.batchnorm(x)
-        # x = self.conv1(x)
-        # x = self.maxpool1(x)
-        # x = self.conv2(x)
-        # x = self.maxpool1(x)
-        # x = self.conv3(x)
-        # x = self.maxpool1(x)
-        # x = self.dropout1(x)
-        # x = self.flatten(x)
-        # x = self.dense1(x)
-        # x = self.dropout2(x)
-        # x = self.dense1(x)
-        # x = self.dropout2(x)
-
+        latent_all = latent_h2ptjl
         
-        return self._output(x)
+        return self._output(latent_all)
 
 class CNNsq(tf.keras.Model):
     def __init__(self, name="CNNsq", dim_image=(75, 75, 2), n_class=2):

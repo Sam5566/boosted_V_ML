@@ -6,9 +6,18 @@ plt.switch_backend('agg')
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+import torch as th
 
-from sklearn.metrics import roc_curve, auc, ConfusionMatrixDisplay, confusion_matrix
+from sklearn.metrics import roc_curve, auc, ConfusionMatrixDisplay, confusion_matrix,accuracy_score, classification_report
 from scipy import interpolate
+import sys
+sys.path.insert(0, '/home/samhuang/ML/analysis')
+from SmoothGradCAMplusplus.cam import CAM, GradCAM, GradCAMpp, SmoothGradCAMpp
+from SmoothGradCAMplusplus.utils.visualize import visualize, reverse_normalize
+from SmoothGradCAMplusplus.utils.imagenet_labels import label2idx, idx2label
+from torchvision import transforms
+
+import pdb
 
 
 ################################
@@ -98,6 +107,7 @@ def plot_training_history(collection_history, fig):
     ax = fig.add_subplot(2, 1, 1)
     ax.errorbar(x, means[0], yerr=errors[0], label="Training")
     ax.errorbar(x, means[1], yerr=errors[1], label="Validation")
+    ax.axvline(x=x[-10], color="black", linestyle="--")
     ax.set_title("Loss across training")
     ax.set_xlabel("Training iteration")
     ax.set_ylabel("Loss (categorical cross-entropy)")
@@ -113,6 +123,25 @@ def plot_training_history(collection_history, fig):
 
     return fig
 
+def calculate_ACC(collection_predictions, collection_labels, classes):
+    n_class = np.shape(collection_labels[0])[1]
+    print ("N of classes", n_class)
+    if (n_class != len(classes)):
+        print ("Error of signal classes")
+
+    
+    #accs = []
+    performance_report = []
+    accs = [[] for i in range(n_class)]
+    for j in range(len(collection_labels)):
+        performance_report.append(classification_report(np.argmax(collection_labels[j], axis=1), np.argmax(collection_predictions[j], axis=1), target_names=classes, output_dict=True, zero_division=0))
+        
+        for i_class in range(n_class):
+            accs[i_class].append(performance_report[-1][classes[i_class]]['precision'])
+    #       print (np.argmax(collection_labels[j][:, i_class]))
+    #        acc[i_class] = accuracy_score(np.argmax(collection_labels[j][:, i_class]), np.argmax(collection_predictions[j][:, i_class]))
+
+    return accs
 
 def plot_roc_curve(collection_predictions, collection_labels, classes, fig):
     n_class = np.shape(collection_labels[0])[1]
@@ -165,3 +194,48 @@ def plot_confusion_matrix(collection_predictions, collection_labels, classes, ax
 
     disp.plot(ax=ax)
     return collection_cm
+
+def plot_SmoothGrad(model, input_imag_loader, collection_predictions, collection_labels, classes, n_imag=1):
+    normalize = transforms.Normalize(
+                mean=[0.485], std=[0.229]
+                #mean=[0.485, 0.485],
+                #std=[0.229, 0.229]
+                ) # N channel
+
+    preprocess = transforms.Compose([
+                transforms.ToTensor(),
+                normalize
+                ])
+    
+    for i, (images, images2, pTnorms, labels) in enumerate(input_imag_loader):
+        print (images.shape)
+        print (th.min(images2), th.max(images2))
+        print (images)
+        for j, imag in enumerate(images):
+            tensor = preprocess(imag[0].numpy())
+            print (tensor.shape)
+
+            # reshape 4D tensor (N, C, H, W)
+            tensor = tensor.unsqueeze(0)
+            print (tensor.shape)
+
+        model.eval()
+        print(model)
+        print (dir(model))
+
+        # the target layer you want to visualize
+        target_layer = model.h2ptjl
+        print (target_layer[-1])
+
+        # wrapper for class activation mapping. Choose one of the following.
+        # wrapped_model = CAM(model, target_layer)
+        # wrapped_model =GradCAM(model, target_layer)
+        # wrapped_model = GradCAMpp(model, target_layer)
+        wrapped_model = SmoothGradCAMpp(model, target_layer, n_samples=1, stdev_spread=0.15)
+
+        cam, idx = wrapped_model(tensor, images2, pTnorms)
+        print(idx2label[idx])
+
+        if (i >= n_imag):
+            break
+    return 0
