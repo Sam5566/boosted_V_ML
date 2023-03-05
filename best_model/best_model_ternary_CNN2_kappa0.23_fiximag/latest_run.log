@@ -1,0 +1,108 @@
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+New Run
+Current date and time = 2023-01-30 21:05:52.515849
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+CNN2_torch(
+  (h2ptjl): Sequential(
+    (0): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): Conv2d(2, 32, kernel_size=(6, 6), stride=(1, 1), padding=same)
+    (2): ReLU()
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): ResidualBlock(
+        (left): Sequential(
+          (0): Conv2d(32, 128, kernel_size=(6, 6), stride=(1, 1), padding=same)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(128, 128, kernel_size=(6, 6), stride=(1, 1), padding=same)
+        )
+        (shortcut): Sequential(
+          (0): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1), padding=same)
+        )
+      )
+      (1): ResidualBlock(
+        (left): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(6, 6), stride=(1, 1), padding=same)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(128, 128, kernel_size=(6, 6), stride=(1, 1), padding=same)
+        )
+        (shortcut): Sequential()
+      )
+    )
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): Sequential(
+      (0): ResidualBlock(
+        (left): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(6, 6), stride=(1, 1), padding=same)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(256, 256, kernel_size=(6, 6), stride=(1, 1), padding=same)
+        )
+        (shortcut): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), padding=same)
+        )
+      )
+      (1): ResidualBlock(
+        (left): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(6, 6), stride=(1, 1), padding=same)
+          (1): ReLU(inplace=True)
+          (2): Conv2d(256, 256, kernel_size=(6, 6), stride=(1, 1), padding=same)
+        )
+        (shortcut): Sequential()
+      )
+    )
+    (7): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (8): Dropout(p=0.1, inplace=False)
+  )
+  (linear1): Linear(in_features=20736, out_features=512, bias=True)
+  (linear2): Linear(in_features=512, out_features=32, bias=True)
+  (linear3): Linear(in_features=512, out_features=128, bias=True)
+  (linear4): Linear(in_features=128, out_features=32, bias=True)
+  (_output): Linear(in_features=32, out_features=3, bias=True)
+)
+Send the model to cuda
+VALIDATION:   kappa = 1.05000     | val loss= 0.924, val acc= 56.69% |
+Epoch 1: val_loss improved from inf to 0.9236, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.893, val acc= 60.54% |
+Epoch 2: val_loss improved from 0.9236 to 0.8934, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.758, val acc= 66.55% |
+Epoch 3: val_loss improved from 0.8934 to 0.7575, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.698, val acc= 68.73% |
+Epoch 4: val_loss improved from 0.7575 to 0.6977, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.678, val acc= 71.87% |
+Epoch 5: val_loss improved from 0.6977 to 0.6780, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.653, val acc= 72.57% |
+Epoch 6: val_loss improved from 0.6780 to 0.6531, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN2_kappa0.23_fiximag/Try/0
+VALIDATION:   kappa = 1.05000     | val loss= 0.720, val acc= 72.67% |
+Epoch   7: val_loss did not improve from 0.6531. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 0.659, val acc= 71.32% |
+Epoch   8: val_loss did not improve from 0.6531. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 0.960, val acc= 69.61% |
+Epoch   9: val_loss did not improve from 0.6531. Performance did not improve for  3 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 0.959, val acc= 71.63% |
+Epoch  10: val_loss did not improve from 0.6531. Performance did not improve for  4 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 1.075, val acc= 68.46% |
+Epoch  11: val_loss did not improve from 0.6531. Performance did not improve for  5 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 0.852, val acc= 70.68% |
+Epoch  12: val_loss did not improve from 0.6531. Performance did not improve for  6 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 1.285, val acc= 68.68% |
+Epoch  13: val_loss did not improve from 0.6531. Performance did not improve for  7 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 1.455, val acc= 68.77% |
+Epoch  14: val_loss did not improve from 0.6531. Performance did not improve for  8 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 1.233, val acc= 69.28% |
+Epoch  15: val_loss did not improve from 0.6531. Performance did not improve for  9 epoch(s)
+VALIDATION:   kappa = 1.05000     | val loss= 1.551, val acc= 70.58% |
+Epoch  16: val_loss did not improve from 0.6531. Performance did not improve for 10 epoch(s)
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+TEST:   kappa = 1.05000     | test loss= 2.842, test acc= 72.92% |
+Finished Training
+N of classes 3
+$W^+/W^+$ (auc = 89.86 +- 0.0000 %)
+$W^-/W^-$ (auc = 89.42 +- 0.0000 %)
+$Z/Z$ (auc = 84.65 +- 0.0000 %)
+N of classes 3
+$W^+/W^+$ (acc = 73.81 +- 0.0000 %
+$W^-/W^-$ (acc = 75.93 +- 0.0000 %
+$Z/Z$ (acc = 69.42 +- 0.0000 %
+The summarized testing accuracy = 72.92 +- 0.0000 %, with the loss = 2.8423 +- 0.000000
+Finished Training

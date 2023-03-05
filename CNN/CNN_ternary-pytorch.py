@@ -43,9 +43,8 @@ import copy
 from read_pytorch import *
 # from datetime import datetime, date
 from pytorch_training import *
+from generate_card import *
 from datetime import datetime, date
-
-# from datetime import datetime, date
 
 device = th.device('cuda' if th.cuda.is_available() else 'cpu')
 print ('Using '+str(device)+' to run this training')
@@ -54,7 +53,8 @@ print ('Using '+str(device)+' to run this training')
 best_model_dir = '/home/samhuang/ML/best_model/'
 #save_model_name = best_model_dir+'best_model_ternary_P-CNN2_event_kappa0.23_fiximag/'
 #save_model_name = best_model_dir+'best_model_ternary2_P-CNN_event_kappa0.23_fiximag/'
-save_model_name = best_model_dir+'best_model_senary_P_CNN2_kappa0.23_fiximag/'
+#save_model_name = best_model_dir+'best_model_senary_P_CNN2_kappa0.2302_fiximag/'
+save_model_name = best_model_dir+'best_model_septenary_P_CNN2_kappa0.2305_fiximag/'
 os.system('mkdir '+save_model_name)
 
 os.system('mkdir '+save_model_name+'Try/')
@@ -62,10 +62,12 @@ os.system('mkdir '+save_model_name+'Try/')
 sample_folder = '/home/samhuang/ML/sample/event_base/'
 #data_folder = sample_folder+"samples_kappa0.23/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj/"
 #data_folder = sample_folder+"samples_kappa0.23/VBF_H5z_ww_jjjj_and_VBF_H5p_wz_jjjj_and_VBF_H5m_wz_jjjj/"
-data_folder = sample_folder+"samples_kappa0.23/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj_and_VBF_H5z_ww_jjjj_and_VBF_H5p_wz_jjjj_and_VBF_H5m_wz_jjjj/"
+#data_folder = sample_folder+"samples_kappa0.2302/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj_and_VBF_H5z_ww_jjjj_and_VBF_H5p_wz_jjjj_and_VBF_H5m_wz_jjjj/"
+data_folder = sample_folder+"samples_kappa0.2305/VBF_H5pp_ww_jjjj_and_VBF_H5mm_ww_jjjj_and_VBF_H5z_zz_jjjj_and_VBF_H5z_ww_jjjj_and_VBF_H5p_wz_jjjj_and_VBF_H5m_wz_jjjj_and_proc_ppjjjj/"
 #signal=[r'$W^+/W^+$',r'$W^-/W^-$',r'$Z/Z$']
 #signal=[r'$W^+/W^-$',r'$W^+/Z$',r'$W^-/Z$']
-signal=[r'$W^+/W^+$',r'$W^-/W^-$',r'$Z/Z$', r'$W^+/W^-$', r'$W^+/Z$', r'$W^-/Z$']
+#signal=[r'$W^+/W^+$',r'$W^-/W^-$',r'$Z/Z$', r'$W^+/W^-$', r'$W^+/Z$', r'$W^-/Z$']
+signal=[r'$W^+/W^+$',r'$W^-/W^-$',r'$Z/Z$', r'$W^+/W^-$', r'$W^+/Z$', r'$W^-/Z$','background']
 
 
 
@@ -78,13 +80,17 @@ shuffle_size_tr = 1
 patience = 10
 min_delta = 0.
 learning_rate = 1e-5
-dim_image = [[75, 75], [[-0.8, 0.8], [-0.8, 0.8]]]
+dim_image = [[75, 75], [[-5, 5], [-0.8, 0.8]]]
 limited_datasize =  000
 
 #// make_Qk_image controls the condition whether make Qk image with the given kappa value during reading data. If Negative, then kappa varaible below is usless, and the true value of kappa in this training will be the one set in extract.py
 make_Qk_image = False
 kappa = 0.23
 
+cc = card(save_model_name)
+cc.save_into_card('hyperparameters', Ntry = Ntry, train_epochs = train_epochs, batch_size = batch_size, learning_rate = learning_rate, patience = patience, min_delta = min_delta)
+#
+#cc.read_card(save_model_name)
 
 ###############
 
@@ -100,6 +106,8 @@ else:
 train_loader, N_label, N_train = get_npyimages(data_tr, kappa, batch_size=batch_size, shuffle_size_tr=shuffle_size_tr, limited_datasize=limited_datasize, do_plot=False, make_Qk_image=make_Qk_image, n_class=len(signal))
 valid_loader, aa, N_valid = get_npyimages(data_va, kappa, batch_size=batch_size, shuffle_size_tr=0, limited_datasize=int(limited_datasize/4), make_Qk_image=make_Qk_image, n_class=len(signal))
 test_loader, aa, N_test = get_npyimages(data_te, kappa, batch_size=1, shuffle_size_tr=0, limited_datasize=int(limited_datasize/4), make_Qk_image=make_Qk_image, n_class=len(signal))
+
+cc.save_into_card('input information', data_tr = data_tr, data_va = data_va, data_te = data_te, kappa = kappa, limited_datasize=limited_datasize, shuffle_size_tr = shuffle_size_tr, dim_image = dim_image, n_class=len(signal))
 
 #model = models.CNN_torch(dim_image=(batch_size, 2, 75, 75), n_class=6).to(device)
 #model.do_dynamic_kappa = False
@@ -212,28 +220,49 @@ print('Finished Training')
 
 make_dot(outputs, params=dict(list(model.named_parameters()))).render(save_model_name+"figures/model", format="png")
 
+# history
 os.system('mkdir '+save_model_name+'figures')
 # Plot results curves.
 fig = plt.figure(1, figsize=(10, 14))
 fig.clf()
-fig = plot_training_history(collection_history, fig)
+histories, fig = plot_training_history(collection_history, fig)
 fig.savefig(save_model_name+'figures/loss and accuracy.png', dpi=300)
 plt.close()
+cc.save_into_card('history', train_loss=[histories[0][0].tolist(), histories[1][0].tolist()])
+cc.save_into_card('history', valid_loss=[histories[0][1].tolist(), histories[1][1].tolist()])
+cc.save_into_card('history', train_acc=[(histories[0][2]*100).tolist(), (histories[1][2]*100).tolist()])
+cc.save_into_card('history', valid_acc=[(histories[0][3]*100).tolist(), (histories[1][3]*100).tolist()])
 
+# roc and auc
 fig = plt.figure(figsize=(8,6))
 roc_auc_values, fig = plot_roc_curve(collection_predictions, collection_labels, signal, fig)
 fig.savefig(save_model_name+'figures/roc_auc.png', dpi=300)
+AUC_list = []
+for ii in range(len(signal)):
+    AUC_list.append('{0} {1:2.2f} +- {2:.4f} %'.format(signal[ii], np.mean(roc_auc_values[:,ii])*100, np.std(roc_auc_values[:,ii]*100)))
+cc.save_into_card('AUC', AUC_list=AUC_list)
 
+# acc
 collection_accs = calculate_ACC(collection_predictions, collection_labels, signal)
+ACC_list = []
 for i_class, classi in enumerate(collection_accs):
-    print (signal[i_class], "(acc = {:.2f} +- {:.4f} %".format(np.mean(classi)*100, np.std(classi)*100))
+    print (signal[i_class], "(acc = {:.2f} +- {:.4f} %)".format(np.mean(classi)*100, np.std(classi)*100))
+    ACC_list.append("{}  acc = {:.2f} +- {:.4f} %".format(signal[i_class], np.mean(classi)*100, np.std(classi)*100))
+cc.save_into_card('ACC', ACC_list=ACC_list)
 
+# test
 collection_test = np.array(collection_test)
 print ("The summarized testing accuracy = {:.2f} +- {:.4f} %, with the loss = {:.4f} +- {:.6f}".format(np.mean(collection_test[:,1]*100), np.std(collection_test[:,1]*100), np.mean(collection_test[:,0]), np.std(collection_test[:,0])))
+cc.save_into_card('testing result', ACC="{:.2f} +- {:.4f} %".format(np.mean(collection_test[:,1]*100), np.std(collection_test[:,1]*100)))
+cc.save_into_card('testing result', loss="{:.4f} +- {:.6f}".format(np.mean(collection_test[:,0]), np.std(collection_test[:,0])))
 
+# best model
+best_model_tag = np.argmax(collection_test[:,1])
+print ("Best performance is derived from Model #{:d}, whose loss = {:.4f} and acc = {:.2f} %".format(best_model_tag, collection_test[best_model_tag,0], collection_test[best_model_tag,1]*100))
+cc.save_into_card('best model', best_model_tag=str(best_model_tag), ACC = "{:.4f}".format((collection_test[best_model_tag,1]*100).tolist()), loss = "{:.6f}".format((collection_test[best_model_tag,0]).tolist()))
 
+cc.output_card()
 sys.stdout.close()
 
 os.system("./../best_model/organize_model_log.sh "+save_model_name+'latest_run.log')
 os.system("cat "+save_model_name+"latest_run.log >> "+save_model_name+data_folder.split('/')[5]+'.log')
-

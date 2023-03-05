@@ -1,0 +1,421 @@
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+New Run
+Current date and time = 2022-09-21 00:16:27.368156
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+The data set contains images
+Epoch 1/500
+562/562 [==============================] - 159s 265ms/step - loss: 5.3687 - accuracy: 0.7003 - val_loss: 1.7239 - val_accuracy: 0.7477
+
+Epoch 00001: val_loss improved from inf to 1.72386, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 2/500
+562/562 [==============================] - 150s 266ms/step - loss: 1.1249 - accuracy: 0.7550 - val_loss: 0.7862 - val_accuracy: 0.7588
+
+Epoch 00002: val_loss improved from 1.72386 to 0.78620, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 3/500
+562/562 [==============================] - 150s 266ms/step - loss: 0.6973 - accuracy: 0.7615 - val_loss: 0.6462 - val_accuracy: 0.7610
+
+Epoch 00003: val_loss improved from 0.78620 to 0.64619, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 4/500
+562/562 [==============================] - 150s 266ms/step - loss: 0.6327 - accuracy: 0.7640 - val_loss: 0.6287 - val_accuracy: 0.7611
+
+Epoch 00004: val_loss improved from 0.64619 to 0.62865, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 5/500
+562/562 [==============================] - 149s 265ms/step - loss: 0.6175 - accuracy: 0.7671 - val_loss: 0.6221 - val_accuracy: 0.7613
+
+Epoch 00005: val_loss improved from 0.62865 to 0.62206, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 6/500
+562/562 [==============================] - 148s 264ms/step - loss: 0.6107 - accuracy: 0.7685 - val_loss: 0.6212 - val_accuracy: 0.7612
+
+Epoch 00006: val_loss improved from 0.62206 to 0.62116, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 7/500
+562/562 [==============================] - 148s 264ms/step - loss: 0.6046 - accuracy: 0.7707 - val_loss: 0.6191 - val_accuracy: 0.7619
+
+Epoch 00007: val_loss improved from 0.62116 to 0.61914, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 8/500
+562/562 [==============================] - 149s 264ms/step - loss: 0.5992 - accuracy: 0.7727 - val_loss: 0.6128 - val_accuracy: 0.7642
+
+Epoch 00008: val_loss improved from 0.61914 to 0.61278, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 9/500
+562/562 [==============================] - 148s 263ms/step - loss: 0.5922 - accuracy: 0.7752 - val_loss: 0.6088 - val_accuracy: 0.7653
+
+Epoch 00009: val_loss improved from 0.61278 to 0.60885, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 10/500
+562/562 [==============================] - 148s 263ms/step - loss: 0.5872 - accuracy: 0.7771 - val_loss: 0.5990 - val_accuracy: 0.7685
+
+Epoch 00010: val_loss improved from 0.60885 to 0.59904, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 11/500
+562/562 [==============================] - 148s 262ms/step - loss: 0.5812 - accuracy: 0.7797 - val_loss: 0.5923 - val_accuracy: 0.7716
+
+Epoch 00011: val_loss improved from 0.59904 to 0.59227, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 12/500
+562/562 [==============================] - 148s 263ms/step - loss: 0.5769 - accuracy: 0.7808 - val_loss: 0.5906 - val_accuracy: 0.7727
+
+Epoch 00012: val_loss improved from 0.59227 to 0.59064, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 13/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5730 - accuracy: 0.7828 - val_loss: 0.5884 - val_accuracy: 0.7739
+
+Epoch 00013: val_loss improved from 0.59064 to 0.58839, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 14/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5699 - accuracy: 0.7838 - val_loss: 0.5845 - val_accuracy: 0.7753
+
+Epoch 00014: val_loss improved from 0.58839 to 0.58451, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 15/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5668 - accuracy: 0.7845 - val_loss: 0.5834 - val_accuracy: 0.7748
+
+Epoch 00015: val_loss improved from 0.58451 to 0.58345, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 16/500
+562/562 [==============================] - 146s 261ms/step - loss: 0.5635 - accuracy: 0.7859 - val_loss: 0.5794 - val_accuracy: 0.7769
+
+Epoch 00016: val_loss improved from 0.58345 to 0.57938, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 17/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5619 - accuracy: 0.7862 - val_loss: 0.5800 - val_accuracy: 0.7761
+
+Epoch 00017: val_loss did not improve from 0.57938
+Epoch 18/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5588 - accuracy: 0.7876 - val_loss: 0.5779 - val_accuracy: 0.7772
+
+Epoch 00018: val_loss improved from 0.57938 to 0.57788, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 19/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5569 - accuracy: 0.7884 - val_loss: 0.5777 - val_accuracy: 0.7776
+
+Epoch 00019: val_loss improved from 0.57788 to 0.57767, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 20/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5544 - accuracy: 0.7891 - val_loss: 0.5727 - val_accuracy: 0.7799
+
+Epoch 00020: val_loss improved from 0.57767 to 0.57270, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 21/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5525 - accuracy: 0.7904 - val_loss: 0.5740 - val_accuracy: 0.7793
+
+Epoch 00021: val_loss did not improve from 0.57270
+Epoch 22/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5502 - accuracy: 0.7916 - val_loss: 0.5750 - val_accuracy: 0.7790
+
+Epoch 00022: val_loss did not improve from 0.57270
+Epoch 23/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5475 - accuracy: 0.7927 - val_loss: 0.5729 - val_accuracy: 0.7802
+
+Epoch 00023: val_loss did not improve from 0.57270
+Epoch 24/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5458 - accuracy: 0.7931 - val_loss: 0.5710 - val_accuracy: 0.7804
+
+Epoch 00024: val_loss improved from 0.57270 to 0.57103, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 25/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5442 - accuracy: 0.7943 - val_loss: 0.5719 - val_accuracy: 0.7801
+
+Epoch 00025: val_loss did not improve from 0.57103
+Epoch 26/500
+562/562 [==============================] - 146s 261ms/step - loss: 0.5419 - accuracy: 0.7946 - val_loss: 0.5717 - val_accuracy: 0.7805
+
+Epoch 00026: val_loss did not improve from 0.57103
+Epoch 27/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5403 - accuracy: 0.7963 - val_loss: 0.5709 - val_accuracy: 0.7804
+
+Epoch 00027: val_loss improved from 0.57103 to 0.57087, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNNsq_kappa0.15_2jet/
+Epoch 28/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5382 - accuracy: 0.7969 - val_loss: 0.5714 - val_accuracy: 0.7811
+
+Epoch 00028: val_loss did not improve from 0.57087
+Epoch 29/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5362 - accuracy: 0.7976 - val_loss: 0.5732 - val_accuracy: 0.7804
+
+Epoch 00029: val_loss did not improve from 0.57087
+Epoch 30/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5343 - accuracy: 0.7988 - val_loss: 0.5731 - val_accuracy: 0.7811
+
+Epoch 00030: val_loss did not improve from 0.57087
+Epoch 31/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5321 - accuracy: 0.8003 - val_loss: 0.5753 - val_accuracy: 0.7804
+
+Epoch 00031: val_loss did not improve from 0.57087
+Epoch 32/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5300 - accuracy: 0.8014 - val_loss: 0.5773 - val_accuracy: 0.7797
+
+Epoch 00032: val_loss did not improve from 0.57087
+Epoch 33/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5277 - accuracy: 0.8029 - val_loss: 0.5788 - val_accuracy: 0.7797
+
+Epoch 00033: val_loss did not improve from 0.57087
+Epoch 34/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5254 - accuracy: 0.8039 - val_loss: 0.5849 - val_accuracy: 0.7775
+
+Epoch 00034: val_loss did not improve from 0.57087
+Epoch 35/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5229 - accuracy: 0.8051 - val_loss: 0.5817 - val_accuracy: 0.7794
+
+Epoch 00035: val_loss did not improve from 0.57087
+Epoch 36/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5197 - accuracy: 0.8069 - val_loss: 0.5875 - val_accuracy: 0.7769
+
+Epoch 00036: val_loss did not improve from 0.57087
+Epoch 37/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5175 - accuracy: 0.8084 - val_loss: 0.5911 - val_accuracy: 0.7758
+
+Epoch 00037: val_loss did not improve from 0.57087
+Epoch 38/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5137 - accuracy: 0.8105 - val_loss: 0.5909 - val_accuracy: 0.7773
+
+Epoch 00038: val_loss did not improve from 0.57087
+Epoch 39/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5113 - accuracy: 0.8127 - val_loss: 0.5944 - val_accuracy: 0.7761
+
+Epoch 00039: val_loss did not improve from 0.57087
+Epoch 40/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.5090 - accuracy: 0.8136 - val_loss: 0.5981 - val_accuracy: 0.7762
+
+Epoch 00040: val_loss did not improve from 0.57087
+Epoch 41/500
+562/562 [==============================] - 147s 261ms/step - loss: 0.5055 - accuracy: 0.8158 - val_loss: 0.6069 - val_accuracy: 0.7724
+
+Epoch 00041: val_loss did not improve from 0.57087
+Epoch 42/500
+562/562 [==============================] - 146s 261ms/step - loss: 0.5037 - accuracy: 0.8173 - val_loss: 0.6090 - val_accuracy: 0.7748
+
+Epoch 00042: val_loss did not improve from 0.57087
+Epoch 43/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.4995 - accuracy: 0.8199 - val_loss: 0.6099 - val_accuracy: 0.7741
+
+Epoch 00043: val_loss did not improve from 0.57087
+Epoch 44/500
+562/562 [==============================] - 146s 260ms/step - loss: 0.4955 - accuracy: 0.8220 - val_loss: 0.6245 - val_accuracy: 0.7693
+
+Epoch 00044: val_loss did not improve from 0.57087
+Epoch 00044: early stopping
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+[92mModel: "CNNsq_2jet"[0m
+[92m_________________________________________________________________[0m
+[92mLayer (type)                 Output Shape              Param #   [0m
+[92m=================================================================[0m
+[92msequential (Sequential)      (None, 256)               6537700   [0m
+[92m_________________________________________________________________[0m
+[92msequential_1 (Sequential)    (None, 256)               6537700   [0m
+[92m_________________________________________________________________[0m
+[92msequential_2 (Sequential)    (None, 256)               6006756   [0m
+[92m_________________________________________________________________[0m
+[92msequential_3 (Sequential)    (None, 256)               6006756   [0m
+[92m_________________________________________________________________[0m
+[92mdense_6 (Dense)              multiple                  3075      [0m
+[92m=================================================================[0m
+[92mTotal params: 25,091,987[0m
+[92mTrainable params: 25,091,979[0m
+[92mNon-trainable params: 8[0m
+[92m_________________________________________________________________[0m
+None
+
+@LAYER1       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda (Lambda)              (None, 75, 75, 1)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization (BatchNo (None, 75, 75, 1)         4         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d (Conv2D)              (None, 75, 75, 32)        320       [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_1 (Conv2D)            (None, 75, 75, 32)        9248      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d (MaxPooling2D) (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_2 (Conv2D)            (None, 37, 37, 64)        18496     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_1 (MaxPooling2 (None, 18, 18, 64)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_3 (Conv2D)            (None, 18, 18, 64)        36928     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_2 (MaxPooling2 (None, 9, 9, 64)          0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_4 (Conv2D)            (None, 9, 9, 64)          36928     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_5 (Conv2D)            (None, 9, 9, 64)          36928     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_6 (Conv2D)            (None, 9, 9, 128)         204928    [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_7 (Conv2D)            (None, 9, 9, 256)         819456    [0m
+[94m_________________________________________________________________[0m
+[94mdropout (Dropout)            (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten (Flatten)            (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense (Dense)                (None, 256)               5308672   [0m
+[94m_________________________________________________________________[0m
+[94mdropout_1 (Dropout)          (None, 256)               0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_1 (Dense)              (None, 256)               65792     [0m
+[94m_________________________________________________________________[0m
+[94mdropout_2 (Dropout)          (None, 256)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 6,537,700[0m
+[94mTrainable params: 6,537,698[0m
+[94mNon-trainable params: 2[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 4), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAHAAAAUwAAAHMkAAAAdACgAXwAZABkAIUCZABkAIUCZABkAIUCZAFm\nBBkAZAKhAlMAqQNO6QAAAADp/////6kC2gJ0ZtoLZXhwYW5kX2RpbXOpAdoBeKkAcgkAAAD6Hy9o\nb21lL3NhbWh1YW5nL01ML0NOTi9tb2RlbHMucHnaCDxsYW1iZGE+sQAAAPMAAAAA\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_1', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_2', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_1', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_3', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_2', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_4', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_5', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_6', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (5, 5), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_7', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (5, 5), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_1', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}, {'class_name': 'Dense', 'config': {'name': 'dense_1', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_2', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER2       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential_1"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda_1 (Lambda)            (None, 75, 75, 1)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization_1 (Batch (None, 75, 75, 1)         4         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_8 (Conv2D)            (None, 75, 75, 32)        320       [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_9 (Conv2D)            (None, 75, 75, 32)        9248      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_3 (MaxPooling2 (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_10 (Conv2D)           (None, 37, 37, 64)        18496     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_4 (MaxPooling2 (None, 18, 18, 64)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_11 (Conv2D)           (None, 18, 18, 64)        36928     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_5 (MaxPooling2 (None, 9, 9, 64)          0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_12 (Conv2D)           (None, 9, 9, 64)          36928     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_13 (Conv2D)           (None, 9, 9, 64)          36928     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_14 (Conv2D)           (None, 9, 9, 128)         204928    [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_15 (Conv2D)           (None, 9, 9, 256)         819456    [0m
+[94m_________________________________________________________________[0m
+[94mdropout_3 (Dropout)          (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten_1 (Flatten)          (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_2 (Dense)              (None, 256)               5308672   [0m
+[94m_________________________________________________________________[0m
+[94mdropout_4 (Dropout)          (None, 256)               0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_3 (Dense)              (None, 256)               65792     [0m
+[94m_________________________________________________________________[0m
+[94mdropout_5 (Dropout)          (None, 256)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 6,537,700[0m
+[94mTrainable params: 6,537,698[0m
+[94mNon-trainable params: 2[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential_1', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 4), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_1_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda_1', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAHAAAAUwAAAHMkAAAAdACgAXwAZABkAIUCZABkAIUCZABkAIUCZAFm\nBBkAZAKhAlMAKQNO6QIAAADp/////6kC2gJ0ZtoLZXhwYW5kX2RpbXOpAdoBeKkAcggAAAD6Hy9o\nb21lL3NhbWh1YW5nL01ML0NOTi9tb2RlbHMucHnaCDxsYW1iZGE+yAAAAPMAAAAA\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization_1', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_8', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_9', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_3', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_10', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_4', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_11', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_5', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_12', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_13', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_14', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (5, 5), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_15', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (5, 5), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_3', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten_1', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense_2', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_4', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}, {'class_name': 'Dense', 'config': {'name': 'dense_3', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_5', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER3       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential_2"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda_2 (Lambda)            (None, 75, 75, 1)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization_2 (Batch (None, 75, 75, 1)         4         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_16 (Conv2D)           (None, 75, 75, 32)        320       [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_17 (Conv2D)           (None, 75, 75, 32)        9248      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_6 (MaxPooling2 (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_18 (Conv2D)           (None, 37, 37, 64)        32832     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_19 (Conv2D)           (None, 37, 37, 64)        65600     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_7 (MaxPooling2 (None, 18, 18, 64)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_20 (Conv2D)           (None, 18, 18, 256)       590080    [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_8 (MaxPooling2 (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mdropout_6 (Dropout)          (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten_2 (Flatten)          (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_4 (Dense)              (None, 256)               5308672   [0m
+[94m_________________________________________________________________[0m
+[94mdropout_7 (Dropout)          (None, 256)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 6,006,756[0m
+[94mTrainable params: 6,006,754[0m
+[94mNon-trainable params: 2[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential_2', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 4), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_2_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda_2', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAHAAAAUwAAAHMkAAAAdACgAXwAZABkAIUCZABkAIUCZABkAIUCZAFm\nBBkAZAKhAlMAqQNO6QEAAADp/////6kC2gJ0ZtoLZXhwYW5kX2RpbXOpAdoBeKkAcgkAAAD6Hy9o\nb21lL3NhbWh1YW5nL01ML0NOTi9tb2RlbHMucHnaCDxsYW1iZGE+4AAAAPMAAAAA\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization_2', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_16', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_17', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_6', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_18', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_19', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_7', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_20', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_8', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_6', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten_2', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense_4', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_7', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER4       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential_3"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda_3 (Lambda)            (None, 75, 75, 1)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization_3 (Batch (None, 75, 75, 1)         4         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_21 (Conv2D)           (None, 75, 75, 32)        320       [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_22 (Conv2D)           (None, 75, 75, 32)        9248      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_9 (MaxPooling2 (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_23 (Conv2D)           (None, 37, 37, 64)        32832     [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_24 (Conv2D)           (None, 37, 37, 64)        65600     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_10 (MaxPooling (None, 18, 18, 64)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_25 (Conv2D)           (None, 18, 18, 256)       590080    [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_11 (MaxPooling (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mdropout_8 (Dropout)          (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten_3 (Flatten)          (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_5 (Dense)              (None, 256)               5308672   [0m
+[94m_________________________________________________________________[0m
+[94mdropout_9 (Dropout)          (None, 256)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 6,006,756[0m
+[94mTrainable params: 6,006,754[0m
+[94mNon-trainable params: 2[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential_3', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 4), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_3_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda_3', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAHAAAAUwAAAHMkAAAAdACgAXwAZABkAIUCZABkAIUCZABkAIUCZAFm\nBBkAZAKhAlMAKQNO6QMAAADp/////6kC2gJ0ZtoLZXhwYW5kX2RpbXOpAdoBeKkAcggAAAD6Hy9o\nb21lL3NhbWh1YW5nL01ML0NOTi9tb2RlbHMucHnaCDxsYW1iZGE+8gAAAPMAAAAA\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization_3', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_21', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_22', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_9', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_23', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_24', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_10', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_25', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_11', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_8', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten_3', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense_5', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_9', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER5       @@@@@@@@@@@@@@@@@@@@@@
+[92m%Layer detail:
+[0m {'name': 'dense_6', 'trainable': True, 'dtype': 'float32', 'units': 3, 'activation': 'softmax', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+
+****************************************************
+history keys:
+ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+history params:
+ {'verbose': 1, 'epochs': 500, 'steps': None}
+****************************************************
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+90000/90000 [==============================] - 1279s 14ms/step - loss: 0.5692 - accuracy: 0.7812
+Testing Loss = 0.569167, Testing Accuracy = 0.781156
+The data set contains images
+[[0.10869553685188293, 0.05679873377084732, 0.8345056772232056], [0.5182536244392395, 0.036176398396492004, 0.4455699920654297], [0.0009981357725337148, 0.025701381266117096, 0.9733004570007324], [0.06282006949186325, 0.6039240956306458, 0.3332558870315552], [0.4839613139629364, 0.4442743957042694, 0.07176428288221359], [0.3591414988040924, 0.5939587354660034, 0.04689973592758179], [0.09169676899909973, 0.8832708597183228, 0.025032449513673782], [0.0018703719833865762, 0.05286238342523575, 0.9452672600746155], [0.8246361613273621, 0.06538746505975723, 0.10997631400823593], [0.04097601771354675, 0.027374889701604843, 0.9316491484642029]]
+[[0.0, 1.0, 0.0], [1.0, 0.0, 0.0], [0.0, 0.0, 1.0], [0.0, 1.0, 0.0], [0.0, 1.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0], [0.0, 0.0, 1.0], [1.0, 0.0, 0.0], [0.0, 0.0, 1.0]]
+3
+$W^+$ (auc = 0.9225)
+$W^-$ (auc = 0.9224)
+$Z$ (auc = 0.9203)

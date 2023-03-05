@@ -2,6 +2,7 @@ import keras.backend as K
 from cprint import *
 import os
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 plt.switch_backend('agg')
 import pandas as pd
 import numpy as np
@@ -101,7 +102,8 @@ def plot_training_history(collection_history, fig):
         for ii in range(len(datanp[id_history])-1):
             means[ii].append(np.mean(epoch_information[-1][ii]))
             errors[ii].append(np.std(epoch_information[-1][ii]))
-        
+    means = np.array(means)
+    errors = np.array(errors)
             
     # plotting
     ax = fig.add_subplot(2, 1, 1)
@@ -114,14 +116,14 @@ def plot_training_history(collection_history, fig):
     ax.legend()
 
     ax = fig.add_subplot(2, 1, 2)
-    ax.errorbar(x, means[2], yerr=errors[2], label="Training")
-    ax.errorbar(x, means[3], yerr=errors[3], label="Validation")
+    ax.errorbar(x, means[2]*100, yerr=errors[2]*100, label="Training")
+    ax.errorbar(x, means[3]*100, yerr=errors[3]*100, label="Validation")
     ax.set_title("Accuracy across training")
     ax.set_xlabel("Training iteration")
-    ax.set_ylabel("Accuracy")
+    ax.set_ylabel("Accuracy (%)")
     ax.legend()
 
-    return fig
+    return [means, errors], fig
 
 def calculate_ACC(collection_predictions, collection_labels, classes):
     n_class = np.shape(collection_labels[0])[1]
@@ -239,3 +241,69 @@ def plot_SmoothGrad(model, input_imag_loader, collection_predictions, collection
         if (i >= n_imag):
             break
     return 0
+
+
+def draw_resonance_peak(model, test_labels, test_predictions, signal, extra_inputs, extra_information, fig):
+    Nbin = 25
+    df = pd.DataFrame()
+    df['labels'] = np.argmax(test_labels, axis=1)
+    df['predictions'] = np.argmax(test_predictions, axis=1)
+    for iii in range(len(extra_information)):
+        df[extra_information[iii]] = extra_inputs[:,iii]
+        max_input, min_input = max(df[extra_information[iii]]), min(df[extra_information[iii]])
+        bins_loc = np.linspace(min_input, max_input, Nbin+1)
+        dflist_labels = []
+        dflist_preds = []
+        for ii in range(len(test_labels[0])):
+            dflist_preds.append(df[df['predictions']==ii][extra_information[iii]])
+            dflist_labels.append(df[df['labels']==ii][extra_information[iii]])
+
+        # plotting
+        
+
+        ax = fig.add_subplot(2, len(extra_information), 1+2*iii)
+        n0, _, _ = ax.hist(dflist_labels[:-1], Nbin, stacked=True, range=[min_input, max_input])
+        ax.cla()
+        #print (n0)
+        n1, _, _ = ax.hist(dflist_preds, Nbin, stacked=True, range=[min_input, max_input])
+        #print (n1)
+        plt.plot(bins_loc[:-1]+0.5*(bins_loc[1]-bins_loc[0]), n0[-1], 'ko')
+        plt.plot(bins_loc[:-1]+0.5*(bins_loc[1]-bins_loc[0]), n0[-1], 'k_', markersize=15, label='_nolegend_')
+        ax.set_xlim(min_input*0.7, max_input*1.1)
+        #ax.set_ylim(1e-1, np.max(n1))
+        ax.set_title("resonance peak")
+        #ax.set_yscale('log')
+        ax.set_ylabel(r"$N/$"+"{:.2f}".format(bins_loc[1]-bins_loc[0])+" (GeV$^{-1}$)")
+        ax.get_xaxis().set_visible(False)
+        ax.legend(['simulation']+signal)
+
+        gs = gridspec.GridSpec(5,len(extra_information))
+        ax.set_position(gs[0:3].get_position(fig))
+        ax.set_subplotspec(gs[0:3])              # only necessary if using tight_layout()
+
+        #ax = fig.add_subplot(2, len(extra_information), 2+2*iii)
+        ax = fig.add_subplot(gs[3])
+        ax.axhline(y=1, color="black", linestyle="-")
+        ax.axhline(y=0.9, color="black", linestyle="--")
+        ax.axhline(y=1.1, color="black", linestyle="--")
+        ax.plot(bins_loc[:-1]+0.5*(bins_loc[1]-bins_loc[0]), n1[-2]/n0[-1], 'ko')
+        ax.set_xlim(min_input*0.7, max_input*1.1)
+        ax.set_ylim(0.8, 1.2)
+        ax.set_ylabel(r"$N_\mathrm{obs}/N_\mathrm{sim}$")
+        ax.set_xlabel(extra_information[iii])
+        ax.get_xaxis().set_visible(False)
+
+        ax = fig.add_subplot(gs[4])
+        ax.axhline(y=1, color="black", linestyle="--")
+        for ii in range(len(test_labels[0])-1):
+            if ii>0:
+                ax.plot(bins_loc[:-1]+0.5*(bins_loc[1]-bins_loc[0]), (n1[ii]-n1[ii-1])/(n0[ii]-n0[ii-1]), '_', markersize=15)
+            else:
+                ax.plot(bins_loc[:-1]+0.5*(bins_loc[1]-bins_loc[0]), n1[ii]/n0[ii], '_', markersize=15)
+        ax.set_xlim(min_input*0.7, max_input*1.1)
+        #ax.set_ylim(0.8, 1.2)
+        ax.set_ylabel(r"$N^\mathrm{class}_\mathrm{obs}/N_\mathrm{sim}$")
+        ax.set_xlabel(extra_information[iii]+"(GeV)")
+        #ax.legend(['simulation']+signal)
+
+    return fig

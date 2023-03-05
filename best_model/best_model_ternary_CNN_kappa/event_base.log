@@ -1,0 +1,134 @@
+The number of parameters in data: 59
+The number of parameters in data: 15
+The number of parameters in data: 15
+CNN_torch(
+  (h2ptjl): Sequential(
+    (0): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): Conv2d(2, 32, kernel_size=(6, 6), stride=(1, 1), padding=same)
+    (2): ReLU()
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Conv2d(32, 128, kernel_size=(4, 4), stride=(1, 1), padding=same)
+    (5): ReLU()
+    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (7): Conv2d(128, 256, kernel_size=(6, 6), stride=(1, 1), padding=same)
+    (8): ReLU()
+    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (10): Dropout(p=0.1, inplace=False)
+  )
+  (linear1): Linear(in_features=20736, out_features=512, bias=True)
+  (linear2): Linear(in_features=512, out_features=32, bias=True)
+  (linear3): Linear(in_features=512, out_features=128, bias=True)
+  (linear4): Linear(in_features=128, out_features=32, bias=True)
+  (_output): Linear(in_features=32, out_features=6, bias=True)
+)
+Send the model to cuda
+VALIDATION:   kappa = 1.05106     | val loss= 1.791, val acc= 18.01% |
+Epoch 1: val_loss improved from inf to 1.7915, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.99474     | val loss= 1.793, val acc= 18.45% |
+Epoch   2: val_loss did not improve from 1.7915. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.80770     | val loss= 1.740, val acc= 24.07% |
+Epoch 3: val_loss improved from 1.7915 to 1.7400, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.49495     | val loss= 1.724, val acc= 27.27% |
+Epoch 4: val_loss improved from 1.7400 to 1.7245, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.28751     | val loss= 1.714, val acc= 29.04% |
+Epoch 5: val_loss improved from 1.7245 to 1.7143, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.24905     | val loss= 1.691, val acc= 30.39% |
+Epoch 6: val_loss improved from 1.7143 to 1.6910, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.24141     | val loss= 1.700, val acc= 29.99% |
+Epoch   7: val_loss did not improve from 1.6910. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.25620     | val loss= 1.698, val acc= 30.07% |
+Epoch   8: val_loss did not improve from 1.6910. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.25075     | val loss= 1.690, val acc= 31.11% |
+Epoch 9: val_loss improved from 1.6910 to 1.6896, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.23036     | val loss= 1.700, val acc= 31.92% |
+Epoch  10: val_loss did not improve from 1.6896. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.23486     | val loss= 1.701, val acc= 30.96% |
+Epoch  11: val_loss did not improve from 1.6896. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.22621     | val loss= 1.678, val acc= 32.20% |
+Epoch 12: val_loss improved from 1.6896 to 1.6776, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.23014     | val loss= 1.671, val acc= 31.56% |
+Epoch 13: val_loss improved from 1.6776 to 1.6714, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.22053     | val loss= 1.664, val acc= 32.29% |
+Epoch 14: val_loss improved from 1.6714 to 1.6642, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.22333     | val loss= 1.674, val acc= 32.41% |
+Epoch  15: val_loss did not improve from 1.6642. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.23280     | val loss= 1.672, val acc= 32.76% |
+Epoch  16: val_loss did not improve from 1.6642. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.23024     | val loss= 1.665, val acc= 32.79% |
+Epoch  17: val_loss did not improve from 1.6642. Performance did not improve for  3 epoch(s)
+VALIDATION:   kappa = 0.22393     | val loss= 1.660, val acc= 33.17% |
+Epoch 18: val_loss improved from 1.6642 to 1.6602, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.22610     | val loss= 1.672, val acc= 32.59% |
+Epoch  19: val_loss did not improve from 1.6602. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.22857     | val loss= 1.664, val acc= 33.39% |
+Epoch  20: val_loss did not improve from 1.6602. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.23264     | val loss= 1.665, val acc= 34.15% |
+Epoch  21: val_loss did not improve from 1.6602. Performance did not improve for  3 epoch(s)
+VALIDATION:   kappa = 0.22746     | val loss= 1.666, val acc= 33.93% |
+Epoch  22: val_loss did not improve from 1.6602. Performance did not improve for  4 epoch(s)
+VALIDATION:   kappa = 0.22540     | val loss= 1.645, val acc= 33.87% |
+Epoch 23: val_loss improved from 1.6602 to 1.6449, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.23137     | val loss= 1.646, val acc= 33.68% |
+Epoch  24: val_loss did not improve from 1.6449. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.22578     | val loss= 1.644, val acc= 33.99% |
+Epoch 25: val_loss improved from 1.6449 to 1.6437, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.23605     | val loss= 1.647, val acc= 33.91% |
+Epoch  26: val_loss did not improve from 1.6437. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.22607     | val loss= 1.659, val acc= 34.49% |
+Epoch  27: val_loss did not improve from 1.6437. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.22664     | val loss= 1.661, val acc= 34.31% |
+Epoch  28: val_loss did not improve from 1.6437. Performance did not improve for  3 epoch(s)
+VALIDATION:   kappa = 0.22979     | val loss= 1.653, val acc= 34.27% |
+Epoch  29: val_loss did not improve from 1.6437. Performance did not improve for  4 epoch(s)
+VALIDATION:   kappa = 0.23046     | val loss= 1.659, val acc= 34.65% |
+Epoch  30: val_loss did not improve from 1.6437. Performance did not improve for  5 epoch(s)
+VALIDATION:   kappa = 0.22756     | val loss= 1.660, val acc= 34.43% |
+Epoch  31: val_loss did not improve from 1.6437. Performance did not improve for  6 epoch(s)
+VALIDATION:   kappa = 0.22791     | val loss= 1.656, val acc= 34.39% |
+Epoch  32: val_loss did not improve from 1.6437. Performance did not improve for  7 epoch(s)
+VALIDATION:   kappa = 0.22868     | val loss= 1.640, val acc= 34.73% |
+Epoch 33: val_loss improved from 1.6437 to 1.6396, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.22694     | val loss= 1.657, val acc= 34.16% |
+Epoch  34: val_loss did not improve from 1.6396. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.22095     | val loss= 1.664, val acc= 34.69% |
+Epoch  35: val_loss did not improve from 1.6396. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.22511     | val loss= 1.634, val acc= 35.40% |
+Epoch 36: val_loss improved from 1.6396 to 1.6341, saving model to/home/samhuang/ML/best_model/best_model_ternary_CNN_kappa/Try/0
+VALIDATION:   kappa = 0.22361     | val loss= 1.659, val acc= 35.13% |
+Epoch  37: val_loss did not improve from 1.6341. Performance did not improve for  1 epoch(s)
+VALIDATION:   kappa = 0.22524     | val loss= 1.666, val acc= 34.93% |
+Epoch  38: val_loss did not improve from 1.6341. Performance did not improve for  2 epoch(s)
+VALIDATION:   kappa = 0.22578     | val loss= 1.641, val acc= 34.64% |
+Epoch  39: val_loss did not improve from 1.6341. Performance did not improve for  3 epoch(s)
+VALIDATION:   kappa = 0.22693     | val loss= 1.660, val acc= 35.36% |
+Epoch  40: val_loss did not improve from 1.6341. Performance did not improve for  4 epoch(s)
+VALIDATION:   kappa = 0.22118     | val loss= 1.666, val acc= 34.87% |
+Epoch  41: val_loss did not improve from 1.6341. Performance did not improve for  5 epoch(s)
+VALIDATION:   kappa = 0.22588     | val loss= 1.650, val acc= 35.09% |
+Epoch  42: val_loss did not improve from 1.6341. Performance did not improve for  6 epoch(s)
+VALIDATION:   kappa = 0.22306     | val loss= 1.685, val acc= 34.64% |
+Epoch  43: val_loss did not improve from 1.6341. Performance did not improve for  7 epoch(s)
+VALIDATION:   kappa = 0.22472     | val loss= 1.646, val acc= 34.79% |
+Epoch  44: val_loss did not improve from 1.6341. Performance did not improve for  8 epoch(s)
+VALIDATION:   kappa = 0.22438     | val loss= 1.661, val acc= 34.85% |
+Epoch  45: val_loss did not improve from 1.6341. Performance did not improve for  9 epoch(s)
+VALIDATION:   kappa = 0.21978     | val loss= 1.669, val acc= 34.79% |
+Epoch  46: val_loss did not improve from 1.6341. Performance did not improve for 10 epoch(s)
+dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+TEST:   kappa = 0.21978     | test loss= 1.701, test acc= 34.04% |
+Finished Training
+N of classes 6
+$W^+/W^+$ (auc = 77.46 +- 0.0000 %)
+$W^-/W^-$ (auc = 77.61 +- 0.0000 %)
+$Z/Z$ (auc = 64.69 +- 0.0000 %)
+$W^+/W^-$ (auc = 64.32 +- 0.0000 %)
+$W^+/Z$ (auc = 61.61 +- 0.0000 %)
+$W^-/Z$ (auc = 65.43 +- 0.0000 %)
+N of classes 6
+$W^+/W^+$ (acc = 44.52 +- 0.0000 %
+$W^-/W^-$ (acc = 41.10 +- 0.0000 %
+$Z/Z$ (acc = 30.93 +- 0.0000 %
+$W^+/W^-$ (acc = 29.39 +- 0.0000 %
+$W^+/Z$ (acc = 23.96 +- 0.0000 %
+$W^-/Z$ (acc = 29.47 +- 0.0000 %
+The summarized testing accuracy = 34.04 +- 0.0000 %, with the loss = 1.7006 +- 0.000000

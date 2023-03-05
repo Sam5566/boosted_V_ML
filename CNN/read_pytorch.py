@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 plt.switch_backend('agg')
 from matplotlib import colors
 
-def get_npyimages(data_path, kappa, batch_size=100, shuffle_size_tr=1, limited_datasize=None, do_plot=False, make_Qk_image=True, n_class=6):
+def get_npyimages(data_path, kappa, batch_size=100, shuffle_size_tr=1, limited_datasize=None, do_plot=False, make_Qk_image=True, n_class=6, extra_information=[]):
     if (limited_datasize > 0):
         datasize = limited_datasize
     else:
@@ -16,11 +16,18 @@ def get_npyimages(data_path, kappa, batch_size=100, shuffle_size_tr=1, limited_d
             datasize = (int(f.readline()))
     
     inputs_x = np.zeros((datasize, 2,75,75), dtype='float32')
-    inputs_x1 = np.zeros((datasize, 200, 75, 75), dtype='float32') #hQ_list
+    if make_Qk_image:
+        inputs_x1 = np.zeros((datasize, 200, 75, 75), dtype='float32') #hQ_list
+    else:
+        inputs_x1 = np.zeros((datasize, 1, 75, 75))
     inputs_x2 = np.zeros((datasize,200), dtype='float32') #pTnorm_list #//set initially to be -1 so the user can check this easily
 
     inputs_y = np.zeros((datasize,n_class), dtype='float32')
     maxN_constituents = 0
+
+    if (len(extra_information)>0):
+        print ("There are ", len(extra_information)," extra parameter(s) are also read and return into the last return variable" )
+        extra_inputs = np.zeros((datasize, len(extra_information)))
 
 
     imags = [np.zeros((75,75)), np.zeros((75,75))]
@@ -45,7 +52,10 @@ def get_npyimages(data_path, kappa, batch_size=100, shuffle_size_tr=1, limited_d
                     inputs_x[i][1] = np.array(a[2])
 
                 inputs_y[i] = np.array(a[0]) #labels
-
+                
+                if len(extra_information) > 0:
+                    for iii in range(len(extra_information)):
+                        extra_inputs[i][iii] = a[iii+3]
                 pbar.update(1)
 
                 if do_plot == True:
@@ -94,10 +104,12 @@ def get_npyimages(data_path, kappa, batch_size=100, shuffle_size_tr=1, limited_d
     dataset = TensorDataset(inputs_x, inputs_x1, inputs_x2, inputs_y) # create your datset
     del inputs_x, inputs_x1, inputs_x2, inputs_y
     data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle_size_tr, num_workers=0) # create your dataloader
-    print ("The number of parameters in data:", len(data_loader))
+    print ("The number of batches in data:", len(data_loader))
     del dataset
-
-    return (data_loader, N_labels, datasize)
+    if len(extra_information)>0:
+        return (data_loader, N_labels, datasize, extra_inputs)
+    else:
+        return (data_loader, N_labels, datasize)
     
 
 
@@ -147,7 +159,7 @@ def get_npydataset(data_path, batch_size=100, shuffle_size_tr=1, limited_datasiz
     dataset = TensorDataset(inputs_x, inputs_x1, inputs_x2, inputs_y) # create your datset
     del inputs_x, inputs_x1, inputs_x2, inputs_y
     data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle_size_tr) # create your dataloader
-    print ("The number of parameters in data:", len(data_loader))
+    print ("The number of batches in data:", len(data_loader))
     del dataset
 
     return (data_loader, N_labels, datasize)

@@ -114,42 +114,56 @@ def create_TFRecord(npy_files):
             vl_list = idlist[trainsize:trainsize+validsize]
             te_list = idlist[trainsize+validsize:]
 
-            N_Z, N_Wp, N_Wm = 0, 0, 0
+            N_data = np.zeros((3), dtype='int') #N_Wp, N_Wm, N_Z
             with tf.io.TFRecordWriter(NameOfDirectory +'/train.tfrecord') as tfwriter:
-                for idx in tr_list:
-                    entry = np.load(npy_readers[idx], allow_pickle=True)
-                    entry[0] = determine_entry(entry, idx)
-                    #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
-                    sequence_example = get_sequence_example_object(dict_obj)
-                    tfwriter.write(sequence_example.SerializeToString())
-                    pbar.update(1)
-            #print (N_Z, N_Wp, N_Wm)
+                with open(NameOfDirectory +'/train.npy', 'wb') as imagewriter:
+                    for idx in tr_list:
+                        entry = np.load(npy_readers[idx], allow_pickle=True)
+                        entry[0] = determine_entry(entry, idx)
+                        #entry[0] = np.array(entry[0])
+                        dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                        sequence_example = get_sequence_example_object(dict_obj)
+                        tfwriter.write(sequence_example.SerializeToString())
 
-            N_Z, N_Wp, N_Wm = 0, 0, 0
+                        np.save(imagewriter, entry)
+                        N_data += entry[0]
+                        pbar.set_description(f'Train (Number of data: {np.sum(N_data):d}) W+:[{N_data[0]:d}] | W-:[{N_data[1]:d}] | Z:[{N_data[2]:d}] |')
+                        pbar.update(1)
+            print ()
+
+            N_data = np.zeros((3), dtype='int') #N_Wp, N_Wm, N_Z
             with tf.io.TFRecordWriter(NameOfDirectory +'/valid.tfrecord') as tfwriter:
-                for idx in vl_list:
-                    entry = np.load(npy_readers[idx], allow_pickle=True)
-                    entry[0] = determine_entry(entry, idx)
-                    #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
-                    sequence_example = get_sequence_example_object(dict_obj)
-                    tfwriter.write(sequence_example.SerializeToString())
-                    pbar.update(1)
-            #print (N_Z, N_Wp, N_Wm)
-            
-            N_Z, N_Wp, N_Wm = 0, 0, 0
+                with open(NameOfDirectory +'/valid.npy', 'wb') as imagewriter:
+                    for idx in vl_list:
+                        entry = np.load(npy_readers[idx], allow_pickle=True)
+                        entry[0] = determine_entry(entry, idx)
+                        #entry[0] = np.array(entry[0])
+                        dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                        sequence_example = get_sequence_example_object(dict_obj)
+                        tfwriter.write(sequence_example.SerializeToString())
+
+                        np.save(imagewriter, entry)
+                        N_data += entry[0]
+                        pbar.set_description(f'Valid (Number of data: {np.sum(N_data):d}) W+:[{N_data[0]:d}] | W-:[{N_data[1]:d}] | Z:[{N_data[2]:d}] |')
+                        pbar.update(1)
+            print ()
+
+            N_data = np.zeros((3), dtype='int') #N_Wp, N_Wm, N_Z
             with tf.io.TFRecordWriter(NameOfDirectory +'/test.tfrecord') as tfwriter:
-                for idx in te_list:
-                    entry = np.load(npy_readers[idx], allow_pickle=True)
-                        
-                    entry[0] = determine_entry(entry, idx)
-                    #entry[0] = np.array(entry[0])
-                    dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
-                    sequence_example = get_sequence_example_object(dict_obj)
-                    tfwriter.write(sequence_example.SerializeToString())
-                    pbar.update(1)
-            #print (N_Z, N_Wp, N_Wm)
+                with open(NameOfDirectory +'/test.npy', 'wb') as imagewriter:
+                    for idx in te_list:
+                        entry = np.load(npy_readers[idx], allow_pickle=True)
+                            
+                        entry[0] = determine_entry(entry, idx)
+                        #entry[0] = np.array(entry[0])
+                        dict_obj = {'labels': entry[0], 'pT': entry[1], 'Qk': entry[2]}
+                        sequence_example = get_sequence_example_object(dict_obj)
+                        tfwriter.write(sequence_example.SerializeToString())
+
+                        np.save(imagewriter, entry)
+                        N_data += entry[0]
+                        pbar.set_description(f'Test (Number of data: {np.sum(N_data):d}) W+:[{N_data[0]:d}] | W-:[{N_data[1]:d}] | Z:[{N_data[2]:d}] |')
+                        pbar.update(1)
  
     with open(NameOfDirectory +'/train.count', 'w+') as f:
         f.write('{0:d}\n'.format(trainsize))

@@ -1,0 +1,1391 @@
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+New Run
+Current date and time = 2022-10-23 15:11:16.323575
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+The data set contains images
+Epoch 1/100
+562/562 [==============================] - 51s 80ms/step - loss: 4.3022 - accuracy: 0.5979 - val_loss: 1.4822 - val_accuracy: 0.6629
+
+Epoch 00001: val_loss improved from inf to 1.48222, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 2/100
+562/562 [==============================] - 39s 69ms/step - loss: 1.0952 - accuracy: 0.6536 - val_loss: 0.8630 - val_accuracy: 0.6763
+
+Epoch 00002: val_loss improved from 1.48222 to 0.86296, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 3/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8629 - accuracy: 0.6578 - val_loss: 0.8024 - val_accuracy: 0.6786
+
+Epoch 00003: val_loss improved from 0.86296 to 0.80240, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 4/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8314 - accuracy: 0.6613 - val_loss: 0.7880 - val_accuracy: 0.6802
+
+Epoch 00004: val_loss improved from 0.80240 to 0.78801, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 5/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8209 - accuracy: 0.6637 - val_loss: 0.7828 - val_accuracy: 0.6822
+
+Epoch 00005: val_loss improved from 0.78801 to 0.78285, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 6/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8132 - accuracy: 0.6668 - val_loss: 0.7790 - val_accuracy: 0.6834
+
+Epoch 00006: val_loss improved from 0.78285 to 0.77898, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 7/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8068 - accuracy: 0.6703 - val_loss: 0.7820 - val_accuracy: 0.6801
+
+Epoch 00007: val_loss did not improve from 0.77898
+Epoch 8/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8010 - accuracy: 0.6735 - val_loss: 0.7743 - val_accuracy: 0.6854
+
+Epoch 00008: val_loss improved from 0.77898 to 0.77427, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 9/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7959 - accuracy: 0.6765 - val_loss: 0.7655 - val_accuracy: 0.6894
+
+Epoch 00009: val_loss improved from 0.77427 to 0.76554, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 10/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7907 - accuracy: 0.6792 - val_loss: 0.7570 - val_accuracy: 0.6942
+
+Epoch 00010: val_loss improved from 0.76554 to 0.75696, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 11/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7871 - accuracy: 0.6811 - val_loss: 0.7601 - val_accuracy: 0.6922
+
+Epoch 00011: val_loss did not improve from 0.75696
+Epoch 12/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7833 - accuracy: 0.6832 - val_loss: 0.7596 - val_accuracy: 0.6919
+
+Epoch 00012: val_loss did not improve from 0.75696
+Epoch 13/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7809 - accuracy: 0.6838 - val_loss: 0.7558 - val_accuracy: 0.6942
+
+Epoch 00013: val_loss improved from 0.75696 to 0.75579, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 14/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7778 - accuracy: 0.6863 - val_loss: 0.7549 - val_accuracy: 0.6940
+
+Epoch 00014: val_loss improved from 0.75579 to 0.75493, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 15/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7750 - accuracy: 0.6877 - val_loss: 0.7568 - val_accuracy: 0.6928
+
+Epoch 00015: val_loss did not improve from 0.75493
+Epoch 16/100
+562/562 [==============================] - 41s 73ms/step - loss: 0.7730 - accuracy: 0.6886 - val_loss: 0.7516 - val_accuracy: 0.6965
+
+Epoch 00016: val_loss improved from 0.75493 to 0.75156, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 17/100
+562/562 [==============================] - 38s 67ms/step - loss: 0.7708 - accuracy: 0.6898 - val_loss: 0.7523 - val_accuracy: 0.6967
+
+Epoch 00017: val_loss did not improve from 0.75156
+Epoch 18/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7687 - accuracy: 0.6918 - val_loss: 0.7478 - val_accuracy: 0.6982
+
+Epoch 00018: val_loss improved from 0.75156 to 0.74783, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 19/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7666 - accuracy: 0.6928 - val_loss: 0.7468 - val_accuracy: 0.6992
+
+Epoch 00019: val_loss improved from 0.74783 to 0.74681, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 20/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7644 - accuracy: 0.6939 - val_loss: 0.7496 - val_accuracy: 0.6972
+
+Epoch 00020: val_loss did not improve from 0.74681
+Epoch 21/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7629 - accuracy: 0.6952 - val_loss: 0.7471 - val_accuracy: 0.6987
+
+Epoch 00021: val_loss did not improve from 0.74681
+Epoch 22/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7612 - accuracy: 0.6962 - val_loss: 0.7504 - val_accuracy: 0.6973
+
+Epoch 00022: val_loss did not improve from 0.74681
+Epoch 23/100
+562/562 [==============================] - 55s 97ms/step - loss: 0.7595 - accuracy: 0.6976 - val_loss: 0.7481 - val_accuracy: 0.6980
+
+Epoch 00023: val_loss did not improve from 0.74681
+Epoch 24/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7569 - accuracy: 0.6989 - val_loss: 0.7446 - val_accuracy: 0.7014
+
+Epoch 00024: val_loss improved from 0.74681 to 0.74460, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 25/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7545 - accuracy: 0.7007 - val_loss: 0.7464 - val_accuracy: 0.6999
+
+Epoch 00025: val_loss did not improve from 0.74460
+Epoch 26/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7531 - accuracy: 0.7015 - val_loss: 0.7484 - val_accuracy: 0.6984
+
+Epoch 00026: val_loss did not improve from 0.74460
+Epoch 27/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7507 - accuracy: 0.7036 - val_loss: 0.7466 - val_accuracy: 0.6990
+
+Epoch 00027: val_loss did not improve from 0.74460
+Epoch 28/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7490 - accuracy: 0.7051 - val_loss: 0.7484 - val_accuracy: 0.7003
+
+Epoch 00028: val_loss did not improve from 0.74460
+Epoch 29/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7460 - accuracy: 0.7065 - val_loss: 0.7542 - val_accuracy: 0.6958
+
+Epoch 00029: val_loss did not improve from 0.74460
+Epoch 30/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7441 - accuracy: 0.7088 - val_loss: 0.7481 - val_accuracy: 0.7008
+
+Epoch 00030: val_loss did not improve from 0.74460
+Epoch 31/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7415 - accuracy: 0.7100 - val_loss: 0.7550 - val_accuracy: 0.6958
+
+Epoch 00031: val_loss did not improve from 0.74460
+Epoch 32/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7385 - accuracy: 0.7120 - val_loss: 0.7594 - val_accuracy: 0.6948
+
+Epoch 00032: val_loss did not improve from 0.74460
+Epoch 33/100
+562/562 [==============================] - 38s 67ms/step - loss: 0.7356 - accuracy: 0.7149 - val_loss: 0.7573 - val_accuracy: 0.6974
+
+Epoch 00033: val_loss did not improve from 0.74460
+Epoch 34/100
+562/562 [==============================] - 38s 67ms/step - loss: 0.7331 - accuracy: 0.7173 - val_loss: 0.7611 - val_accuracy: 0.6959
+
+Epoch 00034: val_loss did not improve from 0.74460
+Epoch 00034: early stopping
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+[92mModel: "CNN"[0m
+[92m_________________________________________________________________[0m
+[92mLayer (type)                 Output Shape              Param #   [0m
+[92m=================================================================[0m
+[92msequential (Sequential)      (None, 512)               12127912  [0m
+[92m_________________________________________________________________[0m
+[92mdense_2 (Dense)              multiple                  1539      [0m
+[92m=================================================================[0m
+[92mTotal params: 12,129,451[0m
+[92mTrainable params: 12,129,447[0m
+[92mNon-trainable params: 4[0m
+[92m_________________________________________________________________[0m
+None
+
+@LAYER1       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda (Lambda)              (None, 75, 75, 2)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization (BatchNo (None, 75, 75, 2)         8         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d (Conv2D)              (None, 75, 75, 32)        2336      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d (MaxPooling2D) (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_1 (Conv2D)            (None, 37, 37, 128)       65664     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_1 (MaxPooling2 (None, 18, 18, 128)       0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_2 (Conv2D)            (None, 18, 18, 256)       1179904   [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_2 (MaxPooling2 (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mdropout (Dropout)            (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten (Flatten)            (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense (Dense)                (None, 512)               10617344  [0m
+[94m_________________________________________________________________[0m
+[94mdropout_1 (Dropout)          (None, 512)               0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_1 (Dense)              (None, 512)               262656    [0m
+[94m_________________________________________________________________[0m
+[94mdropout_2 (Dropout)          (None, 512)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 12,127,912[0m
+[94mTrainable params: 12,127,908[0m
+[94mNon-trainable params: 4[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 2), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAGAAAAUwAAAHMgAAAAfABkAGQAhQJkAGQAhQJkAGQAhQJkAGQAhQJm\nBBkAUwApAU6pAKkB2gF4cgEAAAByAQAAAPofL2hvbWUvc2FtaHVhbmcvTUwvQ05OL21vZGVscy5w\nedoIPGxhbWJkYT4NAAAA8wAAAAA=\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_1', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_1', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_2', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_2', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Dropout', 'config': {'name': 'dropout', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_1', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}, {'class_name': 'Dense', 'config': {'name': 'dense_1', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_2', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER2       @@@@@@@@@@@@@@@@@@@@@@
+[92m%Layer detail:
+[0m {'name': 'dense_2', 'trainable': True, 'dtype': 'float32', 'units': 3, 'activation': 'softmax', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+
+****************************************************
+history keys:
+ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+history params:
+ {'verbose': 1, 'epochs': 100, 'steps': None}
+****************************************************
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+90000/90000 [==============================] - 349s 4ms/step - loss: 0.7337 - accuracy: 0.7068
+Testing Loss = 0.733675, Testing Accuracy = 0.706789
+The data set contains images
+The data set contains images
+The data set contains images
+Epoch 1/100
+562/562 [==============================] - 39s 68ms/step - loss: 4.2863 - accuracy: 0.5988 - val_loss: 1.4782 - val_accuracy: 0.6633
+
+Epoch 00001: val_loss improved from inf to 1.47824, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 2/100
+562/562 [==============================] - 38s 67ms/step - loss: 1.0929 - accuracy: 0.6541 - val_loss: 0.8638 - val_accuracy: 0.6758
+
+Epoch 00002: val_loss improved from 1.47824 to 0.86377, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 3/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8636 - accuracy: 0.6579 - val_loss: 0.8049 - val_accuracy: 0.6790
+
+Epoch 00003: val_loss improved from 0.86377 to 0.80492, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 4/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8331 - accuracy: 0.6607 - val_loss: 0.7896 - val_accuracy: 0.6809
+
+Epoch 00004: val_loss improved from 0.80492 to 0.78964, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 5/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8223 - accuracy: 0.6638 - val_loss: 0.7840 - val_accuracy: 0.6824
+
+Epoch 00005: val_loss improved from 0.78964 to 0.78404, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 6/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8161 - accuracy: 0.6662 - val_loss: 0.7811 - val_accuracy: 0.6818
+
+Epoch 00006: val_loss improved from 0.78404 to 0.78113, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 7/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8105 - accuracy: 0.6683 - val_loss: 0.7745 - val_accuracy: 0.6850
+
+Epoch 00007: val_loss improved from 0.78113 to 0.77448, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 8/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8049 - accuracy: 0.6712 - val_loss: 0.7773 - val_accuracy: 0.6819
+
+Epoch 00008: val_loss did not improve from 0.77448
+Epoch 9/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7999 - accuracy: 0.6729 - val_loss: 0.7771 - val_accuracy: 0.6816
+
+Epoch 00009: val_loss did not improve from 0.77448
+Epoch 10/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7953 - accuracy: 0.6771 - val_loss: 0.7716 - val_accuracy: 0.6848
+
+Epoch 00010: val_loss improved from 0.77448 to 0.77163, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 11/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7906 - accuracy: 0.6788 - val_loss: 0.7615 - val_accuracy: 0.6920
+
+Epoch 00011: val_loss improved from 0.77163 to 0.76150, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 12/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7867 - accuracy: 0.6809 - val_loss: 0.7614 - val_accuracy: 0.6917
+
+Epoch 00012: val_loss improved from 0.76150 to 0.76137, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 13/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7839 - accuracy: 0.6832 - val_loss: 0.7584 - val_accuracy: 0.6930
+
+Epoch 00013: val_loss improved from 0.76137 to 0.75841, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 14/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7810 - accuracy: 0.6848 - val_loss: 0.7551 - val_accuracy: 0.6954
+
+Epoch 00014: val_loss improved from 0.75841 to 0.75509, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 15/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7774 - accuracy: 0.6860 - val_loss: 0.7553 - val_accuracy: 0.6938
+
+Epoch 00015: val_loss did not improve from 0.75509
+Epoch 16/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7755 - accuracy: 0.6873 - val_loss: 0.7557 - val_accuracy: 0.6944
+
+Epoch 00016: val_loss did not improve from 0.75509
+Epoch 17/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7729 - accuracy: 0.6889 - val_loss: 0.7529 - val_accuracy: 0.6965
+
+Epoch 00017: val_loss improved from 0.75509 to 0.75294, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 18/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7708 - accuracy: 0.6907 - val_loss: 0.7534 - val_accuracy: 0.6964
+
+Epoch 00018: val_loss did not improve from 0.75294
+Epoch 19/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7682 - accuracy: 0.6915 - val_loss: 0.7493 - val_accuracy: 0.6991
+
+Epoch 00019: val_loss improved from 0.75294 to 0.74926, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/1
+Epoch 20/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7671 - accuracy: 0.6926 - val_loss: 0.7543 - val_accuracy: 0.6955
+
+Epoch 00020: val_loss did not improve from 0.74926
+Epoch 21/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7643 - accuracy: 0.6943 - val_loss: 0.7518 - val_accuracy: 0.6970
+
+Epoch 00021: val_loss did not improve from 0.74926
+Epoch 22/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7619 - accuracy: 0.6966 - val_loss: 0.7557 - val_accuracy: 0.6946
+
+Epoch 00022: val_loss did not improve from 0.74926
+Epoch 23/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7608 - accuracy: 0.6968 - val_loss: 0.7552 - val_accuracy: 0.6942
+
+Epoch 00023: val_loss did not improve from 0.74926
+Epoch 24/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7579 - accuracy: 0.6989 - val_loss: 0.7505 - val_accuracy: 0.6979
+
+Epoch 00024: val_loss did not improve from 0.74926
+Epoch 25/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7562 - accuracy: 0.6996 - val_loss: 0.7493 - val_accuracy: 0.6991
+
+Epoch 00025: val_loss did not improve from 0.74926
+Epoch 26/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7534 - accuracy: 0.7021 - val_loss: 0.7532 - val_accuracy: 0.6970
+
+Epoch 00026: val_loss did not improve from 0.74926
+Epoch 27/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7509 - accuracy: 0.7036 - val_loss: 0.7569 - val_accuracy: 0.6947
+
+Epoch 00027: val_loss did not improve from 0.74926
+Epoch 28/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7491 - accuracy: 0.7050 - val_loss: 0.7515 - val_accuracy: 0.6996
+
+Epoch 00028: val_loss did not improve from 0.74926
+Epoch 29/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7470 - accuracy: 0.7068 - val_loss: 0.7570 - val_accuracy: 0.6965
+
+Epoch 00029: val_loss did not improve from 0.74926
+Epoch 00029: early stopping
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+[92mModel: "CNN"[0m
+[92m_________________________________________________________________[0m
+[92mLayer (type)                 Output Shape              Param #   [0m
+[92m=================================================================[0m
+[92msequential_1 (Sequential)    (None, 512)               12127912  [0m
+[92m_________________________________________________________________[0m
+[92mdense_5 (Dense)              multiple                  1539      [0m
+[92m=================================================================[0m
+[92mTotal params: 12,129,451[0m
+[92mTrainable params: 12,129,447[0m
+[92mNon-trainable params: 4[0m
+[92m_________________________________________________________________[0m
+None
+
+@LAYER1       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential_1"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda_1 (Lambda)            (None, 75, 75, 2)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization_1 (Batch (None, 75, 75, 2)         8         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_3 (Conv2D)            (None, 75, 75, 32)        2336      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_3 (MaxPooling2 (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_4 (Conv2D)            (None, 37, 37, 128)       65664     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_4 (MaxPooling2 (None, 18, 18, 128)       0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_5 (Conv2D)            (None, 18, 18, 256)       1179904   [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_5 (MaxPooling2 (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mdropout_3 (Dropout)          (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten_1 (Flatten)          (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_3 (Dense)              (None, 512)               10617344  [0m
+[94m_________________________________________________________________[0m
+[94mdropout_4 (Dropout)          (None, 512)               0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_4 (Dense)              (None, 512)               262656    [0m
+[94m_________________________________________________________________[0m
+[94mdropout_5 (Dropout)          (None, 512)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 12,127,912[0m
+[94mTrainable params: 12,127,908[0m
+[94mNon-trainable params: 4[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential_1', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 2), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_1_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda_1', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAGAAAAUwAAAHMgAAAAfABkAGQAhQJkAGQAhQJkAGQAhQJkAGQAhQJm\nBBkAUwApAU6pAKkB2gF4cgEAAAByAQAAAPofL2hvbWUvc2FtaHVhbmcvTUwvQ05OL21vZGVscy5w\nedoIPGxhbWJkYT4NAAAA8wAAAAA=\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization_1', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_3', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_3', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_4', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_4', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_5', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_5', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_3', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten_1', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense_3', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_4', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}, {'class_name': 'Dense', 'config': {'name': 'dense_4', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_5', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER2       @@@@@@@@@@@@@@@@@@@@@@
+[92m%Layer detail:
+[0m {'name': 'dense_5', 'trainable': True, 'dtype': 'float32', 'units': 3, 'activation': 'softmax', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+
+****************************************************
+history keys:
+ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+history params:
+ {'verbose': 1, 'epochs': 100, 'steps': None}
+****************************************************
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+90000/90000 [==============================] - 342s 4ms/step - loss: 0.7375 - accuracy: 0.7051
+Testing Loss = 0.737455, Testing Accuracy = 0.705122
+The data set contains images
+ii = 0 epoch = 0 id_history = 0
+34
+4.302165985107422
+ii = 1 epoch = 0 id_history = 0
+34
+1.4822152853012085
+ii = 2 epoch = 0 id_history = 0
+34
+0.5979307889938354
+ii = 3 epoch = 0 id_history = 0
+34
+0.6629464030265808
+ii = 0 epoch = 0 id_history = 1
+29
+4.2863287925720215
+ii = 1 epoch = 0 id_history = 1
+29
+1.4782404899597168
+ii = 2 epoch = 0 id_history = 1
+29
+0.5988239645957947
+ii = 3 epoch = 0 id_history = 1
+29
+0.6633370518684387
+ii = 0 epoch = 1 id_history = 0
+34
+1.0952080488204956
+ii = 1 epoch = 1 id_history = 0
+34
+0.8629634380340576
+ii = 2 epoch = 1 id_history = 0
+34
+0.6536087393760681
+ii = 3 epoch = 1 id_history = 0
+34
+0.6762974262237549
+ii = 0 epoch = 1 id_history = 1
+29
+1.0929198265075684
+ii = 1 epoch = 1 id_history = 1
+29
+0.8637667894363403
+ii = 2 epoch = 1 id_history = 1
+29
+0.6541439890861511
+ii = 3 epoch = 1 id_history = 1
+29
+0.6758370399475098
+ii = 0 epoch = 2 id_history = 0
+34
+0.8628513216972351
+ii = 1 epoch = 2 id_history = 0
+34
+0.8024048805236816
+ii = 2 epoch = 2 id_history = 0
+34
+0.6578243374824524
+ii = 3 epoch = 2 id_history = 0
+34
+0.6785993576049805
+ii = 0 epoch = 2 id_history = 1
+29
+0.8636136054992676
+ii = 1 epoch = 2 id_history = 1
+29
+0.8049167990684509
+ii = 2 epoch = 2 id_history = 1
+29
+0.6579181551933289
+ii = 3 epoch = 2 id_history = 1
+29
+0.6789759993553162
+ii = 0 epoch = 3 id_history = 0
+34
+0.8313980102539062
+ii = 1 epoch = 3 id_history = 0
+34
+0.7880086302757263
+ii = 2 epoch = 3 id_history = 0
+34
+0.6613031029701233
+ii = 3 epoch = 3 id_history = 0
+34
+0.68017578125
+ii = 0 epoch = 3 id_history = 1
+29
+0.833143413066864
+ii = 1 epoch = 3 id_history = 1
+29
+0.7896438837051392
+ii = 2 epoch = 3 id_history = 1
+29
+0.6606532335281372
+ii = 3 epoch = 3 id_history = 1
+29
+0.6809151768684387
+ii = 0 epoch = 4 id_history = 0
+34
+0.8208651542663574
+ii = 1 epoch = 4 id_history = 0
+34
+0.7828457355499268
+ii = 2 epoch = 4 id_history = 0
+34
+0.6636593341827393
+ii = 3 epoch = 4 id_history = 0
+34
+0.6821986436843872
+ii = 0 epoch = 4 id_history = 1
+29
+0.8223447799682617
+ii = 1 epoch = 4 id_history = 1
+29
+0.7840406894683838
+ii = 2 epoch = 4 id_history = 1
+29
+0.6638296246528625
+ii = 3 epoch = 4 id_history = 1
+29
+0.6824497580528259
+ii = 0 epoch = 5 id_history = 0
+34
+0.8131790161132812
+ii = 1 epoch = 5 id_history = 0
+34
+0.7789788246154785
+ii = 2 epoch = 5 id_history = 0
+34
+0.6667628288269043
+ii = 3 epoch = 5 id_history = 0
+34
+0.6833844780921936
+ii = 0 epoch = 5 id_history = 1
+29
+0.8160620331764221
+ii = 1 epoch = 5 id_history = 1
+29
+0.7811287641525269
+ii = 2 epoch = 5 id_history = 1
+29
+0.66623455286026
+ii = 3 epoch = 5 id_history = 1
+29
+0.6817941069602966
+ii = 0 epoch = 6 id_history = 0
+34
+0.8067695498466492
+ii = 1 epoch = 6 id_history = 0
+34
+0.7819938659667969
+ii = 2 epoch = 6 id_history = 0
+34
+0.6702902317047119
+ii = 3 epoch = 6 id_history = 0
+34
+0.6801339387893677
+ii = 0 epoch = 6 id_history = 1
+29
+0.8104782700538635
+ii = 1 epoch = 6 id_history = 1
+29
+0.7744831442832947
+ii = 2 epoch = 6 id_history = 1
+29
+0.6682571768760681
+ii = 3 epoch = 6 id_history = 1
+29
+0.6850446462631226
+ii = 0 epoch = 7 id_history = 0
+34
+0.8010444045066833
+ii = 1 epoch = 7 id_history = 0
+34
+0.7742694020271301
+ii = 2 epoch = 7 id_history = 0
+34
+0.6735396981239319
+ii = 3 epoch = 7 id_history = 0
+34
+0.6853794455528259
+ii = 0 epoch = 7 id_history = 1
+29
+0.8049251437187195
+ii = 1 epoch = 7 id_history = 1
+29
+0.7773289084434509
+ii = 2 epoch = 7 id_history = 1
+29
+0.6712355613708496
+ii = 3 epoch = 7 id_history = 1
+29
+0.6819196343421936
+ii = 0 epoch = 8 id_history = 0
+34
+0.7959308624267578
+ii = 1 epoch = 8 id_history = 0
+34
+0.7655354142189026
+ii = 2 epoch = 8 id_history = 0
+34
+0.6765006184577942
+ii = 3 epoch = 8 id_history = 0
+34
+0.6894252300262451
+ii = 0 epoch = 8 id_history = 1
+29
+0.7999393939971924
+ii = 1 epoch = 8 id_history = 1
+29
+0.7770825624465942
+ii = 2 epoch = 8 id_history = 1
+29
+0.672855019569397
+ii = 3 epoch = 8 id_history = 1
+29
+0.6815708875656128
+ii = 0 epoch = 9 id_history = 0
+34
+0.7906581163406372
+ii = 1 epoch = 9 id_history = 0
+34
+0.7569569945335388
+ii = 2 epoch = 9 id_history = 0
+34
+0.6792044043540955
+ii = 3 epoch = 9 id_history = 0
+34
+0.6942383050918579
+ii = 0 epoch = 9 id_history = 1
+29
+0.7953130602836609
+ii = 1 epoch = 9 id_history = 1
+29
+0.7716313004493713
+ii = 2 epoch = 9 id_history = 1
+29
+0.6770636439323425
+ii = 3 epoch = 9 id_history = 1
+29
+0.6848353743553162
+ii = 0 epoch = 10 id_history = 0
+34
+0.7870758771896362
+ii = 1 epoch = 10 id_history = 0
+34
+0.760075032711029
+ii = 2 epoch = 10 id_history = 0
+34
+0.6811019778251648
+ii = 3 epoch = 10 id_history = 0
+34
+0.692187488079071
+ii = 0 epoch = 10 id_history = 1
+29
+0.7906341552734375
+ii = 1 epoch = 10 id_history = 1
+29
+0.7614966630935669
+ii = 2 epoch = 10 id_history = 1
+29
+0.6788221597671509
+ii = 3 epoch = 10 id_history = 1
+29
+0.6919642686843872
+ii = 0 epoch = 11 id_history = 0
+34
+0.7833067774772644
+ii = 1 epoch = 11 id_history = 0
+34
+0.7595780491828918
+ii = 2 epoch = 11 id_history = 0
+34
+0.6831802129745483
+ii = 3 epoch = 11 id_history = 0
+34
+0.69189453125
+ii = 0 epoch = 11 id_history = 1
+29
+0.7866819500923157
+ii = 1 epoch = 11 id_history = 1
+29
+0.761367678642273
+ii = 2 epoch = 11 id_history = 1
+29
+0.6808552145957947
+ii = 3 epoch = 11 id_history = 1
+29
+0.691699206829071
+ii = 0 epoch = 12 id_history = 0
+34
+0.7809037566184998
+ii = 1 epoch = 12 id_history = 0
+34
+0.755791187286377
+ii = 2 epoch = 12 id_history = 0
+34
+0.683774471282959
+ii = 3 epoch = 12 id_history = 0
+34
+0.6941685080528259
+ii = 0 epoch = 12 id_history = 1
+29
+0.7839069366455078
+ii = 1 epoch = 12 id_history = 1
+29
+0.7584066390991211
+ii = 2 epoch = 12 id_history = 1
+29
+0.6832392811775208
+ii = 3 epoch = 12 id_history = 1
+29
+0.6930106282234192
+ii = 0 epoch = 13 id_history = 0
+34
+0.7778071761131287
+ii = 1 epoch = 13 id_history = 0
+34
+0.7549339532852173
+ii = 2 epoch = 13 id_history = 0
+34
+0.68630450963974
+ii = 3 epoch = 13 id_history = 0
+34
+0.6939732432365417
+ii = 0 epoch = 13 id_history = 1
+29
+0.7810448408126831
+ii = 1 epoch = 13 id_history = 1
+29
+0.7550889253616333
+ii = 2 epoch = 13 id_history = 1
+29
+0.6847580075263977
+ii = 3 epoch = 13 id_history = 1
+29
+0.6953961849212646
+ii = 0 epoch = 14 id_history = 0
+34
+0.7749555110931396
+ii = 1 epoch = 14 id_history = 0
+34
+0.7568172812461853
+ii = 2 epoch = 14 id_history = 0
+34
+0.6876633167266846
+ii = 3 epoch = 14 id_history = 0
+34
+0.6927734613418579
+ii = 0 epoch = 14 id_history = 1
+29
+0.7774283289909363
+ii = 1 epoch = 14 id_history = 1
+29
+0.7553461790084839
+ii = 2 epoch = 14 id_history = 1
+29
+0.6860021352767944
+ii = 3 epoch = 14 id_history = 1
+29
+0.6937639713287354
+ii = 0 epoch = 15 id_history = 0
+34
+0.7729989290237427
+ii = 1 epoch = 15 id_history = 0
+34
+0.751562774181366
+ii = 2 epoch = 15 id_history = 0
+34
+0.6886121034622192
+ii = 3 epoch = 15 id_history = 0
+34
+0.6964983344078064
+ii = 0 epoch = 15 id_history = 1
+29
+0.775519073009491
+ii = 1 epoch = 15 id_history = 1
+29
+0.755734384059906
+ii = 2 epoch = 15 id_history = 1
+29
+0.6873262524604797
+ii = 3 epoch = 15 id_history = 1
+29
+0.6944335699081421
+ii = 0 epoch = 16 id_history = 0
+34
+0.770770251750946
+ii = 1 epoch = 16 id_history = 0
+34
+0.7523288726806641
+ii = 2 epoch = 16 id_history = 0
+34
+0.6897937059402466
+ii = 3 epoch = 16 id_history = 0
+34
+0.6966657638549805
+ii = 0 epoch = 16 id_history = 1
+29
+0.7729471325874329
+ii = 1 epoch = 16 id_history = 1
+29
+0.7529414892196655
+ii = 2 epoch = 16 id_history = 1
+29
+0.6889422535896301
+ii = 3 epoch = 16 id_history = 1
+29
+0.6964983344078064
+ii = 0 epoch = 17 id_history = 0
+34
+0.7687034010887146
+ii = 1 epoch = 17 id_history = 0
+34
+0.747827410697937
+ii = 2 epoch = 17 id_history = 0
+34
+0.6917538046836853
+ii = 3 epoch = 17 id_history = 0
+34
+0.6982421875
+ii = 0 epoch = 17 id_history = 1
+29
+0.7708322405815125
+ii = 1 epoch = 17 id_history = 1
+29
+0.7533687353134155
+ii = 2 epoch = 17 id_history = 1
+29
+0.6906660199165344
+ii = 3 epoch = 17 id_history = 1
+29
+0.6964006423950195
+ii = 0 epoch = 18 id_history = 0
+34
+0.7665647268295288
+ii = 1 epoch = 18 id_history = 0
+34
+0.7468119263648987
+ii = 2 epoch = 18 id_history = 0
+34
+0.6927963495254517
+ii = 3 epoch = 18 id_history = 0
+34
+0.69921875
+ii = 0 epoch = 18 id_history = 1
+29
+0.7681761980056763
+ii = 1 epoch = 18 id_history = 1
+29
+0.7492575645446777
+ii = 2 epoch = 18 id_history = 1
+29
+0.6914618611335754
+ii = 3 epoch = 18 id_history = 1
+29
+0.6990931630134583
+ii = 0 epoch = 19 id_history = 0
+34
+0.7644447684288025
+ii = 1 epoch = 19 id_history = 0
+34
+0.7496110200881958
+ii = 2 epoch = 19 id_history = 0
+34
+0.6939049959182739
+ii = 3 epoch = 19 id_history = 0
+34
+0.6972237825393677
+ii = 0 epoch = 19 id_history = 1
+29
+0.7671291828155518
+ii = 1 epoch = 19 id_history = 1
+29
+0.7543415427207947
+ii = 2 epoch = 19 id_history = 1
+29
+0.692563533782959
+ii = 3 epoch = 19 id_history = 1
+29
+0.6955496668815613
+ii = 0 epoch = 20 id_history = 0
+34
+0.7628996968269348
+ii = 1 epoch = 20 id_history = 0
+34
+0.7470753192901611
+ii = 2 epoch = 20 id_history = 0
+34
+0.695169985294342
+ii = 3 epoch = 20 id_history = 0
+34
+0.6986746788024902
+ii = 0 epoch = 20 id_history = 1
+29
+0.7642911672592163
+ii = 1 epoch = 20 id_history = 1
+29
+0.7517892122268677
+ii = 2 epoch = 20 id_history = 1
+29
+0.6943150758743286
+ii = 3 epoch = 20 id_history = 1
+29
+0.6970005631446838
+ii = 0 epoch = 21 id_history = 0
+34
+0.761207103729248
+ii = 1 epoch = 21 id_history = 0
+34
+0.7504377961158752
+ii = 2 epoch = 21 id_history = 0
+34
+0.6961569786071777
+ii = 3 epoch = 21 id_history = 0
+34
+0.697265625
+ii = 0 epoch = 21 id_history = 1
+29
+0.7618620991706848
+ii = 1 epoch = 21 id_history = 1
+29
+0.7557045221328735
+ii = 2 epoch = 21 id_history = 1
+29
+0.6966157555580139
+ii = 3 epoch = 21 id_history = 1
+29
+0.6946149468421936
+ii = 0 epoch = 22 id_history = 0
+34
+0.7595224380493164
+ii = 1 epoch = 22 id_history = 0
+34
+0.7481436729431152
+ii = 2 epoch = 22 id_history = 0
+34
+0.6975575685501099
+ii = 3 epoch = 22 id_history = 0
+34
+0.6979631781578064
+ii = 0 epoch = 22 id_history = 1
+29
+0.7608397006988525
+ii = 1 epoch = 22 id_history = 1
+29
+0.7552366256713867
+ii = 2 epoch = 22 id_history = 1
+29
+0.6968242526054382
+ii = 3 epoch = 22 id_history = 1
+29
+0.6942103505134583
+ii = 0 epoch = 23 id_history = 0
+34
+0.7568694353103638
+ii = 1 epoch = 23 id_history = 0
+34
+0.7446048259735107
+ii = 2 epoch = 23 id_history = 0
+34
+0.6989059448242188
+ii = 3 epoch = 23 id_history = 0
+34
+0.7014229893684387
+ii = 0 epoch = 23 id_history = 1
+29
+0.7579367756843567
+ii = 1 epoch = 23 id_history = 1
+29
+0.7505202889442444
+ii = 2 epoch = 23 id_history = 1
+29
+0.6989233493804932
+ii = 3 epoch = 23 id_history = 1
+29
+0.6979213356971741
+ii = 0 epoch = 24 id_history = 0
+34
+0.7544870972633362
+ii = 1 epoch = 24 id_history = 0
+34
+0.7464231848716736
+ii = 2 epoch = 24 id_history = 0
+34
+0.7006575465202332
+ii = 3 epoch = 24 id_history = 0
+34
+0.699902355670929
+ii = 0 epoch = 24 id_history = 1
+29
+0.7561712861061096
+ii = 1 epoch = 24 id_history = 1
+29
+0.7492735981941223
+ii = 2 epoch = 24 id_history = 1
+29
+0.6995940804481506
+ii = 3 epoch = 24 id_history = 1
+29
+0.6991211175918579
+ii = 0 epoch = 25 id_history = 0
+34
+0.7531155347824097
+ii = 1 epoch = 25 id_history = 0
+34
+0.7483615875244141
+ii = 2 epoch = 25 id_history = 0
+34
+0.7014985680580139
+ii = 3 epoch = 25 id_history = 0
+34
+0.698437511920929
+ii = 0 epoch = 25 id_history = 1
+29
+0.7533723711967468
+ii = 1 epoch = 25 id_history = 1
+29
+0.7532214522361755
+ii = 2 epoch = 25 id_history = 1
+29
+0.7020962834358215
+ii = 3 epoch = 25 id_history = 1
+29
+0.6970424056053162
+ii = 0 epoch = 26 id_history = 0
+34
+0.7507320046424866
+ii = 1 epoch = 26 id_history = 0
+34
+0.7466208934783936
+ii = 2 epoch = 26 id_history = 0
+34
+0.7035768032073975
+ii = 3 epoch = 26 id_history = 0
+34
+0.6990094780921936
+ii = 0 epoch = 26 id_history = 1
+29
+0.750947117805481
+ii = 1 epoch = 26 id_history = 1
+29
+0.7569062113761902
+ii = 2 epoch = 26 id_history = 1
+29
+0.7036150097846985
+ii = 3 epoch = 26 id_history = 1
+29
+0.6947405338287354
+ii = 0 epoch = 27 id_history = 0
+34
+0.7489579916000366
+ii = 1 epoch = 27 id_history = 0
+34
+0.7484022974967957
+ii = 2 epoch = 27 id_history = 0
+34
+0.7051198482513428
+ii = 3 epoch = 27 id_history = 0
+34
+0.7003208994865417
+ii = 0 epoch = 27 id_history = 1
+29
+0.7490599751472473
+ii = 1 epoch = 27 id_history = 1
+29
+0.7514975070953369
+ii = 2 epoch = 27 id_history = 1
+29
+0.7049843072891235
+ii = 3 epoch = 27 id_history = 1
+29
+0.6996233463287354
+ii = 0 epoch = 28 id_history = 0
+34
+0.7459827661514282
+ii = 1 epoch = 28 id_history = 0
+34
+0.7542101740837097
+ii = 2 epoch = 28 id_history = 0
+34
+0.7065169215202332
+ii = 3 epoch = 28 id_history = 0
+34
+0.6958286762237549
+ii = 0 epoch = 28 id_history = 1
+29
+0.7470376491546631
+ii = 1 epoch = 28 id_history = 1
+29
+0.7570341229438782
+ii = 2 epoch = 28 id_history = 1
+29
+0.7068227529525757
+ii = 3 epoch = 28 id_history = 1
+29
+0.6965122818946838
+ii = 0 epoch = 29 id_history = 0
+34
+0.7440814971923828
+ii = 1 epoch = 29 id_history = 0
+34
+0.7481200695037842
+ii = 2 epoch = 29 id_history = 0
+34
+0.70876544713974
+ii = 3 epoch = 29 id_history = 0
+34
+0.7008091807365417
+ii = 0 epoch = 30 id_history = 0
+34
+0.741498589515686
+ii = 1 epoch = 30 id_history = 0
+34
+0.7550154328346252
+ii = 2 epoch = 30 id_history = 0
+34
+0.7099783420562744
+ii = 3 epoch = 30 id_history = 0
+34
+0.69580078125
+ii = 0 epoch = 31 id_history = 0
+34
+0.7385241389274597
+ii = 1 epoch = 31 id_history = 0
+34
+0.7593652009963989
+ii = 2 epoch = 31 id_history = 0
+34
+0.7119662165641785
+ii = 3 epoch = 31 id_history = 0
+34
+0.6947684288024902
+ii = 0 epoch = 32 id_history = 0
+34
+0.7355673909187317
+ii = 1 epoch = 32 id_history = 0
+34
+0.7572603225708008
+ii = 2 epoch = 32 id_history = 0
+34
+0.7149341106414795
+ii = 3 epoch = 32 id_history = 0
+34
+0.6973912119865417
+ii = 0 epoch = 33 id_history = 0
+34
+0.7331478595733643
+ii = 1 epoch = 33 id_history = 0
+34
+0.7610806226730347
+ii = 2 epoch = 33 id_history = 0
+34
+0.7172938585281372
+ii = 3 epoch = 33 id_history = 0
+34
+0.6959123611450195
+N of classes 3
+shape (24588,) (24588,)
+shape (24683,) (24683,)
+shape (22837,) (22837,)
+shape (24660,) (24660,)
+shape (24812,) (24812,)
+shape (23107,) (23107,)
+$W^+$ (auc = 86.64 +- 0.0318 %)
+$W^-$ (auc = 86.58 +- 0.0011 %)
+$Z$ (auc = 87.55 +- 0.0834 %)
+The summarized testing accuracy = 70.60 +- 0.0833
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+New Run
+Current date and time = 2022-10-30 21:32:13.065716
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+The data set contains images
+Number of training datasets: 288000.
+Epoch 1/100
+562/562 [==============================] - 62s 101ms/step - loss: 4.3051 - accuracy: 0.5927 - val_loss: 1.4762 - val_accuracy: 0.6623
+
+Epoch 00001: val_loss improved from inf to 1.47615, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 2/100
+562/562 [==============================] - 38s 68ms/step - loss: 1.0920 - accuracy: 0.6539 - val_loss: 0.8632 - val_accuracy: 0.6773
+
+Epoch 00002: val_loss improved from 1.47615 to 0.86318, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 3/100
+562/562 [==============================] - 38s 67ms/step - loss: 0.8637 - accuracy: 0.6587 - val_loss: 0.8049 - val_accuracy: 0.6787
+
+Epoch 00003: val_loss improved from 0.86318 to 0.80485, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 4/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8328 - accuracy: 0.6616 - val_loss: 0.7897 - val_accuracy: 0.6808
+
+Epoch 00004: val_loss improved from 0.80485 to 0.78973, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 5/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.8222 - accuracy: 0.6646 - val_loss: 0.7805 - val_accuracy: 0.6835
+
+Epoch 00005: val_loss improved from 0.78973 to 0.78051, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 6/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8143 - accuracy: 0.6662 - val_loss: 0.7780 - val_accuracy: 0.6848
+
+Epoch 00006: val_loss improved from 0.78051 to 0.77797, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 7/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8086 - accuracy: 0.6693 - val_loss: 0.7730 - val_accuracy: 0.6862
+
+Epoch 00007: val_loss improved from 0.77797 to 0.77300, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 8/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.8035 - accuracy: 0.6721 - val_loss: 0.7788 - val_accuracy: 0.6818
+
+Epoch 00008: val_loss did not improve from 0.77300
+Epoch 9/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7965 - accuracy: 0.6754 - val_loss: 0.7689 - val_accuracy: 0.6885
+
+Epoch 00009: val_loss improved from 0.77300 to 0.76893, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 10/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7926 - accuracy: 0.6779 - val_loss: 0.7653 - val_accuracy: 0.6895
+
+Epoch 00010: val_loss improved from 0.76893 to 0.76530, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 11/100
+562/562 [==============================] - 39s 68ms/step - loss: 0.7879 - accuracy: 0.6808 - val_loss: 0.7662 - val_accuracy: 0.6892
+
+Epoch 00011: val_loss did not improve from 0.76530
+Epoch 12/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7847 - accuracy: 0.6820 - val_loss: 0.7637 - val_accuracy: 0.6901
+
+Epoch 00012: val_loss improved from 0.76530 to 0.76370, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 13/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7811 - accuracy: 0.6843 - val_loss: 0.7588 - val_accuracy: 0.6932
+
+Epoch 00013: val_loss improved from 0.76370 to 0.75876, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 14/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7782 - accuracy: 0.6860 - val_loss: 0.7567 - val_accuracy: 0.6946
+
+Epoch 00014: val_loss improved from 0.75876 to 0.75669, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 15/100
+562/562 [==============================] - 39s 68ms/step - loss: 0.7760 - accuracy: 0.6869 - val_loss: 0.7550 - val_accuracy: 0.6947
+
+Epoch 00015: val_loss improved from 0.75669 to 0.75501, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 16/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7733 - accuracy: 0.6886 - val_loss: 0.7530 - val_accuracy: 0.6954
+
+Epoch 00016: val_loss improved from 0.75501 to 0.75297, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 17/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7710 - accuracy: 0.6893 - val_loss: 0.7588 - val_accuracy: 0.6912
+
+Epoch 00017: val_loss did not improve from 0.75297
+Epoch 18/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7681 - accuracy: 0.6914 - val_loss: 0.7550 - val_accuracy: 0.6948
+
+Epoch 00018: val_loss did not improve from 0.75297
+Epoch 19/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7666 - accuracy: 0.6924 - val_loss: 0.7541 - val_accuracy: 0.6951
+
+Epoch 00019: val_loss did not improve from 0.75297
+Epoch 20/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7636 - accuracy: 0.6945 - val_loss: 0.7489 - val_accuracy: 0.6981
+
+Epoch 00020: val_loss improved from 0.75297 to 0.74891, saving model to /home/samhuang/ML/best_model/best_model_ternary_CNN_kappa0.15-special/Try/0
+Epoch 21/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7622 - accuracy: 0.6950 - val_loss: 0.7515 - val_accuracy: 0.6964
+
+Epoch 00021: val_loss did not improve from 0.74891
+Epoch 22/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7603 - accuracy: 0.6964 - val_loss: 0.7496 - val_accuracy: 0.6979
+
+Epoch 00022: val_loss did not improve from 0.74891
+Epoch 23/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7588 - accuracy: 0.6973 - val_loss: 0.7544 - val_accuracy: 0.6944
+
+Epoch 00023: val_loss did not improve from 0.74891
+Epoch 24/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7569 - accuracy: 0.6996 - val_loss: 0.7520 - val_accuracy: 0.6967
+
+Epoch 00024: val_loss did not improve from 0.74891
+Epoch 25/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7546 - accuracy: 0.7005 - val_loss: 0.7523 - val_accuracy: 0.6970
+
+Epoch 00025: val_loss did not improve from 0.74891
+Epoch 26/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7520 - accuracy: 0.7022 - val_loss: 0.7539 - val_accuracy: 0.6953
+
+Epoch 00026: val_loss did not improve from 0.74891
+Epoch 27/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7499 - accuracy: 0.7039 - val_loss: 0.7560 - val_accuracy: 0.6950
+
+Epoch 00027: val_loss did not improve from 0.74891
+Epoch 28/100
+562/562 [==============================] - 39s 68ms/step - loss: 0.7472 - accuracy: 0.7061 - val_loss: 0.7537 - val_accuracy: 0.6971
+
+Epoch 00028: val_loss did not improve from 0.74891
+Epoch 29/100
+562/562 [==============================] - 38s 68ms/step - loss: 0.7448 - accuracy: 0.7079 - val_loss: 0.7572 - val_accuracy: 0.6953
+
+Epoch 00029: val_loss did not improve from 0.74891
+Epoch 30/100
+562/562 [==============================] - 39s 69ms/step - loss: 0.7423 - accuracy: 0.7094 - val_loss: 0.7585 - val_accuracy: 0.6956
+
+Epoch 00030: val_loss did not improve from 0.74891
+Epoch 00030: early stopping
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+[92mModel: "CNN"[0m
+[92m_________________________________________________________________[0m
+[92mLayer (type)                 Output Shape              Param #   [0m
+[92m=================================================================[0m
+[92msequential (Sequential)      (None, 512)               12127912  [0m
+[92m_________________________________________________________________[0m
+[92mdense_2 (Dense)              multiple                  1539      [0m
+[92m=================================================================[0m
+[92mTotal params: 12,129,451[0m
+[92mTrainable params: 12,129,447[0m
+[92mNon-trainable params: 4[0m
+[92m_________________________________________________________________[0m
+None
+
+@LAYER1       @@@@@@@@@@@@@@@@@@@@@@
+[94mModel: "sequential"[0m
+[94m_________________________________________________________________[0m
+[94mLayer (type)                 Output Shape              Param #   [0m
+[94m=================================================================[0m
+[94mlambda (Lambda)              (None, 75, 75, 2)         0         [0m
+[94m_________________________________________________________________[0m
+[94mbatch_normalization (BatchNo (None, 75, 75, 2)         8         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d (Conv2D)              (None, 75, 75, 32)        2336      [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d (MaxPooling2D) (None, 37, 37, 32)        0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_1 (Conv2D)            (None, 37, 37, 128)       65664     [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_1 (MaxPooling2 (None, 18, 18, 128)       0         [0m
+[94m_________________________________________________________________[0m
+[94mconv2d_2 (Conv2D)            (None, 18, 18, 256)       1179904   [0m
+[94m_________________________________________________________________[0m
+[94mmax_pooling2d_2 (MaxPooling2 (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mdropout (Dropout)            (None, 9, 9, 256)         0         [0m
+[94m_________________________________________________________________[0m
+[94mflatten (Flatten)            (None, 20736)             0         [0m
+[94m_________________________________________________________________[0m
+[94mdense (Dense)                (None, 512)               10617344  [0m
+[94m_________________________________________________________________[0m
+[94mdropout_1 (Dropout)          (None, 512)               0         [0m
+[94m_________________________________________________________________[0m
+[94mdense_1 (Dense)              (None, 512)               262656    [0m
+[94m_________________________________________________________________[0m
+[94mdropout_2 (Dropout)          (None, 512)               0         [0m
+[94m=================================================================[0m
+[94mTotal params: 12,127,912[0m
+[94mTrainable params: 12,127,908[0m
+[94mNon-trainable params: 4[0m
+[94m_________________________________________________________________[0m
+None
+[92m%Optimizer:
+[0m {'name': 'Adam', 'learning_rate': 1e-04, 'decay': 0.0, 'beta_1': 0.9, 'beta_2': 0.999, 'epsilon': 1e-07, 'amsgrad': False}
+[92m%Layer detail:
+[0m {'name': 'sequential', 'layers': [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 75, 75, 2), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'lambda_input'}}, {'class_name': 'Lambda', 'config': {'name': 'lambda', 'trainable': True, 'dtype': 'float32', 'function': ('4wEAAAAAAAAAAAAAAAEAAAAGAAAAUwAAAHMgAAAAfABkAGQAhQJkAGQAhQJkAGQAhQJkAGQAhQJm\nBBkAUwApAU6pAKkB2gF4cgEAAAByAQAAAPofL2hvbWUvc2FtaHVhbmcvTUwvQ05OL21vZGVscy5w\nedoIPGxhbWJkYT4NAAAA8wAAAAA=\n', None, None), 'function_type': 'lambda', 'module': 'models', 'output_shape': None, 'output_shape_type': 'raw', 'output_shape_module': None, 'arguments': {}}}, {'class_name': 'BatchNormalization', 'config': {'name': 'batch_normalization', 'trainable': True, 'dtype': 'float32', 'axis': ListWrapper([3]), 'momentum': 0.99, 'epsilon': 0.001, 'center': True, 'scale': True, 'beta_initializer': {'class_name': 'Zeros', 'config': {}}, 'gamma_initializer': {'class_name': 'Ones', 'config': {}}, 'moving_mean_initializer': {'class_name': 'Zeros', 'config': {}}, 'moving_variance_initializer': {'class_name': 'Ones', 'config': {}}, 'beta_regularizer': None, 'gamma_regularizer': None, 'beta_constraint': None, 'gamma_constraint': None}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_1', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (4, 4), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_1', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Conv2D', 'config': {'name': 'conv2d_2', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (6, 6), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'MaxPooling2D', 'config': {'name': 'max_pooling2d_2', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}}, {'class_name': 'Dropout', 'config': {'name': 'dropout', 'trainable': True, 'dtype': 'float32', 'rate': 0.1, 'noise_shape': None, 'seed': None}}, {'class_name': 'Flatten', 'config': {'name': 'flatten', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}}, {'class_name': 'Dense', 'config': {'name': 'dense', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_1', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}, {'class_name': 'Dense', 'config': {'name': 'dense_1', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': {'class_name': 'L2', 'config': {'l2': 0.009999999776482582}}, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}}, {'class_name': 'Dropout', 'config': {'name': 'dropout_2', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}}]}
+
+@LAYER2       @@@@@@@@@@@@@@@@@@@@@@
+[92m%Layer detail:
+[0m {'name': 'dense_2', 'trainable': True, 'dtype': 'float32', 'units': 3, 'activation': 'softmax', 'use_bias': True, 'kernel_initializer': {'class_name': 'GlorotUniform', 'config': {'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+
+****************************************************
+history keys:
+ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+history params:
+ {'verbose': 1, 'epochs': 100, 'steps': None}
+****************************************************
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+The data set contains images
+90000/90000 [==============================] - 370s 4ms/step - loss: 0.7375 - accuracy: 0.7046
+Testing Loss = 0.737486, Testing Accuracy = 0.704556
+The data set contains images
+N of classes 3
+$W^+$ (auc = 86.64 +- 0.0000 %)
+$W^-$ (auc = 86.52 +- 0.0000 %)
+$Z$ (auc = 87.45 +- 0.0000 %)
+The summarized testing accuracy = 70.46 +- 0.0000 %, with the loss = 0.7375 +- 0.000000
